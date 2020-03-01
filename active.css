@@ -1,0 +1,168 @@
+body {
+  font-family: Monaco, arial;
+  width: 100%;
+}
+#navbar{
+  margin-left: -.5em;
+  background: white;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+#navbar>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+  letter-spacing: 1px;
+  font-weight: thin;
+  font-size: 1em;
+  text-align: center;
+}
+.nav-link> li {
+  padding: .5em;
+  height: 100%;
+}
+
+.nav-link:hover{
+  background: pink;
+}
+
+#welcome-section{
+  height: 100vh;
+
+}
+
+#welcome-header {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content : space-around;
+  align-items: center;
+}
+
+#welcome-header > img {
+  width: 25%;
+}
+
+#myname > h1 {
+  font-size: 2em;
+}
+
+#myname > p {
+  text-align: center;
+}
+
+#projects{
+  background: #213c64;
+    max-width: 95%;
+ /* margin-left: -1em;*/
+  padding: 1em;
+}
+
+#projects > p {
+  margin-left: 3em;
+  color: white;
+}
+
+#projects > a , #projects > p> a:visited, .whitetext {
+  color: white;
+}
+
+#projectss {
+  background: white;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.project-tile {
+  padding: 2em;
+  max-width: 20%;
+  max-height: 33%;
+  border-radius: 5%;
+   align-text: center;
+ /* background: #213c64;*/
+  background: #7e2955;
+  color: white;
+}
+
+.project-tile > img, p {
+  max-width: 100%;
+
+}
+
+#littlered >img {
+  background: url("https://i.ibb.co/TgD3ZKW/little-red-still-gif.gif") no repeat;
+}
+
+#littlered >img:hover{
+  src: ("https://i.ibb.co/TgD3ZKW/little-red-still-gif.gif") no repeat;
+}
+
+
+#starkingdom>.imgplace{
+  background: url("https://i.ibb.co/dPwtNvs/star-kingdom-still-star-gif.gif") no repeat;
+}
+
+#starkingdom> .imgplace:hover {
+  background: url("https://i.ibb.co/dPwtNvs/star-kingdom-still-star-gif.gif") no repeat;
+}
+
+#content{
+  padding: 1em;
+
+}
+
+.project-content > h2 {
+  text-align:center;
+}
+#contact-me-outer{
+  background: #7e2955;
+  max-width: 100%;
+ /* margin-left: -1em;*/
+}
+
+#contact-me{
+   background: #7e2955;
+  /*margin-left: 1em;*/
+  padding: 1em;
+  color: white;
+}
+
+
+.project-content >img {
+  max-width: 100%;
+}
+
+#geoexamples >img{
+    max-width: 30%;
+}
+@media (hover:none) and (pointer:course) {
+/*mobile*/
+  .project-tile {
+  padding: 1em;
+  max-width: 100%;
+  max-height: 33%;
+  border-radius: 5%;
+   align-text: center;
+ /* background: #213c64;*/
+  background: #7e2955;
+  color: white;
+}
+}
