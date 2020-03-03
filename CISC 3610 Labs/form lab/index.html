@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Forms Lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="active.css">
+  </head>
+  <body>
+
+    <nav id="navbar">
+      <ul>
+          <a class="nav-link" href="../../index.html"><li>Home</li></a>
+          <a class ="nav-link" href="#projects"><li>Projects</li></a>
+          <a class ="nav-link" href="../../index.html#cisc3610"><li>CISC 3610</li></a>
+            <a class ="nav-link" href="#about-me"><li>About Me</li></a>
+       </ul>
+    </nav>
+
+
+
+
+    <form id="this-form">
+      <p>Form (In Progress)</p>
+      <label for="title">Title:</label>
+      <br>
+      <input id="title" type="text" maxlength="40" onChange="setTitle()" placeholder="Enter a title"
+      required>
+      <br>
+      <br>
+      <label for="note">Enter your note:</label>
+      <br>
+      <textarea id="note" rows="10" cols="80" oninput="setNote()"></textarea>
+
+
+
+      <div id="buttons">
+        <span>
+          <button onclick="clearFields();return false;">Clear</button>
+          <button onclick="undo();return false;">Undo</button>
+        </span>
+        <button id="submit-button" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script src="index.js" async defer></script>
+  </body>
+</html>

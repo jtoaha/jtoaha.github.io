@@ -1,0 +1,107 @@
+body{
+  font-family: Arial;
+}
+/* beginning of nav bar css*/
+#navbar{
+  font-family: Monaco, arial;
+  margin-left: -.5em;
+  background: white;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+#navbar>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+.nav-link {
+  text-decoration: none;
+  color: black;
+  list-style-type: none;
+  height: 100%;
+  width: 100%;
+  letter-spacing: 1px;
+  font-weight: thin;
+  font-size: 1em;
+  text-align: center;
+}
+.nav-link> li {
+  padding: .5em;
+  height: 100%;
+}
+
+.nav-link:hover{
+  background: pink;
+}
+
+/* end of nav bar css*/
+
+#this-form > p{
+  font-size: 2em;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+#this-form{
+  margin-top: 6em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2em;
+  width: 70%;
+  background: rgb(255, 154, 187);
+  height: 70vh;
+  border-radius: 10px;
+}
+
+#this-form > textarea{
+  height: 50%;
+}
+
+#this-form > label{
+letter-spacing: 1px;
+}
+#title{
+  width: 100%;
+  margin-top: 3px;
+  padding-right: 0px;
+}
+
+#note{
+  width: 100%;
+  margin-top: 3px;
+}
+
+button{
+  margin-top: 1em;
+  padding: 1em;
+  background-color: purple;
+  color: white;
+}
+
+button:hover{
+  padding: 1em;
+  background-color: rgb(138, 93, 138);
+  color: white;
+}
+
+/*put Clear & Undo buttons in one container and Submit button in another. Then applied "space-between" to position both at either ends*/
+#buttons{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+}
+#submit-button{
+
+}
+
+
+

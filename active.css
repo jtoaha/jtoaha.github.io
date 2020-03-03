@@ -2,6 +2,8 @@ body {
   font-family: Monaco, arial;
   width: 100%;
 }
+
+/* beginning of nav bar css*/
 #navbar{
   margin-left: -.5em;
   background: white;
@@ -40,6 +42,9 @@ body {
 .nav-link:hover{
   background: pink;
 }
+
+/* end of nav bar css*/
+
 
 #welcome-section{
   height: 100vh;
