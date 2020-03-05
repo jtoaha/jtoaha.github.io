@@ -1,11 +1,13 @@
 body {
   margin-top: 6em;
   font-family: arial;
+  background-color: skyblue;
 }
 
 
 h1{
   text-align: center;
+  letter-spacing: 2px;
 }
 
 
