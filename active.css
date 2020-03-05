@@ -77,6 +77,32 @@ body {
   text-align: center;
 }
 
+#cisc3610{
+  padding-top: 6em;
+  height: 100vh;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#project-list-3610 > dd{
+  padding: 1em;
+}
+
+
+.project-link-3610{
+  padding: 1em;
+  text-decoration: none;
+  color: #7e2955;
+}
+
+.project-link-3610:hover{
+  background-color: rgb(252, 216, 222);
+}
+
+.project-link-3610:visited{
+  color: #213c64;
+}
+
 #projects{
   background: #213c64;
     max-width: 95%;
