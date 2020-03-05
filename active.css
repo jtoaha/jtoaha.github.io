@@ -43,6 +43,12 @@ body {
   background: pink;
 }
 
+#home-icon{
+  margin-left: 3em;
+  font-size: 1em;
+  padding: .75em;
+  position:fixed;
+}
 /* end of nav bar css*/
 
 
@@ -101,7 +107,7 @@ body {
   max-width: 20%;
   max-height: 33%;
   border-radius: 5%;
-   align-text: center;
+  text-align: center;
  /* background: #213c64;*/
   background: #7e2955;
   color: white;
@@ -165,7 +171,7 @@ body {
   max-width: 100%;
   max-height: 33%;
   border-radius: 5%;
-   align-text: center;
+  text-align: center;
  /* background: #213c64;*/
   background: #7e2955;
   color: white;

@@ -1,0 +1,56 @@
+body {
+  margin-top: 6em;
+  font-family: arial;
+}
+
+
+h1{
+  text-align: center;
+}
+
+
+label, button, select, option {
+  margin: .5em;
+  letter-spacing: 1px;
+  font-size: 1em;
+}
+
+button {
+  padding: .5em;
+  color:#cc33cc;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: peachpuff;
+}
+
+button:hover{
+  background-color: #e8a0ea;
+}
+
+
+/* beginning of nav bar css*/
+#navbar{
+  margin-left: -.5em;
+  background: white;
+  display: flex;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+#navbar>ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+#home-icon{
+  margin-left: 3em;
+  font-size: 1em;
+  padding: 1em;
+  position:fixed;
+}
