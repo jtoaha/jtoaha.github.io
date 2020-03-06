@@ -1,8 +1,9 @@
 body{
   font-family: Arial;
+  background-image: url('./fundo-geometrico-azul-verde.jpg');
 }
 
-
+/*<a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>*/
 
 
 #this-form > p{
@@ -13,14 +14,16 @@ body{
 }
 
 #this-form{
+  opacity: .9;
+  color: white;
   margin-top: 6em;
   margin-left: auto;
   margin-right: auto;
   padding: 2em;
+  min-width: 40%;
   max-width: 40%;
-  background: rgb(255, 154, 187);
+  background: rgb(26, 91, 24);
   height: 70vh;
-  border-radius: 10px;
 }
 
 #this-form > textarea{
@@ -44,8 +47,14 @@ letter-spacing: 1px;
 button{
   margin-top: 1em;
   padding: 1em;
-  background-color: purple;
+  background-color: seagreen;
   color: white;
+  border-radius: 10px;
+
+}
+
+#submit-button{
+  background-color: purple;
 }
 
 button:hover{
@@ -54,6 +63,9 @@ button:hover{
   color: white;
 }
 
+#submit-button:hover{
+  background-color: rgb(59, 181, 54);
+}
 /*put Clear & Undo buttons in one container and Submit button in another. Then applied "space-between" to position both at either ends*/
 #buttons{
   width: 100%;
