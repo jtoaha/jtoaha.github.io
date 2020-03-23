@@ -33,9 +33,22 @@ Cartoon.draw = function (color) {
   ctx.fillStyle = 'lightblue';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  //create water on horizon;
+  ctx.fillStyle = 'blue';
+  ctx.fillRect(0, canvas.height/3.25, canvas.width, canvas.height);
+
   //draw groundHorizon and background
   ctx.fillStyle = '#84747c';
   ctx.fillRect(0, canvas.height/2.5, canvas.width, canvas.height);
+
+  //draw wooden fence
+  ctx.fillStyle = '#663300';
+  ctx.fillRect(0, canvas.height/2.75, canvas.width, 7);
+  // ctx.strokeStyle = 'black';
+  // ctx.strokeRect(0, canvas.height/2.75, canvas.width, 7);
+  for (var i = 3; i < canvas.width; i +=10) {
+    ctx.fillRect(i, canvas.height/2.65, 5, 11);
+  }
 
   //draw middle road
   ctx.fillStyle = '#c3c98d';
@@ -43,18 +56,57 @@ Cartoon.draw = function (color) {
   ctx.moveTo(canvas.width/2-25, canvas.height/2.5);
   ctx.lineTo(canvas.width/2+25, canvas.height/2.5);
   ctx.lineTo(canvas.width/2+200, canvas.height);
-  ctx.lineTo(canvas.width/2-200, canvas.height)
+  ctx.lineTo(canvas.width/2-200, canvas.height);
+  ctx.lineTo(canvas.width/2-200, canvas.height);
   ctx.closePath();
   ctx.fill()
 
+  //draw sun
+
+  ctx.beginPath();
+  ctx.fillStyle = '#FFFFBF'
+  ctx.arc(canvas.width/2, canvas.height/5, 23, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.fillStyle = 'yellow' ;
+  ctx.arc(canvas.width/2, canvas.height/5, 20, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.closePath();
 
   //draw house
   ctx.fillStyle = 'lightgray';
   //back wall of house
-  ctx.fillRect(canvas.width/14+50, canvas.height-350, canvas.width/5, canvas.width/5);
+  let lowerx = canvas.width/14;
+  let lowery = canvas.height-300;
+  ctx.fillRect(lowerx+50, lowery-75, canvas.width/5, canvas.width/5);
   ctx.fillStyle = 'darkgray';
   //front wall of house
-  ctx.fillRect(canvas.width/14, canvas.height-300, canvas.width/5, canvas.width/5);
+  ctx.fillRect(lowerx, lowery, canvas.width/5, canvas.width/5);
+
+  //top wall
+  ctx.beginPath();
+  ctx.moveTo(lowerx+canvas.width/5, lowery+canvas.width/5);
+  ctx.lineTo(lowerx+50+canvas.width/5, lowery-60+canvas.width/5);
+  ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360);
+  ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310);
+  ctx.lineTo(canvas.width/14, canvas.height-310);
+  ctx.fill();
+  ctx.closePath();
+
+  //side wall
+  // ctx.beginPath();
+  // ctx.moveTo(canvas.width/14+canvas.width/5, canvas.height-310);
+  // ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360);
+  // ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360+canvas.width/5);
+  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310+canvas.width/5);
+  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310)
+  // ctx.fill();
+  // ctx.closePath();
+
+
+
 }
 document.addEventListener('DOMContentLoaded', Cartoon.draw);
   Cartoon.clear = function() {

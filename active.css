@@ -103,6 +103,21 @@ body {
   color: #213c64;
 }
 
+.fix{
+  position:fixed;
+  bottom:0px;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#about-me{
+  /* background-color: #daa2eb; */
+}
+
+#about-me{
+  display: flex;
+  flex-direction: column;
+}
 #projects{
   background: #213c64;
     max-width: 95%;
