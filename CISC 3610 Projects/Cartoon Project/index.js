@@ -30,19 +30,38 @@ Cartoon.draw = function (color) {
   let canvas = Cartoon.canvas;
 
   //Create sky background
-  ctx.fillStyle = 'lightblue';
+  ctx.fillStyle = 'skyblue';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+  //Draw clouds
+  ctx.beginPath();
+  ctx.fillStyle = '#FFFFFF';
+  ctx.ellipse(canvas.width-canvas.width/6, canvas.height/8+20, 100, 20, 0,  2*Math.PI, 0);
+  ctx.ellipse(canvas.width-canvas.width/6+70, canvas.height/8, 100, 20, 0,  2*Math.PI, 0);
+  ctx.fill();
+  //left side
+  ctx.beginPath();
+  ctx.fillStyle = '#FFFFFF';
+  ctx.ellipse(canvas.width/6-20, canvas.height/8, 100, 20, 0,  2*Math.PI, 0);
+  ctx.ellipse(canvas.width/6+50, canvas.height/8-20, 100, 20, 0,  2*Math.PI, 0);
+  ctx.fill();
+  // ctx.beginPath();
+  // ctx.ellipse(canvas.width/6-20, canvas.height/8-20, 100, 20, 0,  2*Math.PI, 0);
+  // ctx.ellipse(canvas.width/6+50, canvas.height/8, 100, 20, 0,  2*Math.PI, 0);
+  // ctx.fill();
+
 
   //create water on horizon;
   ctx.fillStyle = 'blue';
   ctx.fillRect(0, canvas.height/3.25, canvas.width, canvas.height);
 
   //draw groundHorizon and background
-  ctx.fillStyle = '#84747c';
+  ctx.fillStyle = 'green';
   ctx.fillRect(0, canvas.height/2.5, canvas.width, canvas.height);
 
   //draw wooden fence
-  ctx.fillStyle = '#663300';
+  ctx.fillStyle = '#b5651d';
   ctx.fillRect(0, canvas.height/2.75, canvas.width, 7);
   // ctx.strokeStyle = 'black';
   // ctx.strokeRect(0, canvas.height/2.75, canvas.width, 7);
@@ -75,36 +94,42 @@ Cartoon.draw = function (color) {
   ctx.fill();
   ctx.closePath();
 
+
+
+
   //draw house
   ctx.fillStyle = 'lightgray';
   //back wall of house
-  let lowerx = canvas.width/14;
-  let lowery = canvas.height-300;
-  ctx.fillRect(lowerx+50, lowery-75, canvas.width/5, canvas.width/5);
+  let upperx = canvas.width/14;
+  let uppery = canvas.height-300;
+  ctx.fillRect(upperx+70, uppery-75, canvas.width/5, canvas.width/5);
   ctx.fillStyle = 'darkgray';
   //front wall of house
-  ctx.fillRect(lowerx, lowery, canvas.width/5, canvas.width/5);
+  ctx.fillRect(upperx, uppery, canvas.width/5, canvas.width/5);
 
-  //top wall
-  ctx.beginPath();
-  ctx.moveTo(lowerx+canvas.width/5, lowery+canvas.width/5);
-  ctx.lineTo(lowerx+50+canvas.width/5, lowery-60+canvas.width/5);
-  ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360);
-  ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310);
-  ctx.lineTo(canvas.width/14, canvas.height-310);
-  ctx.fill();
-  ctx.closePath();
-
-  //side wall
+  // //top wall
   // ctx.beginPath();
-  // ctx.moveTo(canvas.width/14+canvas.width/5, canvas.height-310);
+  // ctx.moveTo(upperx+canvas.width/5, lowery+canvas.width/5);
+  // ctx.lineTo(lowerx+50+canvas.width/5, lowery-60+canvas.width/5);
   // ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360);
-  // ctx.lineTo(canvas.width/14+50+canvas.width/5, canvas.height-360+canvas.width/5);
-  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310+canvas.width/5);
-  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310)
+  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310);
+  // ctx.lineTo(canvas.width/14, canvas.height-310);
   // ctx.fill();
   // ctx.closePath();
 
+  //side wall
+  ctx.beginPath();
+  ctx.moveTo(upperx+canvas.width/5, uppery);
+  ctx.lineTo(upperx+canvas.width/5, uppery+canvas.width/5);
+  ctx.lineTo(upperx+canvas.width/5+70,uppery+canvas.width/5-75)
+  ctx.lineTo(upperx+canvas.width/5+70, uppery-75);
+  ctx.lineTo(upperx+canvas.width/5, uppery);
+
+  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310+canvas.width/5);
+  // ctx.lineTo(canvas.width/14+canvas.width/5, canvas.height-310)
+  ctx.stroke();
+  ctx.fill();
+  ctx.closePath();
 
 
 }
