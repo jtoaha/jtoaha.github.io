@@ -23,6 +23,13 @@ let fruits = [
 ];
 
 function start () {
+  let selectArray = document.getElementsByTagName('select')
+
+for (let selectedFruit of selectArray)
+{
+  selectedFruit.addEventListener('change', update(selectedFruit));
+}
+
 
   canvas = document.getElementById("myCanvas");
   ctx = canvas.getContext('2d');
@@ -34,7 +41,7 @@ function start () {
     setup.currentLine = 3;
     setup.nameWidth = canvas.width * 0.30;
     setup.namexStart = setup.nameWidth * 0.1;
-    console.log(setup)
+    // console.log(setup)
     //setup.barThickness;
     ctx.fillStyle = "black";
     ctx.font = '45px Monaco';
@@ -42,11 +49,28 @@ function start () {
     drawAllFruitBars();
 }
 
+function update(select){
+  return () => {
+    console.log(select.value, select.id);
+    for (let fruit of fruits) {
+      console.log(fruit);
+      if (fruit.name === select.id)
+        fruit.quantity = select.value;
+    }
+
+    start();
+  }
+
+}
 
 
+function drawAllFruitBars () {
+  for (let fruit of fruits) {
+    drawFruitBar(fruit.name, fruit.quantity, fruit.color);
+  }
+}
 
 function drawFruitBar(name, numFruits, color) {
-
   ctx.fillStyle = color;
   ctx.fillRect(setup.barxstart,
               setup.lineHeight * setup.currentLine,
@@ -59,13 +83,5 @@ function drawFruitBar(name, numFruits, color) {
 
 }
 
-
-function drawAllFruitBars () {
-
-  for (let fruit of fruits) {
-    drawFruitBar(fruit.name, fruit.quantity, fruit.color);
-  }
-
-}
 
 document.addEventListener('DOMContentLoaded', start);
