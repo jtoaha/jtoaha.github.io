@@ -36,11 +36,20 @@ var roxasSpriteSheet;
 var roxasCurrentFrame;
 var roxasX = 200;
 
-
-
-
 var sailorWindSpriteSheet;
 var sailorWindCurrentFrame;
+
+var titansSpriteSheet;
+var titansWindCurrentFrame;
+
+var bpFlipSpriteSheet;
+var bpFlipCurrentFrame;
+
+var bpRunSpriteSheet;
+var bpRunCurrentFrame;
+
+var bpSwitch = false;
+var bpRunY = -20;
 
 function start () {
   canvas = document.getElementById('my-canvas');
@@ -72,9 +81,9 @@ function start () {
   catitudeCurrentFrame = 0;
 
   //set up Sasha
-    sashaSpriteSheet = new Image();
-    sashaSpriteSheet.src = './assets/sasha.png';
-    sashaCurrentFrame = 0;
+  sashaSpriteSheet = new Image();
+  sashaSpriteSheet.src = './assets/sasha.png';
+  sashaCurrentFrame = 0;
 
   //set up kid Goku
   gokuSpriteSheet = new Image();
@@ -96,6 +105,21 @@ function start () {
   sailorWindSpriteSheet.src = './assets/sailor-wind.png';
   sailorWindCurrentFrame = 0;
 
+  //Teen Titans
+  titansSpriteSheet = new Image();
+  titansSpriteSheet.src = './assets/teen-titans-waiting.png';
+  titansCurrentFrame = 0;
+
+  //Black Panther flip
+    bpFlipSpriteSheet = new Image();
+    bpFlipSpriteSheet.src = './assets/black-panther-flip.png';
+    bpFlipCurrentFrame = 0;
+
+    //Black Panther run
+  bpRunSpriteSheet = new Image();
+  bpRunSpriteSheet.src = './assets/black-panther-run.png';
+  bpRunCurrentFrame = 0;
+  bpSwitch = false;
   mainLoop();
 
 }
@@ -136,7 +160,7 @@ function update () {
   //adjust Power Puff Girls walking frame
   if (ppgWalkCurrentFrame < ppgWalkJSON.frames.length - 1) ppgWalkCurrentFrame++;
   else ppgWalkCurrentFrame = 0;
-  ppgWalkX-=3;
+  ppgWalkX-=5;
 
   //adjust Roxas frame
   if (roxasCurrentFrame < roxasJSON.frames.length - 1) roxasCurrentFrame++;
@@ -146,6 +170,24 @@ function update () {
   //adjust Sailor Moon frame
   if (sailorWindCurrentFrame < sailorWindJSON.frames.length - 1) sailorWindCurrentFrame++;
   else sailorWindCurrentFrame = 0;
+
+  //adjust Teen Titans frame
+  if (titansCurrentFrame < titansWaitingJSON.frames.length - 1) titansCurrentFrame++;
+  else titansCurrentFrame = 0;
+
+  //adjust Black Panther frames (coordinate both spritesheets)
+  if (canvas.width + ppgWalkX <= 200) {
+    if (bpFlipCurrentFrame < bpFlipJSON.frames.length - 1)
+      bpFlipCurrentFrame++;
+    else {
+        bpSwitch = true;
+
+      if (bpRunCurrentFrame < bpRunJSON.frames.length - 1) bpRunCurrentFrame++;
+      else bpRunCurrentFrame = 0;
+      bpRunY +=15;
+    }
+  }
+
 
 }
 
@@ -167,6 +209,27 @@ function draw () {
     canvas.width-400, 10,
     currentSailorWind.frame.w / 2.25, currentSailorWind.frame.h / 2.25);
 
+if (canvas.width + ppgWalkX <= 200){
+  console.log(bpSwitch);
+  if (!bpSwitch) {
+    //draw Black Panther flipping
+    let currentbpFlip = bpFlipJSON.frames[bpFlipCurrentFrame];
+    canvasContext.drawImage(bpFlipSpriteSheet,
+      currentbpFlip.frame.x, currentbpFlip.frame.y,
+      currentbpFlip.frame.w, currentbpFlip.frame.h,
+      canvas.width/2, 10,
+      currentbpFlip.frame.w/1.5, currentbpFlip.frame.h/1.5);
+
+    } else {
+    //draw Black Panther running
+    let currentbpRun = bpRunJSON.frames[bpRunCurrentFrame];
+    canvasContext.drawImage(bpRunSpriteSheet,
+      currentbpRun.frame.x, currentbpRun.frame.y,
+      currentbpRun.frame.w, currentbpRun.frame.h,
+      canvas.width / 2-40, bpRunY,
+      currentbpRun.frame.w/1.5, currentbpRun.frame.h/1.5);
+    }
+  }
 
 
   //draw Hello Kitty
@@ -225,6 +288,14 @@ function draw () {
     currentCatitude.frame.w, currentCatitude.frame.h,
     canvas.width + catitudeX, 400,
     currentCatitude.frame.w / 4, currentCatitude.frame.h / 4);
+
+//   //draw Teen Titans waiting
+//   let currentTitans = titansWaitingJSON.frames[titansCurrentFrame];
+// canvasContext.drawImage(titansSpriteSheet,
+//   currentTitans.frame.x, currentTitans.frame.y,
+//   currentTitans.frame.w, currentTitans.frame.h,
+//   200, 300,
+//   currentTitans.frame.w/1, currentTitans.frame.h/1);
 
 
   //draw Sasha
