@@ -10,13 +10,17 @@ var helloKittyCurrentFrame;
 
 var linkRunSpriteSheet;
 var linkRunCurrentFrame;
+var klScale = 2 // scale for Kitty and Link
+var klY = 0;
 
 var bb8SpriteSheet;
 var bb8CurrentFrame;
 var bb8X = 0;
 
-var klScale = 2 // scale for Kitty and Link
-var klY = 0;
+var sashaSpriteSheet;
+var sashaCurrentFrame;
+
+
 function start () {
   canvas = document.getElementById('my-canvas');
   canvasContext = canvas.getContext('2d');
@@ -41,6 +45,11 @@ function start () {
   bb8SpriteSheet.src = './assets/bb8-rolling.png';
   bb8CurrentFrame = 0;
 
+  //set up Sasha
+    sashaSpriteSheet = new Image();
+    sashaSpriteSheet.src = './assets/sasha.png';
+    sashaCurrentFrame = 0;
+
   mainLoop();
 
 }
@@ -58,10 +67,15 @@ function update () {
 
   klY++;
 
+  //adjust bb8 position across screen
   if (bb8CurrentFrame < bb8JSON.frames.length - 1) bb8CurrentFrame++;
   else bb8CurrentFrame = 0;
 
-  bb8X+=15;
+  bb8X += 15;
+
+  //adjust Sasha position
+  if (sashaCurrentFrame < sashaJSON.frames.length - 1) sashaCurrentFrame++;
+  else sashaCurrentFrame = 0;
 }
 
 function draw () {
@@ -98,6 +112,14 @@ function draw () {
     currentbb8.frame.w, currentbb8.frame.h,
     canvas.width - bb8X, 200,
     currentbb8.frame.w / 1.5, currentbb8.frame.h / 1.5);
+
+  //draw Sasha
+  let currentSasha = sashaJSON.frames[sashaCurrentFrame];
+  canvasContext.drawImage(sashaSpriteSheet,
+    currentSasha.frame.x, currentSasha.frame.y,
+    currentSasha.frame.w, currentSasha.frame.h,
+    canvas.width - 300, 0,
+    currentSasha.frame.w / 1.5, currentSasha.frame.h / 1.5);
 
   //draw Levi
   let currentLevi = leviJSON.frames[leviCurrentFrame];
@@ -1789,6 +1811,358 @@ var bb8JSON = {
 		size: {
 			w: 6526,
 			h: 210
+		},
+		scale: '1'
+	}
+}
+
+var sashaJSON = {
+	frames: [
+		{
+			filename: 'frame_00_delay-0.1s.gif',
+			frame: {
+				x: 1,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_01_delay-0.1s.gif',
+			frame: {
+				x: 503,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_02_delay-0.1s.gif',
+			frame: {
+				x: 1005,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_03_delay-0.1s.gif',
+			frame: {
+				x: 1507,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_04_delay-0.1s.gif',
+			frame: {
+				x: 2009,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_05_delay-0.1s.gif',
+			frame: {
+				x: 2511,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_06_delay-0.1s.gif',
+			frame: {
+				x: 3013,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_07_delay-0.1s.gif',
+			frame: {
+				x: 3515,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_08_delay-0.1s.gif',
+			frame: {
+				x: 4017,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_09_delay-0.1s.gif',
+			frame: {
+				x: 4519,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_10_delay-0.1s.gif',
+			frame: {
+				x: 5021,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_11_delay-0.1s.gif',
+			frame: {
+				x: 5523,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_12_delay-0.1s.gif',
+			frame: {
+				x: 6025,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_13_delay-0.1s.gif',
+			frame: {
+				x: 6527,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_14_delay-0.1s.gif',
+			frame: {
+				x: 7029,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		},
+		{
+			filename: 'frame_15_delay-0.1s.gif',
+			frame: {
+				x: 7531,
+				y: 1,
+				w: 500,
+				h: 700
+			},
+			rotated: false,
+			trimmed: false,
+			spriteSourceSize: {
+				x: 0,
+				y: 0,
+				w: 500,
+				h: 700
+			},
+			sourceSize: {
+				w: 500,
+				h: 700
+			}
+		}
+	],
+	meta: {
+		app: 'http://www.codeandweb.com/texturepacker',
+		version: '1.0',
+		image: 'spritesheet.png',
+		format: 'RGBA8888',
+		size: {
+			w: 8032,
+			h: 702
 		},
 		scale: '1'
 	}
