@@ -32,6 +32,16 @@ var ppgWalkSpriteSheet;
 var ppgWalkCurrentFrame;
 var ppgWalkX = 100;
 
+var roxasSpriteSheet;
+var roxasCurrentFrame;
+var roxasX = 200;
+
+
+
+
+var sailorWindSpriteSheet;
+var sailorWindCurrentFrame;
+
 function start () {
   canvas = document.getElementById('my-canvas');
   canvasContext = canvas.getContext('2d');
@@ -76,6 +86,16 @@ function start () {
   ppgWalkSpriteSheet.src = './assets/ppg-walking.png';
   ppgWalkCurrentFrame = 0;
 
+  //Roxas walking
+  roxasSpriteSheet = new Image();
+  roxasSpriteSheet.src = './assets/roxas.png';
+  roxasCurrentFrame = 0;
+
+  //Sailor Moon
+  sailorWindSpriteSheet = new Image();
+  sailorWindSpriteSheet.src = './assets/sailor-wind.png';
+  sailorWindCurrentFrame = 0;
+
   mainLoop();
 
 }
@@ -91,13 +111,13 @@ function update () {
   if (linkRunCurrentFrame < linkRunJSON.frames.length - 3) linkRunCurrentFrame += 3;
   else linkRunCurrentFrame = 0;
 
-  klY++;
+  klY+=2;
 
   //adjust bb8 position across screen
   if (bb8CurrentFrame < bb8JSON.frames.length - 1) bb8CurrentFrame++;
   else bb8CurrentFrame = 0;
 
-  bb8X += 15;
+  bb8X += 20;
 
   //adjust Sasha frame
   if (sashaCurrentFrame < sashaJSON.frames.length - 1) sashaCurrentFrame++;
@@ -117,6 +137,16 @@ function update () {
   if (ppgWalkCurrentFrame < ppgWalkJSON.frames.length - 1) ppgWalkCurrentFrame++;
   else ppgWalkCurrentFrame = 0;
   ppgWalkX-=3;
+
+  //adjust Roxas frame
+  if (roxasCurrentFrame < roxasJSON.frames.length - 1) roxasCurrentFrame++;
+  else roxasCurrentFrame = 0;
+  roxasX-=35;
+
+  //adjust Sailor Moon frame
+  if (sailorWindCurrentFrame < sailorWindJSON.frames.length - 1) sailorWindCurrentFrame++;
+  else sailorWindCurrentFrame = 0;
+
 }
 
 function draw () {
@@ -127,6 +157,16 @@ function draw () {
   drawGrass();
 
   //setup
+
+
+  //draw Sailor Moon
+  let currentSailorWind = sailorWindJSON.frames[sailorWindCurrentFrame];
+  canvasContext.drawImage(sailorWindSpriteSheet,
+    currentSailorWind.frame.x, currentSailorWind.frame.y,
+    currentSailorWind.frame.w, currentSailorWind.frame.h,
+    canvas.width-400, 10,
+    currentSailorWind.frame.w / 2.25, currentSailorWind.frame.h / 2.25);
+
 
 
   //draw Hello Kitty
@@ -154,12 +194,12 @@ function draw () {
     canvas.width - bb8X, 200,
     currentbb8.frame.w / 1.5, currentbb8.frame.h / 1.5);
 
-      //draw Powerpuff girls walking with teacher
+  //draw Powerpuff girls walking with teacher
   let currentppgWalk = bb8JSON.frames[ppgWalkCurrentFrame];
   canvasContext.drawImage(ppgWalkSpriteSheet,
     currentppgWalk.frame.x, currentppgWalk.frame.y,
     currentppgWalk.frame.w, currentppgWalk.frame.h,
-    canvas.width + ppgWalkX, 100,
+    canvas.width + ppgWalkX, 175,
     currentppgWalk.frame.w / 2, currentppgWalk.frame.h / 2 );
 
   //draw Goku juggling dragon balls
@@ -169,6 +209,14 @@ function draw () {
       currentGoku.frame.w, currentGoku.frame.h,
       0 + gokuX, 0,
       currentGoku.frame.w / 1.5, currentGoku.frame.h / 1.5);
+
+  //draw Roxas running
+  let currentRoxas = roxasJSON.frames[roxasCurrentFrame];
+  canvasContext.drawImage(roxasSpriteSheet,
+    currentRoxas.frame.x, currentRoxas.frame.y,
+    currentRoxas.frame.w, currentRoxas.frame.h,
+    canvas.width + roxasX, 200,
+    currentRoxas.frame.w/1.2, currentRoxas.frame.h/1.2);
 
   //draw cat with attitude
   let currentCatitude = catitudeJSON.frames[catitudeCurrentFrame];
