@@ -1,0 +1,16 @@
+#home-icon{
+  margin-left: 3em;
+  font-size: 1em;
+  padding: .75em;
+  position:fixed;
+}
+
+#my-canvas{
+  margin-left: auto;
+margin-right: auto;
+}
+
+h1{
+  text-align: center;
+  font-family: arial;
+}
