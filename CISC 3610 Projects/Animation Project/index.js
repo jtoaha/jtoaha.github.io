@@ -217,7 +217,7 @@ if (canvas.width + ppgWalkX <= 200){
     canvasContext.drawImage(bpFlipSpriteSheet,
       currentbpFlip.frame.x, currentbpFlip.frame.y,
       currentbpFlip.frame.w, currentbpFlip.frame.h,
-      canvas.width/2, 10,
+      canvas.width/2-150, 10,
       currentbpFlip.frame.w/1.5, currentbpFlip.frame.h/1.5);
 
     } else {
@@ -226,7 +226,7 @@ if (canvas.width + ppgWalkX <= 200){
     canvasContext.drawImage(bpRunSpriteSheet,
       currentbpRun.frame.x, currentbpRun.frame.y,
       currentbpRun.frame.w, currentbpRun.frame.h,
-      canvas.width / 2-40, bpRunY,
+      canvas.width / 2-190, bpRunY,
       currentbpRun.frame.w/1.5, currentbpRun.frame.h/1.5);
     }
   }
