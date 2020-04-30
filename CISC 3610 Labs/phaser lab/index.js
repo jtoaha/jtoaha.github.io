@@ -1,3 +1,5 @@
+//original code tweeked https://labs.phaser.io/edit.html?src=src/input/dragging/enable%20for%20drag%20test%202.js&v=3.22.0
+
 var config = {
   type: Phaser.AUTO,
   width: 360,
@@ -14,16 +16,16 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-  this.load.image('apple', 'assets/sprites/apple.png');
+  this.load.image('cupcake', 'assets/sprites/cupcake.png');
 }
 
 function create ()
 {
-  var apple = this.add.sprite(100, 100, 'apple');
+  var cupcake = this.add.sprite(100, 100, 'cupcake');
 
-  apple.setInteractive();
+  cupcake.setInteractive();
 
-  this.input.setDraggable(apple);
+  this.input.setDraggable(cupcake);
 
   this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
@@ -32,4 +34,3 @@ function create ()
 
   });
 }
-
