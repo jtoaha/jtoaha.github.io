@@ -53,18 +53,18 @@ button{
 
 }
 
-#submit-button{
-  background-color: purple;
-}
-
 button:hover{
   padding: 1em;
   background-color: rgb(138, 93, 138);
   color: white;
 }
 
+#submit-button{
+  background-color: rgb(211, 9, 211);
+}
+
 #submit-button:hover{
-  background-color: rgb(59, 181, 54);
+  background-color: purple;
 }
 /*put Clear & Undo buttons in one container and Submit button in another. Then applied "space-between" to position both at either ends*/
 #buttons{

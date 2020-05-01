@@ -1,5 +1,18 @@
+/**
+ * Jamila Toaha
+ * This form implements local storage.
+ * -When a user refreshes or comes back to a page at a later time, unless the cache is cleared, the user will be able to see what they wrote at an earlier time.
+ * -They are also able to undo.
+ * -They can also clear the form
+ */
+
 let pageTitle = localStorage.getItem('title');
 let pageNote = localStorage.getItem('note');
+
+let fieldsObject = {
+    title: pageTitle,
+    note: pageNote
+}
 
 let totalUndos = 0;
 
@@ -9,7 +22,7 @@ if(localStorage.getItem('undo1')) undoArray.push(localStorage.getItem('undo1'))
 if(localStorage.getItem('undo2')) undoArray.push(localStorage.getItem('undo2'))
 if(localStorage.getItem('undo3')) undoArray.push(localStorage.getItem('undo3'))
 
-//If these values for title and note already exist in local storage, display them
+//If values for title and note already exist in local storage, display them
 if (pageTitle){
     document.getElementById('title').value = pageTitle;
 }
@@ -20,20 +33,24 @@ if (pageNote) {
 
 
 function setTitle(){
-  let title = document.getElementById('title').value;
+  //once user enters a value, adjust the localStorage value
+  fieldsObject.title = document.getElementById('title').value;
+  let title = fieldsObject.title;
   localStorage.setItem('title', title);
 
   //if the current character is a space, create a back-up
   if (title[title.length - 1] === ' ') {
     totalUndos++;
 
-    undoArray.push('type: ' + title.slice(0, title.length - 1));
+    // title.length - 1 <- the purpose of this is to exclude the space in the undo
+    undoArray.push('title: ' + title.slice(0, title.length - 1));
   }
 
 }
 
 function setNote(){
-  let note = document.getElementById('note').value;
+  fieldsObject.note = document.getElementById('note').value;
+  let note = fieldsObject.note;
   localStorage.setItem('note', note);
 
   if (note[note.length - 1] === ' ') {

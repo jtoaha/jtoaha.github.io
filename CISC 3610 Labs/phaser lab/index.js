@@ -1,4 +1,4 @@
-//This lab modifies, builds and expands on this original code - drag and drop test  https://labs.phaser.io/edit.html?src=src/input/dragging/enable%20for%20drag%20test%202.js&v=3.22.0
+//Jamila Toaha - 05/01/2020- This code uses the Phaser library to create a drag and drop menu for a picnic setting. This lab modifies, builds and expands on this original code - drag and drop test  https://labs.phaser.io/edit.html?src=src/input/dragging/enable%20for%20drag%20test%202.js&v=3.22.0
 
 var config = {
   type: Phaser.AUTO,
