@@ -1,10 +1,8 @@
 body{
-  background: rgb(250, 220, 224);
+  background: rgb(170, 214, 249);
 }
 #phaser-example + canvas{
-  margin-top: .5em;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 10%;
 }
 
 #home-icon{
@@ -12,4 +10,9 @@ body{
   font-size: 1em;
   padding: .75em;
   position: fixed;
+}
+
+h1{
+  text-align: center;
+  font-family: 'monaco';
 }
