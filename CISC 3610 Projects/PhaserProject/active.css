@@ -1,0 +1,18 @@
+body{
+  background: rgb(170, 214, 249);
+}
+#phaser-example + canvas{
+  margin-left: 10%;
+}
+
+#home-icon{
+  margin-left: 1em;
+  font-size: 1em;
+  padding: .75em;
+  position: fixed;
+}
+
+h1{
+  text-align: center;
+  font-family: 'monaco';
+}

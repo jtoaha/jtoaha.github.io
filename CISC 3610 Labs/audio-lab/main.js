@@ -1,3 +1,13 @@
+/**
+ * Jamila Toaha
+ * 5/2/2020
+ * This lab utilizes HTML's image map to play sounds.
+ * -Certain areas of the image are linked to specific sound files.
+ * -In this case, the image was edited by myself using Adobe Illustrator to include what I consider classic tv images.
+ * -Added corresponding audio files as well.
+ * -A user can pause and unpause.
+ * -And when a file is playing, an audio visualizer is displayed.
+ */
 
 let ppg
 let ppgFlag = true //to toggle between play and pause

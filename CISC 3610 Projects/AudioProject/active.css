@@ -5,7 +5,7 @@ body{
 }
 
 #title{
-  padding-top: .1em;
+  padding: .1em;
   margin-bottom: .25em;
   margin-top: -.10em;
   text-align: center;
@@ -18,7 +18,7 @@ body{
 }
 
 h3{
-  padding-left: 1em;
+  padding: .25em;
   text-align: center;
   color: #202040;
   background-color: #ff6363;
