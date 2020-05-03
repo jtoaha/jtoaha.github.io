@@ -18,13 +18,12 @@
     <nav id="navbar">
       <a href="../../index.html"><img id="home-icon" alt="home button" src="../../images/home-icon.png" /></a>
     </nav>
-    <h1>Voice Recognition Project</h1>
+    <p id="title">Voice Recognition Project</p>
     <section id="main">
     <canvas id="audio-canvas" width="800" height="600"></canvas>
-    <div>
-      <button onclick="toggleSpeechButton()" id="speak-button">Speak</button>
+    <div id="text">
       <h3>Instructions</h3>
-      <p>Press the button and say any of the following. Once you are done, remember to stop the speak button. </p>
+      <p>Press the button and say any of the following commands. Once you are done, you can stop the speak button by clicking on it. Alternatively, if the program detects a pause it will stop it for you. </p>
       <p>Say "color _____" to change the color of the circle. For example "color blue" to make the circle blue.</p>
       <p>Say "background _____" to change the background color of the canvas. For example "background yellow" to make the background yellow.
       </p>
@@ -32,6 +31,7 @@
       </p>
       <p>Say "Help", if you need audio instructions</p>
       <p>Say "About", if you'd like to hear more about the this program and the developer behind it.</p>
+      <button onclick="toggleSpeechButton()" id="speak-button">Speak</button>
     </div>
 
     </section>
