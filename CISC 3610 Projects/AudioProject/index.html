@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Project: Voice Recognition- Jamila Toaha</title>
+    <link rel="icon" href="../../images/my-logo-black.png">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="active.css">
+    <script type="text/javascript" src="main.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+
+    <nav id="navbar">
+      <a href="../../index.html"><img id="home-icon" alt="home button" src="../../images/home-icon.png" /></a>
+    </nav>
+    <h1>Voice Recognition Project</h1>
+    <section id="main">
+    <canvas id="audio-canvas" width="800" height="600"></canvas>
+    <div>
+      <button onclick="toggleSpeechButton()" id="speak-button">Speak</button>
+      <h3>Instructions</h3>
+      <p>Press the button and say any of the following. Once you are done, remember to stop the speak button. </p>
+      <p>Say "color _____" to change the color of the circle. For example "color blue" to make the circle blue.</p>
+      <p>Say "background _____" to change the background color of the canvas. For example "background yellow" to make the background yellow.
+      </p>
+      <p>Say "size _____" to change the size of the circle. For example "size 50" to make the circle with a diameter of 50.
+      </p>
+      <p>Say "Help", if you need audio instructions</p>
+      <p>Say "About", if you'd like to hear more about the this program and the developer behind it.</p>
+    </div>
+
+    </section>
+   </body>
