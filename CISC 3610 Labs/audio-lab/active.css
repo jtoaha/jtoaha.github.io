@@ -1,0 +1,27 @@
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: rgb(87, 77, 77)
+}
+
+area:hover {
+  z-index: 10;
+background-color: blue;
+}
+
+#wavesimg{
+  width: 30%;
+}
+
+/* #home-icon{
+  margin-left: 3em;
+  font-size: 1em;
+  padding: 1em;
+  position:fixed;
+} */
+
+#title-img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
