@@ -148,7 +148,7 @@ function readHelpMenu(){
 }
 
 function readAbout(){
-  utterThis = new SpeechSynthesisUtterance('Hello there. My name is Jamila and I am the developer behind this program. This program makes use of the Web Speech A.P.I, provides two distinct areas of functionality — speech recognition, and speech synthesis. With speech recognition, it is able to recognize your voice. And with speech synthesis, it can convert text to speech.');
+  utterThis = new SpeechSynthesisUtterance('Hello there. My name is Jamila Toaha and I am the developer behind this program. This program makes use of the Web Speech A.P.I, which provides two distinct areas of functionality — speech recognition, and speech synthesis. With speech recognition, it is able to recognize your voice. And with speech synthesis, it can convert text to speech.');
   utterThis.voice = synth.getVoices()[6]; // set voice to a female voice;
   synth.speak(utterThis);
 }

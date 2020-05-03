@@ -12,12 +12,17 @@ body{
   letter-spacing: 4px;
   font-size: 2em;
   font-weight: 900;
+  background-color: #ffbd69;
   /* text-shadow: 2px 2px 5px gainsboro; */
 
 }
 
 h3{
-  color: #202040
+  padding-left: 1em;
+  text-align: center;
+  color: #202040;
+  background-color: #ff6363;
+  letter-spacing: 2px;;
 }
 
 p{
@@ -44,7 +49,9 @@ p{
 }
 
 #speak-button{
-  width: 100px;
+  margin-left:20%;
+  margin-right:20%;
+  width: 60%;
   background: #543864;
   color: #ffbd69;
   padding: 1em;
@@ -55,11 +62,17 @@ p{
 
 
 #speak-button:hover{
-  width: 100px;
+  margin-left:20%;
+  margin-right:20%;
+  width: 60%;
   background: #202040;
   color: #ffbd69;
   padding: 1em;
   border-radius: 10px;
   letter-spacing: 2px;
   font-weight: bolder
+}
+
+.say{
+  font-weight: bold;
 }
