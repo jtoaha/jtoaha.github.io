@@ -1,16 +1,19 @@
 body{
-  font-family: 'helvetica', 'Arial Narrow', Arial, sans-serif;
-  background-color: #ff9a9a;
+  font-family: 'Arial';
+  background-color: #fe9090;
   color: #543864;
 }
 
 #title{
+  width: 103%;
   padding: .1em;
   margin-bottom: .25em;
-  margin-top: -.10em;
+  margin-left: -1em;
+  margin-top: -.25em;
   text-align: center;
   letter-spacing: 4px;
   font-size: 2em;
+  font-family: 'Arial Black';
   font-weight: 900;
   background-color: #ffbd69;
   /* text-shadow: 2px 2px 5px gainsboro; */

@@ -4,7 +4,7 @@
 
 // var config = {
 //   type: Phaser.AUTO,
-//   width: 1000,
+//   width: 1000,gi
 //   height: 550,
 //   _parent: 'phaser-example',
 //   backgroundColor: '#efefef',

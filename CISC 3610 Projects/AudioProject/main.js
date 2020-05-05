@@ -10,7 +10,7 @@ var ctx = undefined;
 var recognitionParams = {
   radius: 25,
   color: 'black',
-  background: '#fee0b8'
+  background: '#ff6363'
 }
 
 /** ========== DRAWING CANVAS ==============  */
