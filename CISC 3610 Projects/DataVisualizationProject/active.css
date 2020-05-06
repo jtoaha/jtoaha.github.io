@@ -1,15 +1,31 @@
-#home-icon{
+#home-icon {
   margin-left: 3em;
   font-size: 1em;
-  padding: 1em;
-  position:fixed;
+  /* padding: 1em; */
+  /* position:fixed; */
 }
 
-h1{
+h1 {
   text-align: center;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 
-#bar-chart{
-width: 500px;
+#bar-chart-section {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+#donut-chart-section {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+hr {
+  width: 80%;
+}
+
+p {
+  padding-left: 50px;
 }

@@ -1,27 +1,32 @@
 <!DOCTYPE html>
- <html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Data Visualization Project - Jamila Toaha</title>
-    <link rel="icon" href="../../images/my-logo-black.png">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="active.css">
+    <link rel="icon" href="../../images/my-logo-black.png" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="active.css" />
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="main.js" defer></script>
 
     <!-- chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
   </head>
   <body>
-
     <nav id="navbar">
-         <a href="../../index.html"><img id="home-icon" alt="home button" src="../../images/home-icon.png" /></a>
+      <a href="../../index.html"
+        ><img id="home-icon" alt="home button" src="../../images/home-icon.png"
+      /></a>
     </nav>
     <h1>Data Visualization Project</h1>
-    <!-- <canvas id="myChart"></canvas> -->
-    <canvas id="bar-chart" width="600" height="350"></canvas>
+    <div id="bar-chart-section">
+      <canvas id="bar-chart" width="600" height="350"></canvas>
+    </div>
+    <hr />
+    <div id="donut-chart-section">
+      <canvas id="donut-chart" width="800" height="450"></canvas>
+    </div>
   </body>
-  </html>
+</html>
