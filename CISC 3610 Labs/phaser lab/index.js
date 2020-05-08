@@ -23,6 +23,7 @@ function preload ()
   this.load.image('pudding', 'assets/sprites/pudding.png');
   this.load.image('sandwich', 'assets/sprites/sandwich.png');
   this.load.image('doughnut', 'assets/sprites/doughnut.png');
+  this.load.image('clear', 'assets/sprites/clear.png');
 
 }
 
@@ -30,6 +31,24 @@ function create ()
 {
 
   this.add.image(500, 275, 'background');
+
+
+  let reset = () => {
+    this.add.image(500, 275, 'background');
+    createMenu();
+    addClearButton();
+  }
+
+  let createMenu = () => {
+
+    createFoodItem(75, 75, 'cupcake', .25);
+    createFoodItem(200, 75, 'pizza', .15);
+    createFoodItem(300, 75, 'icedtea', .20);
+    createFoodItem(390, 75, 'pudding', .15);
+    createFoodItem(500, 75, 'sandwich', .04);
+    createFoodItem(600, 75, 'doughnut', .15);
+
+  }
 
   let createFoodItem = (x, y, itemName, scale) => {
     var cupcake = this.add.sprite(x, y, itemName);
@@ -40,12 +59,16 @@ function create ()
     //console.log(cupcake.texture.key)
   }
 
-  createFoodItem(75, 75, 'cupcake', .25);
-  createFoodItem(200, 75, 'pizza', .15);
-  createFoodItem(300, 75, 'icedtea', .20);
-  createFoodItem(390, 75, 'pudding', .15);
-  createFoodItem(500, 75, 'sandwich', .04);
-  createFoodItem(600, 75, 'doughnut', .15);
+  let addClearButton = () =>{
+    clearButton = this.add.sprite(930, 515, 'clear');
+    clearButton.scale = .25;
+    clearButton.setInteractive();
+    clearButton.on('pointerup', reset)
+  };
+
+  createMenu();
+  addClearButton();
+
 
   this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
 
@@ -69,7 +92,6 @@ function create ()
       if(gameObject.texture.key == 'doughnut')
       createFoodItem(600, 75, 'doughnut', .15);
       });
-
 
 }
 
