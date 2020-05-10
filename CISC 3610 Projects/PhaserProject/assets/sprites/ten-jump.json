@@ -1,0 +1,225 @@
+{
+	"frames": [
+		{
+			"filename": "Jump__000.png",
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__001.png",
+			"frame": {
+				"x": 402,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__002.png",
+			"frame": {
+				"x": 803,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__003.png",
+			"frame": {
+				"x": 1204,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__004.png",
+			"frame": {
+				"x": 1605,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__005.png",
+			"frame": {
+				"x": 2006,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__006.png",
+			"frame": {
+				"x": 2407,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__007.png",
+			"frame": {
+				"x": 2808,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__008.png",
+			"frame": {
+				"x": 3209,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		},
+		{
+			"filename": "Jump__009.png",
+			"frame": {
+				"x": 3610,
+				"y": 1,
+				"w": 399,
+				"h": 543
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 399,
+				"h": 543
+			},
+			"sourceSize": {
+				"w": 399,
+				"h": 543
+			}
+		}
+	],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 4010,
+			"h": 545
+		},
+		"scale": "1"
+	}
+}
