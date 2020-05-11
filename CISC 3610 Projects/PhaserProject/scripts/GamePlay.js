@@ -50,14 +50,26 @@ var gamePlayState = new Phaser.Class({
 
     this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
 
+    this.lives = 3; //placed here so lives can be updated when needed
   },
   create: function() {
       // Create objects
       console.log("GamePlay");
-
+      console.log(this.lives);
       //Add background and platforms
       var bg = this.add.image(550, 225, 'bg')
       bg.scale = 1.25;
+
+      //Add Score
+      this.score = 0;
+      this.scoreText = this.add.text(16, 16, 'score: 10', { fontSize: '32px', fill: '#000' });
+
+      //Add Hearts
+      for (let i=0; i< this.lives; i++){
+        let h=1000
+        this.add.image(h+ i*33, 30, 'heartLife').setScale(.10)
+      }
+
 
       this.platforms = this.physics.add.staticGroup();
       this.buildBGandPlatforms(this.platforms);
@@ -67,8 +79,11 @@ var gamePlayState = new Phaser.Class({
       this.buildPlayerPhysicsAndAnims(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
 
+      //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
       this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
+
+
 
   },
 
@@ -76,6 +91,8 @@ var gamePlayState = new Phaser.Class({
       // Update objects & variables
 
       this.addPlayerControls(this.cursors, this.player);
+
+      this.enemyBall.angle++;
   },
 
   buildBGandPlatforms: function(platforms){
@@ -178,8 +195,15 @@ var gamePlayState = new Phaser.Class({
     repeat: true
   });
 
+  this.anims.create({
+    key: 'ko',
+    frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 10 }),
+    frameRate: 10,
+    repeat: true
+  });
+
   },
-  addPlayerControls(cursors, player){
+  addPlayerControls: function (cursors, player){
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
@@ -216,10 +240,15 @@ var gamePlayState = new Phaser.Class({
     }
 
   },
-  addBallEnemyPhysicsAndAnims(enemy, platforms){
+  addBallEnemyPhysicsAndAnims: function (enemy, platforms){
     enemy.setBounce(0.2);
     enemy.setCollideWorldBounds(true);
     this.physics.add.collider(enemy, platforms);
+    this.physics.add.collider(enemy, this.player);
+    this.physics.add.overlap(enemy, this.player, this.playerLose, null, this);
+  },
+  playerLose(){
+    this.player.anims.play('ko', true);
   }
 });
 
