@@ -63,13 +63,13 @@ var gamePlayState = new Phaser.Class({
       //Add Score
       this.score = 0;
       this.scoreText = this.add.text(16, 16, 'score: 10', { fontSize: '32px', fill: '#000' });
-
       //Add Hearts
+      this.hearts = []
       for (let i=0; i< this.lives; i++){
         let h=1000
-        this.add.image(h+ i*33, 30, 'heartLife').setScale(.10)
+        let heart = this.add.sprite(h+ i*33, 30, 'heartLife').setScale(.10);
+        this.hearts.push(heart);
       }
-
 
       this.platforms = this.physics.add.staticGroup();
       this.buildBGandPlatforms(this.platforms);
@@ -93,6 +93,10 @@ var gamePlayState = new Phaser.Class({
       this.addPlayerControls(this.cursors, this.player);
 
       this.enemyBall.angle++;
+
+
+
+
   },
 
   buildBGandPlatforms: function(platforms){
@@ -160,7 +164,7 @@ var gamePlayState = new Phaser.Class({
           key: 'turn',
           // frames: [ { key: 'tenIdle' } ],
           // frameRate: 20
-          frames: this.anims.generateFrameNumbers('tenIdle', { start: 0, end: 10 }),
+          frames: this.anims.generateFrameNumbers('tenIdle', { start: 0, end: 20 }),
           frameRate: 10,
           repeat: true
       });
@@ -248,7 +252,12 @@ var gamePlayState = new Phaser.Class({
     this.physics.add.overlap(enemy, this.player, this.playerLose, null, this);
   },
   playerLose(){
+    console.log(this.lives)
     this.player.anims.play('ko', true);
+    if(this.lives>0) this.hearts[--this.lives].visible = false;
+
+    console.log(this.hearts)
+
   }
 });
 
