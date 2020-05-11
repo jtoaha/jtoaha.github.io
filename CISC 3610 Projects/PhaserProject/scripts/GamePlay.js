@@ -48,6 +48,8 @@ var gamePlayState = new Phaser.Class({
     this.load.image('flowerBullets', 'assets/sprites/flower-bullets.png');
     this.load.image('flowerHealing', 'assets/sprites/flower-healing.png');
 
+    this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
+
   },
   create: function() {
       // Create objects
@@ -56,16 +58,17 @@ var gamePlayState = new Phaser.Class({
       //Add background and platforms
       var bg = this.add.image(550, 225, 'bg')
       bg.scale = 1.25;
-      var platforms;
-      platforms = this.physics.add.staticGroup();
-      this.buildBGandPlatforms(platforms);
+
+      this.platforms = this.physics.add.staticGroup();
+      this.buildBGandPlatforms(this.platforms);
 
       //Add Player, physics and animation settings
-      this.player = this.physics.add.sprite(config.width/2, 200, 'tenIdle').setScale(.20);
-      this.buildPlayerPhysicsAndAnims(this.player, platforms);
-
+      this.player = this.physics.add.sprite(config.width-100, 100, 'tenIdle').setScale(.17);
+      this.buildPlayerPhysicsAndAnims(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
 
+      this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
+      this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
 
   },
 
@@ -76,17 +79,49 @@ var gamePlayState = new Phaser.Class({
   },
 
   buildBGandPlatforms: function(platforms){
+    //64 represents the center of the tiles
 
     //tile groundMiddle across bottom of screen
-    for (let i = 64*.5; i < 1200; i += 128*.5 ){
-      platforms.create(i, 540, 'groundMiddle').setScale(.5).refreshBody();
+    var scale =.3
+    for (let i = 64*scale; i < 1200; i += 128*scale ){
+      platforms.create(i, 540, 'groundMiddle').setScale(scale).refreshBody();
     }
-      //tile floating ground near top of screen
-    for (let i = 64*.5; i < 800; i += 128*.5){
-        platforms.create(i, 150, 'floatM').setScale(.5).refreshBody();
-        if(i + 128*.5 >= 800)
-          platforms.create(i + 128*.5, 150, 'floatR').setScale(.5).refreshBody();
+
+    //tiles floating-ground at top of screen
+    for (let i = 64*scale; i < 800; i += 128*scale){
+        platforms.create(i, 150, 'floatM').setScale(scale).refreshBody();
+        if(i + 128*scale >= 800)
+          platforms.create(i + 128*scale, 150, 'floatR').setScale(scale).refreshBody();
     }
+
+
+        //tiles on upper right
+        for (let i = 1000; i < 1200; i += 128*scale ){
+          //if first tile add floatL tileto the left
+          if(i==1000) {
+            platforms.create(i-128*scale, 280, 'floatL').setScale(scale).refreshBody();
+          }
+          platforms.create(i, 280, 'floatM').setScale(scale).refreshBody();
+        }
+
+
+    //tiles floating ground near bottom of screen
+    for (let i = 64*scale; i < 200; i += 128*scale){
+      platforms.create(i, 400, 'floatM').setScale(scale).refreshBody();
+      if(i + 128*scale >= 200)
+        platforms.create(i + 128*scale, 400, 'floatR').setScale(scale).refreshBody();
+  }
+
+      //ground floating near middle of screen
+      for (let i = 400; i < 600; i += 128*scale){
+        if(i==400) {
+          platforms.create(i-128*scale, 300, 'floatL').setScale(scale).refreshBody();
+        }
+        platforms.create(i, 300, 'floatM').setScale(scale).refreshBody();
+        if(i + 128*scale >= 600)
+          platforms.create(i + 128*scale, 300, 'floatR').setScale(scale).refreshBody();
+    }
+
   },
   buildPlayerPhysicsAndAnims: function (player, platforms){
 
@@ -135,23 +170,27 @@ var gamePlayState = new Phaser.Class({
       frameRate: 10,
       repeat: true
   });
+
+  this.anims.create({
+    key: 'crouch',
+    frames: this.anims.generateFrameNumbers('tenSlide', { start: 0, end: 5 }),
+    frameRate: 10,
+    repeat: true
+  });
+
   },
   addPlayerControls(cursors, player){
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
-
         player.anims.play('left', true);
-
         if(!player.flipX) player.flipX = true;
-
         if (cursors.up.isDown)  player.anims.play('jump', true);
 
     }
     else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
-
         player.anims.play('right', true);
         if(player.flipX) player.flipX = false;
         if (cursors.up.isDown)  player.anims.play('jump', true);
@@ -159,22 +198,28 @@ var gamePlayState = new Phaser.Class({
     }
     else if (cursors.up.isDown)
     {
-
         player.anims.play('inplacejump', true);
-
-    }
+    }// else if(cursors.down.isDown)
+    // {
+    //   // player.setVelocityX(-1);
+    //   //   player.anims.play('crouch', true);
+    // }
     else
     {
         player.setVelocityX(0);
-
         player.anims.play('turn');
     }
 
     if (cursors.up.isDown && player.body.touching.down)
     {
-        player.setVelocityY(-330);
+        player.setVelocityY(-300);
     }
 
+  },
+  addBallEnemyPhysicsAndAnims(enemy, platforms){
+    enemy.setBounce(0.2);
+    enemy.setCollideWorldBounds(true);
+    this.physics.add.collider(enemy, platforms);
   }
 });
 
