@@ -49,6 +49,7 @@ var gamePlayState = new Phaser.Class({
     this.load.image('flowerHealing', 'assets/sprites/flower-healing.png');
 
     this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
+    this.load.image('star', 'assets/sprites/star.png');
 
     this.lives = 3; //placed here so lives can be updated when needed
   },
@@ -79,9 +80,22 @@ var gamePlayState = new Phaser.Class({
       this.buildPlayerPhysicsAndAnims(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
 
+            //Create and Add stars
+            this.stars = this.physics.add.group({
+              key: 'star',
+              setScale: {x: .04, y: .04},
+              repeat: 11,
+              setXY: { x: 20, y: 200, stepX: 125 }
+           });
+            this.addStars(this.stars, this.player, this.platforms)
+
       //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
       this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
+
+
+
+
 
 
 
@@ -201,14 +215,14 @@ var gamePlayState = new Phaser.Class({
 
   this.anims.create({
     key: 'ko',
-    frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 10 }),
+    frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 8}),
     frameRate: 10,
-    repeat: true
+    repeat: -1
   });
 
   },
   addPlayerControls: function (cursors, player){
-    if (cursors.left.isDown)
+    if (cursors.left.isDown && this.lives > 0)
     {
         player.setVelocityX(-160);
         player.anims.play('left', true);
@@ -216,7 +230,7 @@ var gamePlayState = new Phaser.Class({
         if (cursors.up.isDown)  player.anims.play('jump', true);
 
     }
-    else if (cursors.right.isDown)
+    else if (cursors.right.isDown && this.lives > 0)
     {
         player.setVelocityX(160);
         player.anims.play('right', true);
@@ -224,21 +238,21 @@ var gamePlayState = new Phaser.Class({
         if (cursors.up.isDown)  player.anims.play('jump', true);
 
     }
-    else if (cursors.up.isDown)
+    else if (cursors.up.isDown && this.lives > 0)
     {
         player.anims.play('inplacejump', true);
-    }// else if(cursors.down.isDown)
+    } //else if(cursors.down.isDown)
     // {
-    //   // player.setVelocityX(-1);
-    //   //   player.anims.play('crouch', true);
+    //   //player.setVelocityX(-1);
+    //     player.anims.play('crouch', false);
     // }
-    else
+    else if (this.lives > 0)
     {
         player.setVelocityX(0);
         player.anims.play('turn');
     }
 
-    if (cursors.up.isDown && player.body.touching.down)
+    if (cursors.up.isDown && player.body.touching.down && this.lives > 0)
     {
         player.setVelocityY(-300);
     }
@@ -251,12 +265,25 @@ var gamePlayState = new Phaser.Class({
     this.physics.add.collider(enemy, this.player);
     this.physics.add.overlap(enemy, this.player, this.playerLose, null, this);
   },
-  playerLose(){
+  playerLose: function(){
     console.log(this.lives)
-    this.player.anims.play('ko', true);
     if(this.lives>0) this.hearts[--this.lives].visible = false;
-
+    this.player.anims.play('ko', true);
     console.log(this.hearts)
+
+  },
+  addStars(stars, player, platforms){
+        stars.children.iterate(function (child) {
+
+        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+    });
+
+    this.physics.add.collider(stars, platforms);
+
+    this.physics.add.overlap(player, stars, this.collectStar, null, this);
+      this.physics.add.overlap(player, stars, this.collectStar, null, this);
+  },
+  collectStar(){
 
   }
 });
