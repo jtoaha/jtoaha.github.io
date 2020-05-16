@@ -63,7 +63,7 @@ var gamePlayState = new Phaser.Class({
 
       //Add Score
       this.score = 0;
-      this.scoreText = this.add.text(16, 16, 'score: 10', { fontSize: '32px', fill: '#000' });
+      this.scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
       //Add Hearts
       this.hearts = []
       for (let i=0; i< this.lives; i++){
@@ -285,6 +285,9 @@ var gamePlayState = new Phaser.Class({
   },
   collectStar(player, star){
     star.disableBody(true, true);
+
+    this.score+=2;
+    this.scoreText.setText('Score: ' + this.score)
   }
 });
 
