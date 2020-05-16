@@ -283,8 +283,8 @@ var gamePlayState = new Phaser.Class({
     this.physics.add.overlap(player, stars, this.collectStar, null, this);
       this.physics.add.overlap(player, stars, this.collectStar, null, this);
   },
-  collectStar(){
-
+  collectStar(player, star){
+    star.disableBody(true, true);
   }
 });
 
