@@ -123,10 +123,12 @@ var gamePlayState = new Phaser.Class({
 
       //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
-      this.buildPhysics(this.enemyBall, this.platforms);
+      this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
       this.enemyBall.easeX = 0
       this.enemyBall.easeXFlip = false;
       console.log(this.enemyBall)
+
+      this.currentLife = 3;
   },
 
   update: function() {
@@ -134,6 +136,10 @@ var gamePlayState = new Phaser.Class({
 
       if(this.lives > 0)
       this.addPlayerControls(this.cursors, this.player, this.kunai);
+
+      if(this.lives === 0) {
+        this.player.anims.play('ko', true);
+      }
 
       this.enemyBall.angle++;
 
@@ -151,7 +157,6 @@ var gamePlayState = new Phaser.Class({
 
       if (this.enemyBall.x>1050) {
         this.enemyBall.easeXFlip = true;
-        console.log("maybe you're right")
         // this.enemyBall.easeX = 1
       }
 
@@ -267,7 +272,7 @@ var gamePlayState = new Phaser.Class({
     frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 8}),
     frameRate: 10,
     hideOnComplete: true,
-    repeat: -1
+    repeat: 0
     });
 
     this.anims.create({
@@ -376,14 +381,13 @@ var gamePlayState = new Phaser.Class({
     enemy.setBounce(0.2);
     enemy.setCollideWorldBounds(true);
     this.physics.add.collider(enemy, platforms);
-    this.physics.add.collider(enemy, this.player);
-    this.physics.add.overlap(enemy, this.player, this.playerLose, null, this);
+    this.physics.add.collider(enemy, this.player, this.playerLose, null, this);
   },
   playerLose: function(){
     console.log(this.lives)
-    if(this.lives>0) this.hearts[--this.lives].visible = false;
     this.player.anims.play('ko', true);
     console.log(this.hearts)
+
 
   },
   addStars: function(stars, player, platforms){
@@ -436,6 +440,19 @@ var gamePlayState = new Phaser.Class({
             // this.currentAnim = this.animKeyStack[this.animKeyStack.length - 1];
             // this.anims.play(this.currentAnim, true);
         }
+        if(animation.key === 'ko'){
+
+          if(this.lives>0) {
+            this.hearts[--this.lives].visible = false;
+
+            this.player.setTint(0xff0000);
+            this.player.x = -this.enemyBall.x
+            this.player.setTint(0xffffff);
+
+          }
+
+        }
+
     },
   easeInQuad: function (x) {
        //return 1 - Math.pow(1 - x, 3);
