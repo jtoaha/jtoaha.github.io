@@ -17,7 +17,7 @@ var gamePlayState = new Phaser.Class({
       this.load.spritesheet('tenAttack', 'assets/sprites/ten-attack.png', {frameWidth: 524, frameHeight: 565});
       this.load.spritesheet('tenGlide', 'assets/sprites/ten-glide.png', {frameWidth: 505, frameHeight: 574});
       this.load.spritesheet('tenSlide', 'assets/sprites/ten-Slide.png', {frameWidth: 397, frameHeight: 401});
-      this.load.spritesheet('tenJumpThrow', 'assets/sprites/ten-jump-throw.png', {frameWidth: 425, frameHeight: 597});
+      this.load.spritesheet('tenJumpThrow', 'assets/sprites/ten-jump-throw.png', {frameWidth: 425, frameHeight: 497});
 
       this.load.image('redKunai', 'assets/sprites/kunai.png');
 
@@ -76,9 +76,27 @@ var gamePlayState = new Phaser.Class({
       this.buildBGandPlatforms(this.platforms);
 
       //Add Player, physics and animation settings
+      var playerScale = .17
       this.player = this.physics.add.sprite(config.width-100, 100, 'tenIdle').setScale(.17);
       this.buildPlayerPhysicsAndAnims(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
+      this.player.on('animationcomplete', this.animComplete, this);
+
+      //Add Player bullets reference
+      this.kunai = this.add.sprite(this.player.x, this.player.y+10, 'redKunai').setScale(.2);
+
+      this.kunais = this.add.group({
+        key: 'redKunai',
+        setScale: {x: .2, y: .2},
+        repeat: 100,
+        setXY: { x: this.player.x, y: this.player.y, stepX: 0 }
+     });
+     console.log(this.testing)
+
+      console.log(this.kunai)
+      //visible false
+        this.kunai.visible = false
+        this.buildKunaiAnimations()
 
             //Create and Add stars
             this.stars = this.physics.add.group({
@@ -93,24 +111,24 @@ var gamePlayState = new Phaser.Class({
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
       this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
 
-
-
-
-
-
-
   },
 
   update: function() {
       // Update objects & variables
 
-      this.addPlayerControls(this.cursors, this.player);
+      if(this.lives>0)
+      this.addPlayerControls(this.cursors, this.player, this.kunai);
 
       this.enemyBall.angle++;
 
+      this.kunai.x = this.player.x;
+      this.kunai.y = this.player.y+10;
 
-
-
+      //Manually setting kunais to initially launch from where player is standing
+      for (let kunai of this.kunais.children.entries){
+        kunai.x = this.player.x;
+        kunai.y = this.player.y+10;
+      }
   },
 
   buildBGandPlatforms: function(platforms){
@@ -217,28 +235,62 @@ var gamePlayState = new Phaser.Class({
     key: 'ko',
     frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 8}),
     frameRate: 10,
+    hideOnComplete: true,
     repeat: -1
   });
 
+  this.anims.create({
+    key: 'throw',
+    frames:  this.anims.generateFrameNumbers('tenJumpThrow', { start: 0, end: 9 }),
+    frameRate: 9,
+    repeat: 0,
+  });
+
   },
-  addPlayerControls: function (cursors, player){
-    if (cursors.left.isDown && this.lives > 0)
+  addPlayerControls: function (cursors, player, kunai){
+    let count = 0
+
+    if(cursors.space.isDown ||
+       (cursors.space.isDown && cursors.left.isDown) ||
+       (cursors.space.isDown && cursors.right.isDown)
+      ){
+      player.setVelocityX(0);
+      //player.anims.currentFrame.index = 0
+
+     //console.log(player.anims.currentFrame)
+
+      player.anims.play('throw', true)
+
+
+      if(player.anims.currentFrame.textureFrame === 9 && count===0){
+        //this.kunaiLaunch();
+       // console.log("YO")
+        count++;
+      }
+
+
+    } else if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
-        player.anims.play('left', true);
+
         if(!player.flipX) player.flipX = true;
-        if (cursors.up.isDown)  player.anims.play('jump', true);
+        if(!kunai.flipX) kunai.flipX = true;
+        if (cursors.up.isDown)
+          player.anims.play('jump', true)
+        player.anims.play('left', true);
 
     }
-    else if (cursors.right.isDown && this.lives > 0)
+    else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
         player.anims.play('right', true);
         if(player.flipX) player.flipX = false;
+        if(kunai.flipX) kunai.flipX = false;
+
         if (cursors.up.isDown)  player.anims.play('jump', true);
 
     }
-    else if (cursors.up.isDown && this.lives > 0)
+    else if (cursors.up.isDown)
     {
         player.anims.play('inplacejump', true);
     } //else if(cursors.down.isDown)
@@ -248,6 +300,7 @@ var gamePlayState = new Phaser.Class({
     // }
     else if (this.lives > 0)
     {
+      // player.anims.currentFrame.index = 0
         player.setVelocityX(0);
         player.anims.play('turn');
     }
@@ -255,6 +308,22 @@ var gamePlayState = new Phaser.Class({
     if (cursors.up.isDown && player.body.touching.down && this.lives > 0)
     {
         player.setVelocityY(-300);
+    }
+
+    // if(cursors.space.isDown){
+    //   player.setVelocityX(0);
+    //   player.anims.stop();
+    //   player.anims.play('throw', true)
+    //   // this.kunaiLaunch();
+    // }
+
+    if(cursors.space.isDown){
+      player.setVelocityX(0);
+     player.anims.currentFrame.index = 0
+
+
+      player.anims.play('throw', true)
+      // this.kunaiLaunch();
     }
 
   },
@@ -272,7 +341,7 @@ var gamePlayState = new Phaser.Class({
     console.log(this.hearts)
 
   },
-  addStars(stars, player, platforms){
+  addStars: function(stars, player, platforms){
         stars.children.iterate(function (child) {
 
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
@@ -283,12 +352,32 @@ var gamePlayState = new Phaser.Class({
     this.physics.add.overlap(player, stars, this.collectStar, null, this);
       this.physics.add.overlap(player, stars, this.collectStar, null, this);
   },
-  collectStar(player, star){
+  collectStar: function (player, star){
     star.disableBody(true, true);
 
     this.score+=2;
     this.scoreText.setText('Score: ' + this.score)
-  }
+  },
+  buildKunaiAnimations: function(){
+
+  },
+  kunaiLaunch: function(){
+    var kunaiBullet = this.add.sprite(this.kunai.x, this.kunai.y, 'kunai').setScale(.2)
+    console.log(kunaiBullet)
+    console.log(this.kunai)
+  },
+  playerJumpThrow: function(){
+  },
+  animComplete: function (animation, frame)
+    {
+        if(animation.key === 'throw' && this.player.anims.currentFrame.textureFrame> 7)
+        {
+           this.kunaiLaunch();
+            // this.animKeyStack.pop();
+            // this.currentAnim = this.animKeyStack[this.animKeyStack.length - 1];
+            // this.anims.play(this.currentAnim, true);
+        }
+    }
 });
 
 // Add scene to list of scenes
