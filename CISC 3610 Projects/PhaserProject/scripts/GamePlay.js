@@ -103,8 +103,9 @@ var gamePlayState = new Phaser.Class({
             this.stars = this.physics.add.group({
               key: 'star',
               setScale: {x: .04, y: .04},
-              repeat: 11,
-              setXY: { x: 20, y: 200, stepX: 125 }
+              repeat: 7,
+              setXY: { x: 20, y: 200, stepX: 125 },
+              lives: 2
            });
             this.addStars(this.stars, this.player, this.platforms)
 
@@ -140,9 +141,9 @@ var gamePlayState = new Phaser.Class({
         if(!kunai.easeX) kunai.easeX = 0
 
         if(!kunai.flipX)
-        kunai.x +=this.easeInQuad(kunai.easeX+=.1)
+        kunai.x +=this.easeInQuad(kunai.easeX+=.1)+2
         else
-         kunai.x -=this.easeInQuad(kunai.easeX+=.1)
+         kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
 
       }
   },
@@ -357,17 +358,24 @@ var gamePlayState = new Phaser.Class({
   },
   addStars: function(stars, player, platforms){
         stars.children.iterate(function (child) {
-
         child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+        child.lives = 2;
     });
 
     this.physics.add.collider(stars, platforms);
 
     this.physics.add.overlap(player, stars, this.collectStar, null, this);
-      this.physics.add.overlap(player, stars, this.collectStar, null, this);
   },
   collectStar: function (player, star){
-    star.disableBody(true, true);
+
+    //each star has two lives. First time it is collect, it will disappear and appear in random place. Second time it is collected it will disappear
+    if(star.lives==1)star.disableBody(true, true);
+
+    if(star.lives > 1){
+      star.x = Math.floor(Math.random()*900);
+      star.y = 200;
+      star.lives--
+    }
 
     this.score+=2;
     this.scoreText.setText('Score: ' + this.score)
@@ -399,6 +407,7 @@ var gamePlayState = new Phaser.Class({
     easeInQuad: function (x) {
        //return 1 - Math.pow(1 - x, 3);
        return x * x;//ease in
+
       }
 
 });
