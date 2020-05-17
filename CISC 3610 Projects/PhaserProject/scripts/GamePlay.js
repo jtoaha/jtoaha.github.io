@@ -138,7 +138,7 @@ var gamePlayState = new Phaser.Class({
       this.physics.add.overlap(this.android, this.player, this.playerLose, null, this);
       this.android.anims.play('aIdle', true)
       //Give android 5 lives
-      this.androidNumLives = 5;
+      this.androidNumLives = 10;
 
       // this collider was added in the kunaiLaunch method
       //this.physics.add.collider(this.android, kunaiBullet.visible, this.androidLose, null, this);
@@ -345,7 +345,7 @@ var gamePlayState = new Phaser.Class({
 
     } else if (cursors.left.isDown)
     {
-        player.setVelocityX(-160);
+        player.setVelocityX(-180);
 
         if(!player.flipX) player.flipX = true;
         if (cursors.up.isDown)
@@ -355,7 +355,7 @@ var gamePlayState = new Phaser.Class({
     }
     else if (cursors.right.isDown)
     {
-        player.setVelocityX(160);
+        player.setVelocityX(180);
         player.anims.play('right', true);
         if(player.flipX) player.flipX = false;
 
@@ -375,7 +375,7 @@ var gamePlayState = new Phaser.Class({
       // player.anims.currentFrame.index = 0
         player.setVelocityX(0);
         player.anims.play('turn');
-    }
+    }g
 
     if (cursors.up.isDown && player.body.touching.down && this.lives > 0)
     {
