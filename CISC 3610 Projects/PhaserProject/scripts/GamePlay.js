@@ -138,8 +138,10 @@ var gamePlayState = new Phaser.Class({
       this.physics.add.overlap(this.android, this.player, this.playerLose, null, this);
       this.android.anims.play('aIdle', true)
       //Give android 5 lives
-      this.android.numLives = 5;
-      // this.physics.add.collider(enemy, this.kunai, this.playerLose, null, this);
+      this.androidNumLives = 5;
+
+      // this collider was added in the kunaiLaunch method
+      //this.physics.add.collider(this.android, kunaiBullet.visible, this.androidLose, null, this);
 
       //add Red
       this.red = this.physics.add.sprite( 200, 10, 'redIdle').
@@ -170,6 +172,10 @@ var gamePlayState = new Phaser.Class({
       }
 
       //ball movement
+
+      // if(      this.androidNumLives = 5;
+      //   s < 1) {
+      // }
 
   },
 
@@ -447,6 +453,9 @@ var gamePlayState = new Phaser.Class({
   kunaiLaunch: function(){
     var kunaiBullet = this.kunais.children.entries.pop();
     kunaiBullet.visible = true;
+    kunaiBullet.hit = false;  // hasn't hit anything yet
+    //no physics on bullets so difficult to implement
+    // this.physics.add.collider(this.android, kunaiBullet, this.androidLose, null, this);
     //adding to an array, so multiple kunais can be launched and the position updated in the update function
     this.kunaiBullets.push(kunaiBullet)
     console.log(kunaiBullet)
@@ -501,12 +510,22 @@ var gamePlayState = new Phaser.Class({
             //trying to make launched Kunai more physics friendly. applying an easing function
             //if starting value not defined already defined it
             //easeInQuad source: https://easings.net/#easeInQuad
-            if(!kunai.easeX) kunai.easeX = 0
+              if(!this.android.visible) kunai.visible = false;
+              if(!kunai.easeX) kunai.easeX = 0
 
-            if(!kunai.flipX)
-            kunai.x +=this.easeInQuad(kunai.easeX+=.1)+2
-            else
-             kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
+              if(!kunai.flipX)
+              kunai.x +=this.easeInQuad(kunai.easeX+=.1)+2
+              else
+               kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
+
+          //all this to ensure- the this.androidLose function is called only once per kunai ( will be only only if player is at a certain height, as long as android is visible, as long as kunai doesn't have a hit history)
+           if(this.player.y< 100 && this.android.visible && kunai.x <=  this.android.x && !kunai.hit) {
+            this.androidLose();
+            kunai.visible = false;
+            kunai.hit = true
+
+           }
+
 
           }
   },
@@ -535,6 +554,16 @@ var gamePlayState = new Phaser.Class({
       this.enemyBall.x = Math.floor(Math.random()*50)-100
       this.enemyBall.easeX = 0
     }
+  },
+  androidLose: function(){
+    this.androidNumLives--
+
+    if(this.androidNumLives < 0) {
+      this.android.visible = false;
+      this.android.disableBody(true, true)
+    }
+
+
   }
 });
 
