@@ -301,6 +301,15 @@ var gamePlayState = new Phaser.Class({
       frameRate: 5,
       repeat: 400
   });
+
+  this.anims.create({
+    key: 'rRun',
+    // frames: [ { key: 'tenIdle' } ],
+    // frameRate: 20
+    frames: this.anims.generateFrameNumbers('redRun', { start: 0, end: 20 }),
+    frameRate: 10,
+    repeat: 400
+});
   },
   buildPhysics: function (sprite, platforms){
 
@@ -572,6 +581,8 @@ var gamePlayState = new Phaser.Class({
   },
   redWalk: function(){
     this.red.setVelocityX(50)
+    this.red.anims.currentFrame.textureFrame = 0;
+    this.red.anims.play('rRun');
   },
   redTeleport(){
     this.red.visible = false;
@@ -580,6 +591,7 @@ var gamePlayState = new Phaser.Class({
   },
   tenTeleport(){
     this.player.visible = false;
+    this.levelWon = true;
   }
 });
 
