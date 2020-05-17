@@ -1,3 +1,6 @@
+/* eslint-disable complexity*/
+/* eslint-disable max-statements*/
+
 var gamePlayState = new Phaser.Class({
   // Define scene
   Extends: Phaser.Scene,
@@ -127,7 +130,7 @@ var gamePlayState = new Phaser.Class({
   update: function() {
       // Update objects & variables
 
-      if(this.lives>0)
+      if(this.lives > 0)
       this.addPlayerControls(this.cursors, this.player, this.kunai);
 
       this.enemyBall.angle++;
@@ -157,9 +160,10 @@ var gamePlayState = new Phaser.Class({
       }
 
       if (this.numDisabledStars === 8 && !this.telepointSprite) {
-         this.telepointSprite = this.physics.add.sprite(100, 200, 'telepoint').setScale(.25)
+         this.telepointSprite = this.physics.add.sprite(100, 400, 'telepoint').setScale(.3)
 
          this.buildPhysics(this.telepointSprite)
+         this.telepointSprite.anims.play('tele', true);
       }
   },
 
@@ -267,8 +271,15 @@ var gamePlayState = new Phaser.Class({
     key: 'throw',
     frames:  this.anims.generateFrameNumbers('tenJumpThrow', { start: 0, end: 9 }),
     frameRate: 9,
-    repeat: 0,
+    repeat: 100,
     });
+
+    this.anims.create({
+      key: 'tele',
+      frames:  this.anims.generateFrameNumbers('telepoint', { start: 0, end: 49 }),
+      frameRate: 10,
+      repeat: -1,
+      });
   },
   buildPhysics: function (sprite, platforms){
 
@@ -385,7 +396,7 @@ var gamePlayState = new Phaser.Class({
   collectStar: function (player, star){
 
     //each star has two lives. First time it is collect, it will disappear and appear in random place. Second time it is collected it will disappear
-    if(star.lives==1){
+    if(star.lives===1){
       star.disableBody(true, true);
       this.numDisabledStars++
     }
