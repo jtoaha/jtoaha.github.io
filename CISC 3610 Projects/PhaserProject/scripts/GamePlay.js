@@ -92,6 +92,8 @@ var gamePlayState = new Phaser.Class({
         setXY: { x: this.player.x, y: this.player.y, stepX: 0 }
      });
 
+     //this is to save future launched kunai
+     this.kunaiBullets = []
       console.log(this.kunais)
       //visible false
         this.kunai.visible = false
@@ -125,9 +127,23 @@ var gamePlayState = new Phaser.Class({
 
       //Manually setting kunais to initially launch from where player is standing
       for (let kunai of this.kunais.children.entries){
+        kunai.visible = false;
         kunai.x = this.player.x;
         kunai.y = this.player.y+10;
         kunai.flipX = this.player.flipX;
+      }
+
+      for (let kunai of this.kunaiBullets) {
+        //trying to make launched Kunai more physics friendly. applying an easing function
+        //if starting value not defined already defined it
+        //easeInQuad source: https://easings.net/#easeInQuad
+        if(!kunai.easeX) kunai.easeX = 0
+
+        if(!kunai.flipX)
+        kunai.x +=this.easeInQuad(kunai.easeX+=.1)
+        else
+         kunai.x -=this.easeInQuad(kunai.easeX+=.1)
+
       }
   },
 
@@ -361,6 +377,9 @@ var gamePlayState = new Phaser.Class({
   },
   kunaiLaunch: function(){
     var kunaiBullet = this.kunais.children.entries.pop();
+    kunaiBullet.visible = true;
+    //adding to an array, so multiple kunais can be launched and the position updated in the update function
+    this.kunaiBullets.push(kunaiBullet)
     console.log(kunaiBullet)
     console.log(this.kunais)
     //console.log(this.kunai)
@@ -369,14 +388,19 @@ var gamePlayState = new Phaser.Class({
   },
   animComplete: function (animation, frame)
     {
-        if(animation.key === 'throw' && this.player.anims.currentFrame.textureFrame> 7)
+        if(animation.key === 'throw' && this.player.anims.currentFrame.textureFrame> 2)
         {
            this.kunaiLaunch();
             // this.animKeyStack.pop();
             // this.currentAnim = this.animKeyStack[this.animKeyStack.length - 1];
             // this.anims.play(this.currentAnim, true);
         }
-    }
+    },
+    easeInQuad: function (x) {
+       //return 1 - Math.pow(1 - x, 3);
+       return x * x;//ease in
+      }
+
 });
 
 // Add scene to list of scenes
