@@ -274,7 +274,7 @@ var gamePlayState = new Phaser.Class({
     key: 'throw',
     frames:  this.anims.generateFrameNumbers('tenJumpThrow', { start: 0, end: 9 }),
     frameRate: 9,
-    repeat: 100,
+    repeat: 0,
     });
 
     this.anims.create({
@@ -469,7 +469,7 @@ var gamePlayState = new Phaser.Class({
   },
   animComplete: function (animation, frame)
     {
-        if(animation.key === 'throw' && this.player.anims.currentFrame.textureFrame> 2)
+        if(animation.key === 'throw')
         {
            this.kunaiLaunch();
             // this.animKeyStack.pop();
@@ -490,6 +490,9 @@ var gamePlayState = new Phaser.Class({
             this.player.setTint(0xffffff);
 
 
+          } else{
+            this.levelLoss= true;
+            console.log(this.levelLoss, "levelLoss")
           }
 
         }
@@ -551,6 +554,12 @@ var gamePlayState = new Phaser.Class({
   },
   //transport player to top platform
   teleportPlayer: function(){
+    //this is to ensure this the score is only increased once
+    if(this.player.x != 1000){
+      this.score+=10;
+      this.scoreText.setText('Score: ' + this.score)
+    }
+
     this.player.x = 1000;
     this.player.y =  100;
   },
@@ -569,8 +578,11 @@ var gamePlayState = new Phaser.Class({
   },
   androidLose: function(){
     this.androidNumLives--
-
+    this.score+=5;
+    this.scoreText.setText('Score: ' + this.score)
     if(this.androidNumLives < 0) {
+
+
       this.android.visible = false;
       this.android.disableBody(true, true)
       this.red.rescued = true;
@@ -585,11 +597,21 @@ var gamePlayState = new Phaser.Class({
     this.red.anims.play('rRun');
   },
   redTeleport(){
+    //to ensure the score is only increased once
+    if(this.red.visible){
+      this.score+=10;
+      this.scoreText.setText('Score: ' + this.score)
+    }
+
     this.red.visible = false;
         //once red teleports, player Ten can teleport
         this.physics.add.overlap(this.player, this.telepointEnd, this.tenTeleport, null, this);
   },
   tenTeleport(){
+    if(this.player.visible){
+      this.score+=10;
+      this.scoreText.setText('Score: ' + this.score)
+    }
     this.player.visible = false;
     this.levelWon = true;
   }
