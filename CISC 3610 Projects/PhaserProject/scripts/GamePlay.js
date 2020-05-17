@@ -442,7 +442,11 @@ var gamePlayState = new Phaser.Class({
             this.hearts[--this.lives].visible = false;
 
             this.player.setTint(0xff0000);
-            this.player.x = Math.floor(Math.random()*1000);
+
+            this.player.x =  (this.enemyBall.x - config.width/2) > 0 ?
+            config.width/2-(this.enemyBall.x - config.width/2):
+            config.width-(this.enemyBall.x - config.width/2);
+
             this.player.setTint(0xffffff);
 
           }
