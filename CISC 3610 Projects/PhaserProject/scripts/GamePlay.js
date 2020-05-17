@@ -122,7 +122,7 @@ var gamePlayState = new Phaser.Class({
     this.telepointSprite = undefined;
 
       //Add Enemy Ball, physics, and animation settings
-      this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
+      this.enemyBall = this.physics.add.sprite(0, 200, 'ballEnemy').setScale(.10);
       this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
       this.enemyBall.easeX = 0
       this.enemyBall.easeXFlip = false;
@@ -143,27 +143,15 @@ var gamePlayState = new Phaser.Class({
 
       this.enemyBall.angle++;
 
-
-      if(!this.enemyBall.easeXFlip){
         this.enemyBall.x+=this.enemyBall.easeX;
         this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX )* Math.abs(300*Math.cos(this.enemyBall.easeX )))+500
         this.enemyBall.easeX+=.02;
-      } else{
-          this.enemyBall.x-=this.enemyBall.easeX;
-          this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX*-1 )* Math.abs(300*Math.cos(this.enemyBall.easeX*-1 )))+500
-          this.enemyBall.easeX+=.02;
+
+
+        if(this.enemyBall.x > 1150) {
+          this.enemyBall.x = Math.floor(Math.random()*50)-100
+          this.enemyBall.easeX = 0
         }
-
-
-      if (this.enemyBall.x>1050) {
-        this.enemyBall.easeXFlip = true;
-        // this.enemyBall.easeX = 1
-      }
-
-      if(this.enemyBall.x <50) {
-        this.enemyBall.easeXFlip = false;
-        // this.enemyBall.easeX = 1
-      }
 
       this.updateKunais();
 
@@ -180,10 +168,11 @@ var gamePlayState = new Phaser.Class({
 
     //tile groundMiddle across bottom of screen
     var scale =.3
+
     for (let i = 64*scale; i < 1200; i += 128*scale ){
+      //save this into an array so that ball can collide on with bottom tiles
       platforms.create(i, 540, 'groundMiddle').setScale(scale).refreshBody();
     }
-
     //tiles floating-ground at top of screen
     for (let i = 64*scale; i < 800; i += 128*scale){
         platforms.create(i, 150, 'floatM').setScale(scale).refreshBody();
@@ -218,7 +207,7 @@ var gamePlayState = new Phaser.Class({
         if(i + 128*scale >= 600)
           platforms.create(i + 128*scale, 300, 'floatR').setScale(scale).refreshBody();
     }
-
+      console.log(this.platforms)
   },
   addAnims(){
 
@@ -379,8 +368,15 @@ var gamePlayState = new Phaser.Class({
   },
   addBallEnemyPhysicsAndAnims: function (enemy, platforms){
     enemy.setBounce(0.2);
-    enemy.setCollideWorldBounds(true);
-    this.physics.add.collider(enemy, platforms);
+
+    //enemy.setCollideWorldBounds(true); //removed this for now
+
+    //added this so that ball only collides with platform on ground
+    for (let i = 0; i < 31; i++) {
+      this.physics.add.collider(enemy, this.platforms.children.entries[i])
+    }
+
+
     this.physics.add.collider(enemy, this.player, this.playerLose, null, this);
   },
   playerLose: function(){
@@ -446,7 +442,7 @@ var gamePlayState = new Phaser.Class({
             this.hearts[--this.lives].visible = false;
 
             this.player.setTint(0xff0000);
-            this.player.x = -this.enemyBall.x
+            this.player.x = Math.floor(Math.random()*1000);
             this.player.setTint(0xffffff);
 
           }
