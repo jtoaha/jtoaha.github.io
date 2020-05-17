@@ -33,7 +33,7 @@ var gamePlayState = new Phaser.Class({
 
 
     //Android Character spritesheets
-    this.load.spritesheet('androidIdle', 'assets/sprites/android-idle.png', {frameWidth: 290, frameHeight: 500});
+    this.load.spritesheet('androidIdle', 'assets/sprites/android-idle.png', {frameWidth: 567, frameHeight: 556});
 
 
     //Background Items
@@ -84,18 +84,18 @@ var gamePlayState = new Phaser.Class({
 
       //Add Player, physics and animation settings
       var playerScale = .17
-      this.player = this.physics.add.sprite(config.width-100, 100, 'tenIdle').setScale(.17);
+      this.player = this.physics.add.sprite(config.width-100, 100, 'tenIdle').setScale(playerScale);
       this.buildPhysics(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
       this.player.on('animationcomplete', this.animComplete, this);
 
-      //Add Player bullets reference
+      //Add Player bullets reference so bullets launch in correct direction
       this.kunai = this.add.sprite(this.player.x, this.player.y+10, 'redKunai').setScale(.2);
-
+      //Add actual bullets
       this.kunais = this.add.group({
         key: 'redKunai',
         setScale: {x: .2, y: .2},
-        repeat: 100,
+        repeat: 200,
         setXY: { x: this.player.x, y: this.player.y, stepX: 0 }
      });
 
@@ -129,6 +129,26 @@ var gamePlayState = new Phaser.Class({
       console.log(this.enemyBall)
 
       this.currentLife = 3;
+
+
+      //add Android
+      this.android = this.physics.add.sprite(400, 10, 'androidIdle').setScale(.20);
+      this.buildPhysics(this.android, this.platforms);
+
+      this.physics.add.overlap(this.android, this.player, this.playerLose, null, this);
+      this.android.anims.play('aIdle', true)
+      //Give android 5 lives
+      this.android.numLives = 5;
+      // this.physics.add.collider(enemy, this.kunai, this.playerLose, null, this);
+
+      //add Red
+      this.red = this.physics.add.sprite( 200, 10, 'redIdle').
+      setScale(.17);
+      this.buildPhysics(this.red, this.platforms);
+      this.red.rescued = false
+      this.red.anims.play('rIdle', true)
+
+
   },
 
   update: function() {
@@ -141,17 +161,7 @@ var gamePlayState = new Phaser.Class({
         this.player.anims.play('ko', true);
       }
 
-      this.enemyBall.angle++;
-
-        this.enemyBall.x+=this.enemyBall.easeX;
-        this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX )* Math.abs(300*Math.cos(this.enemyBall.easeX )))+500
-        this.enemyBall.easeX+=.02;
-
-
-        if(this.enemyBall.x > 1150) {
-          this.enemyBall.x = Math.floor(Math.random()*50)-100
-          this.enemyBall.easeX = 0
-        }
+      this.updateEnemyBall();
 
       this.updateKunais();
 
@@ -277,6 +287,24 @@ var gamePlayState = new Phaser.Class({
       frameRate: 10,
       repeat: -1,
       });
+
+      this.anims.create({
+        key: 'rIdle',
+        // frames: [ { key: 'tenIdle' } ],
+        // frameRate: 20
+        frames: this.anims.generateFrameNumbers('redIdle', { start: 0, end: 15 }),
+        frameRate: 5,
+        repeat: 400
+    });
+
+    this.anims.create({
+      key: 'aIdle',
+      // frames: [ { key: 'tenIdle' } ],
+      // frameRate: 20
+      frames: this.anims.generateFrameNumbers('androidIdle', { start: 0, end: 8 }),
+      frameRate: 5,
+      repeat: 400
+  });
   },
   buildPhysics: function (sprite, platforms){
 
@@ -446,8 +474,9 @@ var gamePlayState = new Phaser.Class({
             this.player.x =  (this.enemyBall.x - config.width/2) > 0 ?
             config.width/2-(this.enemyBall.x - config.width/2):
             config.width-(this.enemyBall.x - config.width/2);
-
+            this.player.y = 400;
             this.player.setTint(0xffffff);
+
 
           }
 
@@ -493,6 +522,19 @@ var gamePlayState = new Phaser.Class({
   teleportPlayer: function(){
     this.player.x = 1000;
     this.player.y =  100;
+  },
+  updateEnemyBall: function(){
+    this.enemyBall.angle++;
+
+    this.enemyBall.x+=this.enemyBall.easeX;
+    this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX )* Math.abs(300*Math.cos(this.enemyBall.easeX )))+500
+    this.enemyBall.easeX+=.02;
+
+
+    if(this.enemyBall.x > 1150) {
+      this.enemyBall.x = Math.floor(Math.random()*50)-100
+      this.enemyBall.easeX = 0
+    }
   }
 });
 
