@@ -91,9 +91,8 @@ var gamePlayState = new Phaser.Class({
         repeat: 100,
         setXY: { x: this.player.x, y: this.player.y, stepX: 0 }
      });
-     console.log(this.testing)
 
-      console.log(this.kunai)
+      console.log(this.kunais)
       //visible false
         this.kunai.visible = false
         this.buildKunaiAnimations()
@@ -128,6 +127,7 @@ var gamePlayState = new Phaser.Class({
       for (let kunai of this.kunais.children.entries){
         kunai.x = this.player.x;
         kunai.y = this.player.y+10;
+        kunai.flipX = this.player.flipX;
       }
   },
 
@@ -274,7 +274,6 @@ var gamePlayState = new Phaser.Class({
         player.setVelocityX(-160);
 
         if(!player.flipX) player.flipX = true;
-        if(!kunai.flipX) kunai.flipX = true;
         if (cursors.up.isDown)
           player.anims.play('jump', true)
         player.anims.play('left', true);
@@ -285,7 +284,6 @@ var gamePlayState = new Phaser.Class({
         player.setVelocityX(160);
         player.anims.play('right', true);
         if(player.flipX) player.flipX = false;
-        if(kunai.flipX) kunai.flipX = false;
 
         if (cursors.up.isDown)  player.anims.play('jump', true);
 
@@ -362,9 +360,10 @@ var gamePlayState = new Phaser.Class({
 
   },
   kunaiLaunch: function(){
-    var kunaiBullet = this.add.sprite(this.kunai.x, this.kunai.y, 'kunai').setScale(.2)
+    var kunaiBullet = this.kunais.children.entries.pop();
     console.log(kunaiBullet)
-    console.log(this.kunai)
+    console.log(this.kunais)
+    //console.log(this.kunai)
   },
   playerJumpThrow: function(){
   },
