@@ -135,35 +135,11 @@ var gamePlayState = new Phaser.Class({
 
       this.enemyBall.angle++;
 
-      this.kunai.x = this.player.x;
-      this.kunai.y = this.player.y+10;
 
-      //Manually setting kunais to initially launch from where player is standing
-      for (let kunai of this.kunais.children.entries){
-        kunai.visible = false;
-        kunai.x = this.player.x;
-        kunai.y = this.player.y+10;
-        kunai.flipX = this.player.flipX;
-      }
-
-      for (let kunai of this.kunaiBullets) {
-        //trying to make launched Kunai more physics friendly. applying an easing function
-        //if starting value not defined already defined it
-        //easeInQuad source: https://easings.net/#easeInQuad
-        if(!kunai.easeX) kunai.easeX = 0
-
-        if(!kunai.flipX)
-        kunai.x +=this.easeInQuad(kunai.easeX+=.1)+2
-        else
-         kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
-
-      }
+      this.updateKunais();
 
       if (this.numDisabledStars === 8 && !this.telepointSprite) {
-         this.telepointSprite = this.physics.add.sprite(100, 400, 'telepoint').setScale(.3)
-
-         this.buildPhysics(this.telepointSprite)
-         this.telepointSprite.anims.play('tele', true);
+        this.addTeleportationPoint();
       }
   },
 
@@ -434,12 +410,46 @@ var gamePlayState = new Phaser.Class({
             // this.anims.play(this.currentAnim, true);
         }
     },
-    easeInQuad: function (x) {
+  easeInQuad: function (x) {
        //return 1 - Math.pow(1 - x, 3);
        return x * x;//ease in
 
-      }
+      },
+  updateKunais: function(){
+          //Manually setting kunais to initially launch from where player is standing
+          for (let kunai of this.kunais.children.entries){
+            kunai.visible = false;
+            kunai.x = this.player.x;
+            kunai.y = this.player.y+10;
+            kunai.flipX = this.player.flipX;
+          }
 
+          for (let kunai of this.kunaiBullets) {
+            //trying to make launched Kunai more physics friendly. applying an easing function
+            //if starting value not defined already defined it
+            //easeInQuad source: https://easings.net/#easeInQuad
+            if(!kunai.easeX) kunai.easeX = 0
+
+            if(!kunai.flipX)
+            kunai.x +=this.easeInQuad(kunai.easeX+=.1)+2
+            else
+             kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
+
+          }
+  },
+  addTeleportationPoint(){
+    this.telepointSprite = this.physics.add.sprite(100, 400, 'telepoint').setScale(.3)
+
+    this.buildPhysics(this.telepointSprite)
+    this.telepointSprite.anims.play('tele', true);
+
+    this.physics.add.overlap(this.player, this.telepointSprite, this.teleportPlayer, null, this);
+  },
+  //transport player to top platform
+  teleportPlayer: function(){
+    this.player.x = 1000;
+    this.player.y =  100;
+  }
 });
 
 // Add scene to list of scenes
