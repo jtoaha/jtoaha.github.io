@@ -120,7 +120,7 @@ var gamePlayState = new Phaser.Class({
 
     //Setting up telepoint to be defined when all stars collected
     this.telepointSprite = undefined;
-
+    this.telepointEnd = undefined;
       //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(0, 200, 'ballEnemy').setScale(.10);
       this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
@@ -166,16 +166,6 @@ var gamePlayState = new Phaser.Class({
       this.updateEnemyBall();
 
       this.updateKunais();
-
-      if (this.numDisabledStars === 8 && !this.telepointSprite) {
-        this.addTeleportationPoint();
-      }
-
-      //ball movement
-
-      // if(      this.androidNumLives = 5;
-      //   s < 1) {
-      // }
 
   },
 
@@ -438,6 +428,10 @@ var gamePlayState = new Phaser.Class({
       this.numDisabledStars++
     }
 
+    if (this.numDisabledStars === 8) {
+      this.addTeleportationPoint('star');
+    }
+
     if(star.lives > 1){
       star.x = Math.floor(Math.random()*900);
       star.y = 200;
@@ -530,12 +524,21 @@ var gamePlayState = new Phaser.Class({
           }
   },
   addTeleportationPoint(){
-    this.telepointSprite = this.physics.add.sprite(100, 400, 'telepoint').setScale(.3)
+      this.telepointSprite = this.physics.add.sprite(100, 400, 'telepoint').setScale(.3)
 
-    this.buildPhysics(this.telepointSprite)
-    this.telepointSprite.anims.play('tele', true);
+      this.buildPhysics(this.telepointSprite)
+      this.telepointSprite.anims.play('tele', true);
 
-    this.physics.add.overlap(this.player, this.telepointSprite, this.teleportPlayer, null, this);
+      this.physics.add.overlap(this.player, this.telepointSprite, this.teleportPlayer, null, this);
+  },
+  addTeleportationPoint2(){
+    this.telepointEnd = this.physics.add.sprite(700, 0, 'telepoint').setScale(.3)
+
+    this.buildPhysics(this.telepointEnd, this.platforms)
+    this.telepointEnd.anims.play('tele', true);
+    this.physics.add.overlap(this.red, this.redTeleport, this.teleportPlayer, null, this);
+    this.redWalk()
+
   },
   //transport player to top platform
   teleportPlayer: function(){
@@ -561,9 +564,17 @@ var gamePlayState = new Phaser.Class({
     if(this.androidNumLives < 0) {
       this.android.visible = false;
       this.android.disableBody(true, true)
+      this.red.rescued = true;
+      this.addTeleportationPoint2();
     }
 
 
+  },
+  redWalk: function(){
+    this.redWalk.x++;
+  },
+  redTeleport(){
+    this.red.visible = false;
   }
 });
 
