@@ -536,7 +536,7 @@ var gamePlayState = new Phaser.Class({
 
     this.buildPhysics(this.telepointEnd, this.platforms)
     this.telepointEnd.anims.play('tele', true);
-    this.physics.add.overlap(this.red, this.redTeleport, this.teleportPlayer, null, this);
+    this.physics.add.overlap(this.red, this.telepointEnd, this.redTeleport, null, this);
     this.redWalk()
 
   },
@@ -571,10 +571,15 @@ var gamePlayState = new Phaser.Class({
 
   },
   redWalk: function(){
-    this.redWalk.x++;
+    this.red.setVelocityX(50)
   },
   redTeleport(){
     this.red.visible = false;
+        //once red teleports, player Ten can teleport
+        this.physics.add.overlap(this.player, this.telepointEnd, this.tenTeleport, null, this);
+  },
+  tenTeleport(){
+    this.player.visible = false;
   }
 });
 
