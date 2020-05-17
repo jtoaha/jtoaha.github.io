@@ -50,6 +50,7 @@ var gamePlayState = new Phaser.Class({
 
     this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
     this.load.image('star', 'assets/sprites/star.png');
+    this.load.spritesheet('telepoint', 'assets/sprites/tele-compact.png', {frameWidth: 438, frameHeight: 480});
 
     this.lives = 3; //placed here so lives can be updated when needed
   },
@@ -75,10 +76,13 @@ var gamePlayState = new Phaser.Class({
       this.platforms = this.physics.add.staticGroup();
       this.buildBGandPlatforms(this.platforms);
 
+      //Add animations
+      this.addAnims();
+
       //Add Player, physics and animation settings
       var playerScale = .17
       this.player = this.physics.add.sprite(config.width-100, 100, 'tenIdle').setScale(.17);
-      this.buildPlayerPhysicsAndAnims(this.player, this.platforms);
+      this.buildPhysics(this.player, this.platforms);
       this.cursors = this.input.keyboard.createCursorKeys();
       this.player.on('animationcomplete', this.animComplete, this);
 
@@ -99,15 +103,20 @@ var gamePlayState = new Phaser.Class({
         this.kunai.visible = false
         this.buildKunaiAnimations()
 
-            //Create and Add stars
-            this.stars = this.physics.add.group({
-              key: 'star',
-              setScale: {x: .04, y: .04},
-              repeat: 7,
-              setXY: { x: 20, y: 200, stepX: 125 },
-              lives: 2
-           });
-            this.addStars(this.stars, this.player, this.platforms)
+    //Create and Add stars
+    this.stars = this.physics.add.group({
+      key: 'star',
+      setScale: {x: .04, y: .04},
+      repeat: 7,
+      setXY: { x: 20, y: 200, stepX: 125 },
+      lives: 2
+  });
+    this.addStars(this.stars, this.player, this.platforms)
+    //numDisabledStars will track if all stars have been collected, if so will activate telepoint
+    this.numDisabledStars = 0
+
+    //Setting up telepoint to be defined when all stars collected
+    this.telepointSprite = undefined;
 
       //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
@@ -145,6 +154,12 @@ var gamePlayState = new Phaser.Class({
         else
          kunai.x -=this.easeInQuad(kunai.easeX+=.1)+2
 
+      }
+
+      if (this.numDisabledStars === 8 && !this.telepointSprite) {
+         this.telepointSprite = this.physics.add.sprite(100, 200, 'telepoint').setScale(.25)
+
+         this.buildPhysics(this.telepointSprite)
       }
   },
 
@@ -193,17 +208,9 @@ var gamePlayState = new Phaser.Class({
     }
 
   },
-  buildPlayerPhysicsAndAnims: function (player, platforms){
+  addAnims(){
 
-      player.setBounce(0.2);
-      player.setCollideWorldBounds(true);
-
-      this.physics.add.collider(player, platforms);
-
-      // player.animations.add('tenIdle', Phaser.Animation.generateFrameNumbers('tenIdle'), 30, true);
-
-
-      this.anims.create({
+        this.anims.create({
           key: 'left',
           frames:  this.anims.generateFrameNumbers('tenRun', { start: 0, end: 10 }),
           frameRate: 10,
@@ -239,29 +246,38 @@ var gamePlayState = new Phaser.Class({
       frames: this.anims.generateFrameNumbers('tenJump', { start: 0, end: 20 }),
       frameRate: 10,
       repeat: true
-  });
+    });
 
-  this.anims.create({
+    this.anims.create({
     key: 'crouch',
     frames: this.anims.generateFrameNumbers('tenSlide', { start: 0, end: 5 }),
     frameRate: 10,
     repeat: true
-  });
+    });
 
-  this.anims.create({
+    this.anims.create({
     key: 'ko',
     frames: this.anims.generateFrameNumbers('tenDead', { start: 0, end: 8}),
     frameRate: 10,
     hideOnComplete: true,
     repeat: -1
-  });
+    });
 
-  this.anims.create({
+    this.anims.create({
     key: 'throw',
     frames:  this.anims.generateFrameNumbers('tenJumpThrow', { start: 0, end: 9 }),
     frameRate: 9,
     repeat: 0,
-  });
+    });
+  },
+  buildPhysics: function (sprite, platforms){
+
+      sprite.setBounce(0.2);
+      sprite.setCollideWorldBounds(true);
+
+      this.physics.add.collider(sprite, platforms);
+
+      // player.animations.add('tenIdle', Phaser.Animation.generateFrameNumbers('tenIdle'), 30, true);
 
   },
   addPlayerControls: function (cursors, player, kunai){
@@ -369,7 +385,10 @@ var gamePlayState = new Phaser.Class({
   collectStar: function (player, star){
 
     //each star has two lives. First time it is collect, it will disappear and appear in random place. Second time it is collected it will disappear
-    if(star.lives==1)star.disableBody(true, true);
+    if(star.lives==1){
+      star.disableBody(true, true);
+      this.numDisabledStars++
+    }
 
     if(star.lives > 1){
       star.x = Math.floor(Math.random()*900);
