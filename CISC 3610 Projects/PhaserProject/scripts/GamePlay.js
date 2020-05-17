@@ -123,8 +123,10 @@ var gamePlayState = new Phaser.Class({
 
       //Add Enemy Ball, physics, and animation settings
       this.enemyBall = this.physics.add.sprite(config.width/4, 200, 'ballEnemy').setScale(.10);
-      this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms);
-
+      this.buildPhysics(this.enemyBall, this.platforms);
+      this.enemyBall.easeX = 0
+      this.enemyBall.easeXFlip = false;
+      console.log(this.enemyBall)
   },
 
   update: function() {
@@ -136,11 +138,36 @@ var gamePlayState = new Phaser.Class({
       this.enemyBall.angle++;
 
 
+      if(!this.enemyBall.easeXFlip){
+        this.enemyBall.x+=this.enemyBall.easeX;
+        this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX )* Math.abs(300*Math.cos(this.enemyBall.easeX )))+500
+        this.enemyBall.easeX+=.02;
+      } else{
+          this.enemyBall.x-=this.enemyBall.easeX;
+          this.enemyBall.y = -(Math.pow(1, this.enemyBall.easeX*-1 )* Math.abs(300*Math.cos(this.enemyBall.easeX*-1 )))+500
+          this.enemyBall.easeX+=.02;
+        }
+
+
+      if (this.enemyBall.x>1050) {
+        this.enemyBall.easeXFlip = true;
+        console.log("maybe you're right")
+        // this.enemyBall.easeX = 1
+      }
+
+      if(this.enemyBall.x <50) {
+        this.enemyBall.easeXFlip = false;
+        // this.enemyBall.easeX = 1
+      }
+
       this.updateKunais();
 
       if (this.numDisabledStars === 8 && !this.telepointSprite) {
         this.addTeleportationPoint();
       }
+
+      //ball movement
+
   },
 
   buildBGandPlatforms: function(platforms){
