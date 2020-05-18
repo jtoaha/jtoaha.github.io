@@ -70,11 +70,20 @@ Cartoon.draw = function (color) {
   drawHouse(ctx, canvas);
 
   //draw flowers
+  drawFlowers(ctx, canvas, 700, 225, 5, 'red');
+  drawFlowers(ctx, canvas, 875, 250, 6, 'coral');
   drawFlowers(ctx, canvas, 800, 200, 5, 'magenta');
-  drawFlowers(ctx, canvas, 850, 250, 6, 'coral');
+  drawFlowers(ctx, canvas, 1000, 225, 5.5, '#d1d5ae');
 
   drawFlowers(ctx, canvas, 1000, 275, 6.5, 'aqua');
-  drawFlowers(ctx, canvas, 750, 300, 7, 'orange');
+  drawFlowers(ctx, canvas, 800, 300, 7, '#d1619e');
+  drawFlowers(ctx, canvas, 775, 400, 7.5, '#202040');
+  drawFlowers(ctx, canvas, 1050, 375, 7, '#6886c5');
+  drawFlowers(ctx, canvas, 40, 220, 5.25, 'purple');
+  drawFlowers(ctx, canvas, 450, 250, 5.5, 'olive');
+
+  drawFlowers(ctx, canvas, 50, 375, 7, 'pink');
+  drawFlowers(ctx, canvas, 400, 200, 5, 'blue');
 
 
   //draw painting
