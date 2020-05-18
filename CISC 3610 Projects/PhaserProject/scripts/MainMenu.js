@@ -16,7 +16,7 @@ var mainMenuState = new Phaser.Class({
 
       this.add.image(config.width/2, config.height/2, 'bg').setScale(1.1)
 
-      var intro = this.add.text(20, 20, 'There have been a string of abductions of youth with metagenes. The mysterious special forces entity known as the Rescue Ops has sent Ten on a stealth mission to rescue Little Red and Little Blue. Help Ten defeat the Android guarding them and guide them to safety. ', { fontFamily: 'Monaco, Georgia, "Goudy Bookletter 1911", Times, serif', color:  '#ff00ff', fontSize: '26px', align: 'justify', fontWeight: 'bold',   strokeThickness: 5,
+      var intro = this.add.text(15, 10, 'There have been a string of abductions of youth with metagenes. The mysterious special forces entity known as the Rescue Ops has sent Ten on a stealth mission to rescue Little Red and Little Blue. Help Ten defeat the Android guarding them and guide them to safety. ', { fontFamily: 'futura, Georgia, "Goudy Bookletter 1911", Times, serif', color:  '#ff00ff', fontSize: '30px', align: 'justify', fontWeight: '900',  stroke: 0x000000, strokeThickness: 3,
       wordWrap: {
         width: 1075,
         callback: null,
@@ -28,14 +28,17 @@ var mainMenuState = new Phaser.Class({
 
 
         //THIS IS FOR CONTROLS SECTION
-        var rect2 = new Phaser.Geom.Rectangle(0, 30, 220, 600);
+        this.addControlsSection();
 
-        var graphics2 = this.add.graphics({x: 865, y: 150});
+        //THIS FOR WARNINGS SECTION
+        var rect3 = new Phaser.Geom.Rectangle(0, 30, 500, 300);
 
-        graphics2.fillStyle(0xff00ff, .8);   // color: 0xRRGGBB
-        graphics2.fillRectShape(rect2);
+        var graphics3 = this.add.graphics({x: 300, y: 400});
 
-        this.add.text(910, 183, 'Controls:', {
+        graphics3.fillStyle(0xff0000, .5);   // color: 0xRRGGBB
+        graphics3.fillRectShape(rect3);
+
+        this.add.text(390, 460, 'Avoid:', {
             shadow: {
                 offsetX: '2px',
                 offsetY: '2px',
@@ -47,56 +50,15 @@ var mainMenuState = new Phaser.Class({
             fontSize: '32px', fontFamily: 'Futura', fontWeight: 'bold'
         });
 
-        this.add.image(970, 250, 'spacebar').setScale(.7);
-        this.add.text(885, 275, 'To Launch Kunai:', {
-            shadow: {
-                offsetX: '2px',
-                offsetY: '2px',
-                color: '#000',
-                blur: 1,
-                stroke: true,
-                fill: true
-            },
-            fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
-        });
-        this.add.image(950, 320, 'kunai').setScale(.40);
-
-        //add left and right
-        this.add.image(975, 375, 'rightleft')
-
-        this.add.text(885, 410, 'To walk left/ right', {
-            shadow: {
-                offsetX: '2px',
-                offsetY: '2px',
-                color: '#000',
-                blur: 1,
-                stroke: true,
-                fill: true
-            },
-            fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
-        });
-
-            //add up
-                this.add.image(975, 475, 'up')
-
-                this.add.text(925, 510, 'To jump', {
-                    shadow: {
-                        offsetX: '2px',
-                        offsetY: '2px',
-                        color: '#000',
-                        blur: 1,
-                        stroke: true,
-                        fill: true
-                    },
-                    fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
-                });
-
-
+        this.add.image(350, 475, 'warning').setScale(.03);
+        this.enemyBall = this.add.image(570, 490, 'ballEnemy').setScale(.10);
+        this.add.image(700, 490, 'androidIdle').setScale(.20);
       //game.scene.start('GamePlay');
   },
 
   update: function() {
       // Update objects & variables
+      this.enemyBall.angle+=.5;
   },
   addCollectStarSection: function(){
     var rect = new Phaser.Geom.Rectangle(0, 30, 210, 600);
@@ -148,6 +110,71 @@ var mainMenuState = new Phaser.Class({
 
 
     this.telepoint.anims.play('teleMain', true);
+  },
+  addControlsSection: function(){
+    var rect2 = new Phaser.Geom.Rectangle(0, 30, 220, 600);
+
+    var graphics2 = this.add.graphics({x: 865, y: 150});
+
+    graphics2.fillStyle(0xff00ff, .8);   // color: 0xRRGGBB
+    graphics2.fillRectShape(rect2);
+
+    this.add.text(910, 183, 'Controls:', {
+        shadow: {
+            offsetX: '2px',
+            offsetY: '2px',
+            color: '#000',
+            blur: 1,
+            stroke: true,
+            fill: true
+        },
+        fontSize: '32px', fontFamily: 'Futura', fontWeight: 'bold'
+    });
+
+    this.add.image(970, 250, 'spacebar').setScale(.7);
+    this.add.text(885, 275, 'To Launch Kunai:', {
+        shadow: {
+            offsetX: '2px',
+            offsetY: '2px',
+            color: '#000',
+            blur: 1,
+            stroke: true,
+            fill: true
+        },
+        fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
+    });
+    this.add.image(950, 320, 'kunai').setScale(.40);
+
+    //add left and right
+    this.add.image(975, 375, 'rightleft')
+
+    this.add.text(885, 410, 'To walk left/ right', {
+        shadow: {
+            offsetX: '2px',
+            offsetY: '2px',
+            color: '#000',
+            blur: 1,
+            stroke: true,
+            fill: true
+        },
+        fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
+    });
+
+        //add up
+            this.add.image(975, 475, 'up')
+
+            this.add.text(925, 510, 'To jump', {
+                shadow: {
+                    offsetX: '2px',
+                    offsetY: '2px',
+                    color: '#000',
+                    blur: 1,
+                    stroke: true,
+                    fill: true
+                },
+                fontSize: '23px', fontFamily: 'Futura', fontWeight: 'bold'
+            });
+
   }
 });
 

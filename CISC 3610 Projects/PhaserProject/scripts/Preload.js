@@ -49,6 +49,7 @@ var preloadState = new Phaser.Class({
     this.load.image('spacebar', 'assets/title/spacebar.png')
     this.load.image('rightleft', 'assets/title/right-left.png')
     this.load.image('up', 'assets/title/up.png')
+    this.load.image('warning', 'assets/title/warning-sign.png')
 
     //Misc Items
     this.load.image('heartContainer', 'assets/sprites/heart-container.png');
