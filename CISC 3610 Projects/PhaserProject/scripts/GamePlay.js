@@ -15,6 +15,7 @@ var gamePlayState = new Phaser.Class({
     this.lives = 3 //placed here so lives can be updated when needed
   },
   create: function () {
+    console.log(myGame.scenes, "TESTING");
     // Create objects
     console.log('GamePlay')
     //Set these to false by default, until purposefully set to true
@@ -127,16 +128,46 @@ var gamePlayState = new Phaser.Class({
     this.pKey = this.input.keyboard.addKey('p');  // Get key object
 
     this.nKey = this.input.keyboard.addKey('n');  // Get key object
-      this.addKeyboardControls();
+
+
+    this.nKey.on('down', (event) => {
+      console.log(this.scene, "before")
+
+      if(!myGame.isGamePlayPaused){
+        this.scene.switch('MainMenu')
+      }
+
+        myGame.isGamePlayPaused = true
+      myGame.isGamePlayPausedState = this.scene;
+
+
+
+      // this.scene.start('MainMenu')
+      console.log(this.scene, "after")
+    });
+
+    this.hKey.on('down', (event) => {
+      console.log(this.scene, "before")
+      //this.scene.start('MainMenu')
+
+      //myGame.isGamePlayPaused = true;
+      this.scene.resume()
+
+
+      // this.scene.start('MainMenu')
+      console.log(this.scene, "after")
+    });
   },
 
   update: function () {
     // Update objects & variables
-
     if (this.lives > 0)
       this.addPlayerControls(this.cursors, this.player, this.kunai)
 
-      this.addKeyboardControls()
+
+      this.addKeyboardControls();
+
+
 
     if (this.lives === 0) {
       this.player.anims.play('ko', true)
@@ -157,13 +188,47 @@ var gamePlayState = new Phaser.Class({
      }
   },
   addKeyboardControls(){
-    this.hKey.on('down', function(event) {
-      console.log("it's working")
-      this.gamePlayPaused = true;
-      this.scene.start('MainMenu');
-    });
+
+
+
+    // this.hKey.on('down', function(event) {
+    //   console.log("it's working")
+    //   this.gamePlayPaused = true;
+    //   this.scene.start('MainMenu');
+    // });
     //this.pKey.on('down', function(event) { /* ... */ });
-    //this.nKey.on('down', function(event) { /* ... */ });
+    // this.nKey.on('down', () => {
+    //   this.scene.launch(myGame.scenes[1]);
+    //   this.scene.pause()
+
+      // this.add.text(
+      //   100,
+      //   200,
+      //   "Are you sure you would like to start a new game?",
+      //   {
+      //     shadow: {
+      //       offsetX: '10px',
+      //       offsetY: '10px',
+      //       color: '#000',
+      //       blur: 3,
+      //       stroke: true,
+      //       fill: true,
+      //     },
+      //     fontSize: '40px',
+      //     fontFamily: 'Arial',
+      //     fontWeight: 'bold',
+      //     color: '#ff3333',
+      //    stroke: '#000000',
+      //    strokeThickness: 2
+      //   }
+      // )
+      // var resetButton = this.add.sprite(config.width / 2, 400, 'reset').setScale(.3)
+      // resetButton.setInteractive()
+      // resetButton.on('pointerup', () => {
+      //   this.scene.launch('mainMenuState');
+      // })
+
+    //  });
 
 
   },
@@ -690,11 +755,10 @@ var gamePlayState = new Phaser.Class({
   },
   displayResetButton: function(){
 
-
     this.resetButton = this.add.sprite(config.width / 2, 400, 'reset').setScale(.3)
     this.resetButton.setInteractive()
     this.resetButton.on('pointerup', () => {
-      this.scene.start('preloadState');
+      this.scene.start('MainMenu');
     })
   }
 })

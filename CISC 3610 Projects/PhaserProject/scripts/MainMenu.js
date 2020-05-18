@@ -75,12 +75,26 @@ var mainMenuState = new Phaser.Class({
 
     //Add Continue button
     this.continue = this.add
-      .sprite(config.width / 2, 300, 'continue')
+      .sprite(config.width / 2, 285, 'continue')
       .setScale(0.5)
     this.continue.setInteractive()
     this.continue.on('pointerup', () => {
-      game.scene.start('GamePlay')
+
+        if(!myGame.isGamePlayPaused) {
+            this.scene.start('GamePlay')
+
+        } else {
+            myGame.isGamePlayPaused = false
+            console.log ("THIS IS PAUSED!!")
+            this.scene.wake('GamePlay')
+           // myGame.isGamePlayPausedState.resume();
+            //this.scene.stop();
+
+        }
     })
+
+    //Add Reset button
+    this.displayResetButton();
   },
 
   update: function () {
@@ -241,6 +255,20 @@ var mainMenuState = new Phaser.Class({
     this.enemyBall = this.add.image(570, 500, 'ballEnemy').setScale(0.1)
     this.add.image(700, 490, 'androidIdle').setScale(0.2)
   },
+  displayResetButton: function(){
+
+    this.resetButton = this.add.sprite(config.width / 2, 375, 'reset').setScale(.3)
+    this.resetButton.setInteractive()
+    this.resetButton.on('pointerup', () => {
+    //   game.scene.start('preloadState');
+    if(myGame.isGamePlayPaused) {
+        this.scene.stop('GamePlay');
+        myGame.isGamePlayPaused = false
+    }
+    this.scene.start('GamePlay')//
+
+    })
+  }
 })
 
 // Add scene to list of scenes
