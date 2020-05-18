@@ -137,12 +137,12 @@ var gamePlayState = new Phaser.Class({
 
      if(this.levelLoss){
         this.displayLoss();
-        this.levelLoss= false; // so function doesn't get called multiple times
+        this.levelLoss = false; // so function doesn't get called multiple times
      }
 
      if(this.levelWon){
       this.displayWin();
-      this.levelWin= false; // so function doesn't get called multiple times
+      this.levelWon = false; // so function doesn't get called multiple times
      }
   },
 
@@ -461,7 +461,6 @@ var gamePlayState = new Phaser.Class({
         this.player.setTint(0xffffff)
       } else {
         this.levelLoss = true
-        console.log(this.levelLoss, 'levelLoss')
       }
     }
   },
@@ -616,14 +615,64 @@ var gamePlayState = new Phaser.Class({
     this.levelWon = true
   },
   displayLoss: function(){
-
+    //this.stars.disableBody(true, true);
+    this.red.visible = false
+    this.android.visible = false
+    this.add.text(
+      300,
+      200,
+      "Game Over! Try Again",
+      {
+        shadow: {
+          offsetX: '10px',
+          offsetY: '10px',
+          color: '#000',
+          blur: 3,
+          stroke: true,
+          fill: true,
+        },
+        fontSize: '50px',
+        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        color: '#ff0000',
+       stroke: '#000000',
+       strokeThickness: 2
+      }
+    )
     this.displayResetButton();
   },
   displayWin: function(){
-
+    this.add.text(
+      100,
+      200,
+      "You win! Another child has been rescued! ",
+      {
+        shadow: {
+          offsetX: '10px',
+          offsetY: '10px',
+          color: '#000',
+          blur: 3,
+          stroke: true,
+          fill: true,
+        },
+        fontSize: '50px',
+        fontFamily: 'Arial',
+        fontWeight: 'bold',
+        color: '#ff00ff',
+       stroke: '#000000',
+       strokeThickness: 2
+      }
+    )
+    this.displayResetButton();
   },
   displayResetButton: function(){
-    this.displayResetButton();
+
+
+    this.resetButton = this.add.sprite(config.width / 2, 400, 'reset').setScale(.3)
+    this.resetButton.setInteractive()
+    this.resetButton.on('pointerup', () => {
+      this.scene.start('preloadState');
+    })
   }
 })
 

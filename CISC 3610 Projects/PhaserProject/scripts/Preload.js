@@ -85,7 +85,7 @@ var preloadState = new Phaser.Class({
     this.load.image('up', 'assets/title/up.png')
     this.load.image('warning', 'assets/title/warning-sign.png')
     this.load.image('continue', 'assets/title/continue-button.png')
-
+    this.load.image('reset', 'assets/title/reset-button.png')
     //Misc Items
     this.load.image('heartContainer', 'assets/sprites/heart-container.png')
     this.load.image('heartLife', 'assets/sprites/heart-life.png')
