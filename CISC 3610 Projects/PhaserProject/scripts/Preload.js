@@ -40,8 +40,6 @@ var preloadState = new Phaser.Class({
       frameHeight: 497,
     })
 
-    this.load.image('redKunai', 'assets/sprites/kunai.png')
-
     // Red Character spritesheets
     this.load.spritesheet('redDead', 'assets/sprites/red-dead-30.png', {
       frameWidth: 601,
@@ -86,12 +84,14 @@ var preloadState = new Phaser.Class({
     this.load.image('warning', 'assets/title/warning-sign.png')
     this.load.image('continue', 'assets/title/continue-button.png')
     this.load.image('reset', 'assets/title/reset-button.png')
+
+
     //Misc Items
+    this.load.image('redKunai', 'assets/sprites/kunai.png')
     this.load.image('heartContainer', 'assets/sprites/heart-container.png')
     this.load.image('heartLife', 'assets/sprites/heart-life.png')
     this.load.image('flowerBullets', 'assets/sprites/flower-bullets.png')
     this.load.image('flowerHealing', 'assets/sprites/flower-healing.png')
-
     this.load.image('ballEnemy', 'assets/sprites/ball-purple.png')
     this.load.image('star', 'assets/sprites/star.png')
     this.load.spritesheet('telepoint', 'assets/sprites/tele-compact.png', {
