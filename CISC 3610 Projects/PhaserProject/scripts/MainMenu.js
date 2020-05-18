@@ -25,13 +25,21 @@ var mainMenuState = new Phaser.Class({
         align: 'justify',
         fontWeight: '900',
         stroke: 0x000000,
-        strokeThickness: 3,
+        strokeThickness: 2,
         wordWrap: {
           width: 1075,
           callback: null,
           callbackScope: null,
           useAdvancedWrap: false,
         },
+        shadow: {
+            offsetX: '5px',
+            offsetY: '2px',
+            color: '#000',
+            blur: 4,
+            stroke: true,
+            fill: true,
+          },
       }
     )
 

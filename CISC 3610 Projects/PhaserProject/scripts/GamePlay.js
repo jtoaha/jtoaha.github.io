@@ -1,6 +1,7 @@
 /* eslint-disable complexity*/
 /* eslint-disable max-statements*/
 
+//Important variables: this.levelWon = false
 var gamePlayState = new Phaser.Class({
   // Define scene
   Extends: Phaser.Scene,
@@ -16,7 +17,9 @@ var gamePlayState = new Phaser.Class({
   create: function () {
     // Create objects
     console.log('GamePlay')
-    console.log(this.lives)
+    //Set these to false by default, until purposefully set to true
+    this.levelWon = false
+    this.levelLoss = false
     //Add background and platforms
     var bg = this.add.image(550, 225, 'bg')
     bg.scale = 1.25
@@ -44,7 +47,7 @@ var gamePlayState = new Phaser.Class({
     //Add Player, physics and animation settings
     var playerScale = 0.17
     this.player = this.physics.add
-      .sprite(config.width - 100, 100, 'tenIdle')
+      .sprite(config.width/2, 400, 'tenIdle')
       .setScale(playerScale)
     this.buildPhysics(this.player, this.platforms)
     this.cursors = this.input.keyboard.createCursorKeys()
@@ -88,7 +91,7 @@ var gamePlayState = new Phaser.Class({
     this.enemyBall = this.physics.add.sprite(0, 200, 'ballEnemy').setScale(0.1)
     this.addBallEnemyPhysicsAndAnims(this.enemyBall, this.platforms)
     this.enemyBall.easeX = 0
-    this.enemyBall.easeXFlip = false
+    this.enemyBall.switchCosToSin= false
     console.log(this.enemyBall)
 
     this.currentLife = 3
@@ -131,6 +134,16 @@ var gamePlayState = new Phaser.Class({
     this.updateEnemyBall()
 
     this.updateKunais()
+
+     if(this.levelLoss){
+        this.displayLoss();
+        this.levelLoss= false; // so function doesn't get called multiple times
+     }
+
+     if(this.levelWon){
+      this.displayWin();
+      this.levelWin= false; // so function doesn't get called multiple times
+     }
   },
 
   buildBGandPlatforms: function (platforms) {
@@ -534,17 +547,31 @@ var gamePlayState = new Phaser.Class({
   updateEnemyBall: function () {
     this.enemyBall.angle++
 
-    this.enemyBall.x += this.enemyBall.easeX
-    this.enemyBall.y =
-      -(
-        Math.pow(1, this.enemyBall.easeX) *
-        Math.abs(300 * Math.cos(this.enemyBall.easeX))
-      ) + 500
-    this.enemyBall.easeX += 0.02
+    if(!this.enemyBall.switchCosToSin){
+      this.enemyBall.x += this.enemyBall.easeX
+      this.enemyBall.y =
+        -(
+          Math.pow(1, this.enemyBall.easeX) *
+          Math.abs(300 * Math.cos(this.enemyBall.easeX))
+        ) + 500
+      this.enemyBall.easeX += 0.02
+    } else {
+      this.enemyBall.x += this.enemyBall.easeX
+      this.enemyBall.y =
+        -(
+          Math.pow(1, this.enemyBall.easeX) *
+          Math.abs(300 * Math.sin(this.enemyBall.easeX))
+        ) + 500
+      this.enemyBall.easeX += 0.02
+
+    }
+
 
     if (this.enemyBall.x > 1150) {
-      this.enemyBall.x = Math.floor(Math.random() * 50) - 100
+      //this.enemyBall.x = Math.floor(Math.random() * 50) - 100
+      this.enemyBall.x = -100
       this.enemyBall.easeX = 0
+      this.enemyBall.switchCosToSin = !this.enemyBall.switchCosToSin
     }
   },
   androidLose: function () {
@@ -580,7 +607,7 @@ var gamePlayState = new Phaser.Class({
       this
     )
   },
-  tenTeleport() {
+  tenTeleport: function() {
     if (this.player.visible) {
       this.score += 10
       this.scoreText.setText('Score: ' + this.score)
@@ -588,6 +615,16 @@ var gamePlayState = new Phaser.Class({
     this.player.visible = false
     this.levelWon = true
   },
+  displayLoss: function(){
+
+    this.displayResetButton();
+  },
+  displayWin: function(){
+
+  },
+  displayResetButton: function(){
+    this.displayResetButton();
+  }
 })
 
 // Add scene to list of scenes
