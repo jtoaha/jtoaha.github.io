@@ -67,7 +67,9 @@ var preloadState = new Phaser.Class({
         this.startButton.scale = .5;
         this.startButton.setInteractive();
         this.startButton.on('pointerup', ()=>{
-              this.scene.start('MainMenu');
+              //temp while I get Main menu set up
+              this.scene.start('GamePlay');
+              //this.scene.start('MainMenu');
 
       });
 

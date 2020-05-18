@@ -375,7 +375,7 @@ var gamePlayState = new Phaser.Class({
       // player.anims.currentFrame.index = 0
         player.setVelocityX(0);
         player.anims.play('turn');
-    }g
+    }
 
     if (cursors.up.isDown && player.body.touching.down && this.lives > 0)
     {
