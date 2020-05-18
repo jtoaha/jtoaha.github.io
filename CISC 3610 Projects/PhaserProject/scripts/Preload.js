@@ -68,6 +68,7 @@ var preloadState = new Phaser.Class({
 
     //Background Items
     this.load.image('bg', 'assets/sprites/BG.png')
+    this.load.image('bgnight', 'assets/title/bg-night.png')
     this.load.image('groundLeft', 'assets/tiles/ground-left.png')
     this.load.image('groundMiddle', 'assets/tiles/ground-middle.png')
     this.load.image('groundRight', 'assets/tiles/ground-right.png')
@@ -105,7 +106,7 @@ var preloadState = new Phaser.Class({
     console.log('Preload')
     this.addAnims()
 
-    this.add.image(config.width / 2, config.height / 2, 'bg').setScale(1.1)
+    this.add.image(config.width / 2, config.height / 2, 'bgnight').setScale(1.25)
     this.player = this.add.sprite(150, 400, 'tenIdle').setScale(0.5)
     this.player.anims.play('tIdle')
     this.red = this.add.sprite(950, 410, 'redIdle').setScale(0.5)
