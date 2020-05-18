@@ -33,8 +33,11 @@ var preloadState = new Phaser.Class({
 
 
     // //Background Items
-    // this.load.image('bg', 'assets/sprites/BG.png')
+    this.load.image('bg', 'assets/sprites/BG.png')
 
+    this.load.image('title', 'assets/title/rescue-ops-logo.png')
+    this.load.image('name', 'assets/title/logo-name.png')
+    this.load.image('start', 'assets/title/start-button.png')
     // //Misc Items
     // this.load.image('heartContainer', 'assets/sprites/heart-container');
     // this.load.image('heartLife', 'assets/sprites/heart-life');
@@ -50,14 +53,23 @@ var preloadState = new Phaser.Class({
       console.log("Preload");
       this.addAnims();
 
+      this.add.image(config.width/2, config.height/2, 'bg').setScale(1.1)
       this.player = this.add.sprite(150, 400, 'tenIdle').setScale(.50);
       this.player.anims.play('tIdle')
       this.red = this.add.sprite(950, 410, 'redIdle').setScale(.50);
       this.red.flipX = true;
       this.red.anims.play('rIdle')
 
+      this.add.image(config.width/2, 110, 'title');
+      this.add.image(config.width/2, 210, 'name')
 
+        this.startButton = this.add.sprite(config.width/2, 400, 'start')
+        this.startButton.scale = .5;
+        this.startButton.setInteractive();
+        this.startButton.on('pointerup', ()=>{
+              this.scene.start('MainMenu');
 
+      });
 
   },
   update: function() {
@@ -69,8 +81,8 @@ var preloadState = new Phaser.Class({
       key: 'tIdle',
       // frames: [ { key: 'tenIdle' } ],
       // frameRate: 20
-      frames: this.anims.generateFrameNumbers('tenIdle', { start: 0, end:6 }),
-      frameRate: 5,
+      frames: this.anims.generateFrameNumbers('tenIdle', { start: 0, end: 2 }),
+      frameRate: 2,
       repeat: 400
   });
     this.anims.create({
