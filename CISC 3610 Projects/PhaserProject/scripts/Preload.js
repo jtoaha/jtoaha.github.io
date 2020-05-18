@@ -31,7 +31,7 @@ var preloadState = new Phaser.Class({
       frameWidth: 505,
       frameHeight: 574,
     })
-    this.load.spritesheet('tenSlide', 'assets/sprites/ten-Slide.png', {
+    this.load.spritesheet('tenSlide', 'assets/sprites/ten-slide.png', {
       frameWidth: 397,
       frameHeight: 401,
     })
