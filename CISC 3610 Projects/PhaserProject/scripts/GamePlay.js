@@ -55,11 +55,11 @@ var gamePlayState = new Phaser.Class({
 
     //Add Player bullets reference so bullets launch in correct direction
     this.kunai = this.add
-      .sprite(this.player.x, this.player.y + 10, 'kunai')
+      .sprite(this.player.x, this.player.y + 10, 'redKunai')
       .setScale(0.2)
     //Add actual bullets
     this.kunais = this.add.group({
-      key: 'kunai',
+      key: 'redKunai',
       setScale: { x: 0.2, y: 0.2 },
       repeat: 200,
       setXY: { x: this.player.x, y: this.player.y, stepX: 0 },

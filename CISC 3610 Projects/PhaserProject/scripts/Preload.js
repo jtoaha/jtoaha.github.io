@@ -40,7 +40,7 @@ var preloadState = new Phaser.Class({
       frameHeight: 497,
     })
 
-    this.load.image('kunai', 'assets/sprites/kunai.png')
+    this.load.image('redKunai', 'assets/sprites/kunai.png')
 
     // Red Character spritesheets
     this.load.spritesheet('redDead', 'assets/sprites/red-dead-30.png', {
