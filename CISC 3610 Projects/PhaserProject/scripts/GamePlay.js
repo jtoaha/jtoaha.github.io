@@ -68,7 +68,8 @@ var gamePlayState = new Phaser.Class({
     })
 
     //this is to save future launched kunai
-    this.kunaiBullets = []
+    this.kunaiBullets = this.add.group()
+
     console.log(this.kunais)
     //visible false
     this.kunai.visible = false
@@ -516,7 +517,7 @@ var gamePlayState = new Phaser.Class({
     //no physics on bullets so difficult to implement
     // this.physics.add.collider(this.android, kunaiBullet, this.androidLose, null, this);
     //adding to an array, so multiple kunais can be launched and the position updated in the update function
-    this.kunaiBullets.push(kunaiBullet)
+    this.kunaiBullets.add(kunaiBullet)
 
     //console.log(this.kunai)
   },
@@ -558,7 +559,7 @@ var gamePlayState = new Phaser.Class({
       kunai.flipX = this.player.flipX
     }
 
-    for (let kunai of this.kunaiBullets) {
+    for (let kunai of this.kunaiBullets.children.entries) {
       //trying to make launched Kunai more physics friendly. applying an easing function
       //if starting value not defined already defined it
       //easeInQuad source: https://easings.net/#easeInQuad
