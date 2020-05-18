@@ -61,7 +61,7 @@ var gamePlayState = new Phaser.Class({
       .setScale(0.2)
     //Add actual bullets
     this.kunais = this.add.group({
-      key: 'star',
+      key: 'redKunai',
       setScale: { x: 0.2, y: 0.2 },
       repeat: 200,
       setXY: { x: this.player.x, y: this.player.y, stepX: 0 },
@@ -517,8 +517,7 @@ var gamePlayState = new Phaser.Class({
     // this.physics.add.collider(this.android, kunaiBullet, this.androidLose, null, this);
     //adding to an array, so multiple kunais can be launched and the position updated in the update function
     this.kunaiBullets.push(kunaiBullet)
-    console.log(kunaiBullet)
-    console.log(this.kunais)
+
     //console.log(this.kunai)
   },
   playerJumpThrow: function () {},
