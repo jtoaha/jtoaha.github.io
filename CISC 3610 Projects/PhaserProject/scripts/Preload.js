@@ -87,7 +87,7 @@ var preloadState = new Phaser.Class({
 
 
     //Misc Items
-    this.load.image('redKunai', 'assets/sprites/kunai.png')
+    this.load.image('redKunai', 'assets/sprites/Kunai.png')
     this.load.image('heartContainer', 'assets/sprites/heart-container.png')
     this.load.image('heartLife', 'assets/sprites/heart-life.png')
     this.load.image('flowerBullets', 'assets/sprites/flower-bullets.png')
