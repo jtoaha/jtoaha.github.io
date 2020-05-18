@@ -8,8 +8,8 @@ var preloadState = new Phaser.Class({
   // Preload images for this state
 
 
-    //   //Ten character spritesheets
-    //   this.load.spritesheet('tenIdle', 'assets/sprites/ten-idle.png',{frameWidth: 290, frameHeight: 500});
+      //Ten character spritesheets
+      this.load.spritesheet('tenIdle', 'assets/sprites/ten-idle.png',{frameWidth: 290, frameHeight: 500});
     //   this.load.spritesheet('tenRun', 'assets/sprites/ten-run.png', {frameWidth: 376, frameHeight: 520});
     //   this.load.spritesheet('tenJump', 'assets/sprites/ten-jump.png', {frameWidth: 376, frameHeight: 520});
     //   this.load.spritesheet('tenDead', 'assets/sprites/ten-dead-9.png', {frameWidth: 578, frameHeight: 599});
@@ -23,7 +23,7 @@ var preloadState = new Phaser.Class({
 
     // // Red Character spritesheets
     // this.load.spritesheet('redDead', 'assets/sprites/red-dead-30.png', {frameWidth: 601, frameHeight: 502});
-    // this.load.spritesheet('redIdle', 'assets/sprites/red-idle-16.png', {frameWidth: 416, frameHeight: 454});
+    this.load.spritesheet('redIdle', 'assets/sprites/red-idle-16.png', {frameWidth: 415, frameHeight: 454});
     // this.load.spritesheet('redJump', 'assets/sprites/red-jump-30.png', {frameWidth: 416, frameHeight: 454});
     // this.load.spritesheet('redRun', 'assets/sprites/red-run-20.png', {frameWidth: 416, frameHeight: 454});
 
@@ -41,17 +41,47 @@ var preloadState = new Phaser.Class({
     // this.load.image('flowerBullets', 'assets/sprites/flower-bullets');
     // this.load.image('flowerHealing', 'assets/sprites/flower-healing');
 
-      this.scene.start('MainMenu');
+      //this.scene.start('MainMenu');
 
 
   },
 
   create: function() {
       console.log("Preload");
+      this.addAnims();
+
+      this.player = this.add.sprite(150, 400, 'tenIdle').setScale(.50);
+      this.player.anims.play('tIdle')
+      this.red = this.add.sprite(950, 410, 'redIdle').setScale(.50);
+      this.red.flipX = true;
+      this.red.anims.play('rIdle')
+
+
+
 
   },
   update: function() {
       // Update objects & variables
+  },
+  addAnims: function(){
+
+    this.anims.create({
+      key: 'tIdle',
+      // frames: [ { key: 'tenIdle' } ],
+      // frameRate: 20
+      frames: this.anims.generateFrameNumbers('tenIdle', { start: 0, end:6 }),
+      frameRate: 5,
+      repeat: 400
+  });
+    this.anims.create({
+      key: 'rIdle',
+      // frames: [ { key: 'tenIdle' } ],
+      // frameRate: 20
+      frames: this.anims.generateFrameNumbers('redIdle', { start: 0, end: 15 }),
+      frameRate: 4,
+      repeat: 400
+  });
+
   }
 });
 
