@@ -60,12 +60,12 @@ var gamePlayState = new Phaser.Class({
       .sprite(this.player.x, this.player.y + 10, 'redKunai')
       .setScale(0.2)
     //Add actual bullets
-    this.kunais = this.add.group({
-      key: 'redKunai',
-      setScale: { x: 0.2, y: 0.2 },
-      repeat: 200,
-      setXY: { x: this.player.x, y: this.player.y, stepX: 0 },
-    })
+    // this.kunais = this.add.group({
+    //   key: 'redKunai',
+    //   setScale: { x: 0.2, y: 0.2 },
+    //   repeat: 200,
+    //   setXY: { x: this.player.x, y: this.player.y, stepX: 0 },
+    // })
 
     //this is to save future launched kunai
     this.kunaiBullets = []
