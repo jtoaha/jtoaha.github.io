@@ -19,7 +19,7 @@ var preloadState = new Phaser.Class({
       this.load.spritesheet('tenSlide', 'assets/sprites/ten-Slide.png', {frameWidth: 397, frameHeight: 401});
       this.load.spritesheet('tenJumpThrow', 'assets/sprites/ten-jump-throw.png', {frameWidth: 425, frameHeight: 497});
 
-      this.load.image('redKunai', 'assets/sprites/kunai.png');
+      this.load.image('kunai', 'assets/sprites/kunai.png');
 
 
     // Red Character spritesheets
@@ -41,9 +41,14 @@ var preloadState = new Phaser.Class({
     this.load.image('floatL', 'assets/tiles/ground-float-l.png')
     this.load.image('floatM', 'assets/tiles/ground-float-m.png')
     this.load.image('floatR', 'assets/tiles/ground-float-r.png')
+
+    //Control Items
     this.load.image('title', 'assets/title/rescue-ops-logo.png')
     this.load.image('name', 'assets/title/logo-name.png')
     this.load.image('start', 'assets/title/start-button.png')
+    this.load.image('spacebar', 'assets/title/spacebar.png')
+    this.load.image('rightleft', 'assets/title/right-left.png')
+    this.load.image('up', 'assets/title/up.png')
 
     //Misc Items
     this.load.image('heartContainer', 'assets/sprites/heart-container.png');
@@ -54,7 +59,6 @@ var preloadState = new Phaser.Class({
     this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
     this.load.image('star', 'assets/sprites/star.png');
     this.load.spritesheet('telepoint', 'assets/sprites/tele-compact.png', {frameWidth: 438, frameHeight: 480});
-
 
 
 
