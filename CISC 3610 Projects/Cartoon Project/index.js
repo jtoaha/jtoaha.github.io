@@ -44,8 +44,24 @@ Cartoon.draw = function (color) {
   ctx.fillStyle = 'skyblue';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  //Add Text
+  ctx.font = "20px Trebuchet MS";
+  ctx.fillStyle = "purple";
+  ctx.textAlign = "left";
+  ctx.fillText(
+    "Simplicity, patience, compassion. These three are your greatest treasures."
+    , canvas.width/2+40, 30, 500);
+    ctx.fillText(
+      "Simple in actions and thoughts, you return to the source of being. Patient with both friends and enemies,"
+      , canvas.width/2+40, 50, 500);
 
+    ctx.fillText(
+      " you accord with the way things are. \nCompassionate toward yourself,you reconcile all beings in the world."
+      , canvas.width/2+40, 70, 500);
 
+      ctx.fillText(
+        " -Lao Tsu"
+        , 900, 90, 1100);
 
   //drawWater
   drawWater(ctx, canvas);
@@ -452,3 +468,6 @@ function drawFlowers(ctx, canvas, centerX, centerY, radius, color){
 
 
 }
+
+
+
