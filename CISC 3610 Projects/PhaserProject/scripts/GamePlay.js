@@ -51,6 +51,7 @@ var gamePlayState = new Phaser.Class({
       .setScale(playerScale)
     this.buildPhysics(this.player, this.platforms)
     this.cursors = this.input.keyboard.createCursorKeys()
+    console.log(this.cursors)
     this.player.on('animationcomplete', this.animComplete, this)
 
     //Add Player bullets reference so bullets launch in correct direction
@@ -119,6 +120,14 @@ var gamePlayState = new Phaser.Class({
     this.buildPhysics(this.red, this.platforms)
     this.red.rescued = false
     this.red.anims.play('rIdle', true)
+
+    //Set up keyboard input for PAUSE/ HELP MODE and NEW GAME mode
+    this.hKey = this.input.keyboard.addKey('h');  // Get key object
+
+    this.pKey = this.input.keyboard.addKey('p');  // Get key object
+
+    this.nKey = this.input.keyboard.addKey('n');  // Get key object
+      this.addKeyboardControls();
   },
 
   update: function () {
@@ -126,6 +135,8 @@ var gamePlayState = new Phaser.Class({
 
     if (this.lives > 0)
       this.addPlayerControls(this.cursors, this.player, this.kunai)
+
+      this.addKeyboardControls()
 
     if (this.lives === 0) {
       this.player.anims.play('ko', true)
@@ -145,7 +156,17 @@ var gamePlayState = new Phaser.Class({
       this.levelWon = false; // so function doesn't get called multiple times
      }
   },
+  addKeyboardControls(){
+    this.hKey.on('down', function(event) {
+      console.log("it's working")
+      this.gamePlayPaused = true;
+      this.scene.start('MainMenu');
+    });
+    //this.pKey.on('down', function(event) { /* ... */ });
+    //this.nKey.on('down', function(event) { /* ... */ });
 
+
+  },
   buildBGandPlatforms: function (platforms) {
     //64 represents the center of the tiles
 
@@ -316,6 +337,8 @@ var gamePlayState = new Phaser.Class({
     // player.animations.add('tenIdle', Phaser.Animation.generateFrameNumbers('tenIdle'), 30, true);
   },
   addPlayerControls: function (cursors, player, kunai) {
+
+
     let count = 0
 
     if (

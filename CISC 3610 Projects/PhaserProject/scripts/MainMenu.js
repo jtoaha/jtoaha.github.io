@@ -19,7 +19,7 @@ var mainMenuState = new Phaser.Class({
       10,
       'There have been a string of abductions of youth with metagenes. The mysterious special forces entity known as the Rescue Ops has sent Ten on a stealth mission to rescue Little Red and Little Blue. Help Ten defeat the Android guarding them and guide them to safety. ',
       {
-        fontFamily: 'futura, Georgia, "Goudy Bookletter 1911", Times, serif',
+        fontFamily: 'Consolas, Inconsolata, futura, Georgia, "Goudy Bookletter 1911", Times, serif',
         color: '#ff00ff',
         fontSize: '30px',
         align: 'justify',
