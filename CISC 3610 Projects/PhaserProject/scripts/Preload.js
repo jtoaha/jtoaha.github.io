@@ -99,6 +99,15 @@ var preloadState = new Phaser.Class({
       frameHeight: 480,
     })
 
+    //LOAD AUDIO
+    this.load.audio('pop', 'assets/audio/pop.mp3');
+    this.load.audio('thud', 'assets/audio/thud.mp3');
+    this.load.audio('get', 'assets/audio/zelda-get.mp3');
+    this.load.audio('victory', 'assets/audio/zelda-victory.mp3');
+    this.load.audio('explosion', 'assets/audio/explosion.mp3');
+    this.load.audio('gameover', 'assets/audio/game-over.mp3');
+    this.load.audio('punch', 'assets/audio/punch.mp3');
+
     //this.scene.start('MainMenu');
   },
 

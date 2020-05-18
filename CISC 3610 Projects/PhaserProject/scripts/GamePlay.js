@@ -117,7 +117,7 @@ var gamePlayState = new Phaser.Class({
     //this.physics.add.collider(this.android, kunaiBullet.visible, this.androidLose, null, this);
 
     //add Red
-    this.red = this.physics.add.sprite(200, 10, 'redIdle').setScale(0.17)
+    this.red = this.physics.add.sprite(100, 10, 'redIdle').setScale(0.17)
     this.buildPhysics(this.red, this.platforms)
     this.red.rescued = false
     this.red.anims.play('rIdle', true)
@@ -131,32 +131,25 @@ var gamePlayState = new Phaser.Class({
 
 
     this.nKey.on('down', (event) => {
-      console.log(this.scene, "before")
+      if(!myGame.isGamePlayPaused) this.scene.switch('MainMenu')
 
-      if(!myGame.isGamePlayPaused){
-        this.scene.switch('MainMenu')
-      }
-
-        myGame.isGamePlayPaused = true
+      myGame.isGamePlayPaused = true
       myGame.isGamePlayPausedState = this.scene;
-
-
-
-      // this.scene.start('MainMenu')
-      console.log(this.scene, "after")
     });
 
     this.hKey.on('down', (event) => {
-      console.log(this.scene, "before")
-      //this.scene.start('MainMenu')
-
-      //myGame.isGamePlayPaused = true;
-      this.scene.resume()
-
-
-      // this.scene.start('MainMenu')
-      console.log(this.scene, "after")
+      if(!myGame.isGamePlayPaused) this.scene.switch('MainMenu')
+      myGame.isGamePlayPaused = true
+      myGame.isGamePlayPausedState = this.scene;
     });
+    this.pKey.on('down', (event) => {
+      if(!myGame.isGamePlayPaused) this.scene.switch('MainMenu')
+      myGame.isGamePlayPaused = true
+      myGame.isGamePlayPausedState = this.scene;
+    });
+
+    this.victoryMusic = this.sound.add('victory');
+
   },
 
   update: function () {
@@ -481,6 +474,7 @@ var gamePlayState = new Phaser.Class({
   },
   playerLose: function () {
     console.log(this.lives)
+    this.sound.play('punch');
     this.player.anims.play('ko', true)
     console.log(this.hearts)
   },
@@ -510,7 +504,7 @@ var gamePlayState = new Phaser.Class({
       star.y = 200
       star.lives--
     }
-
+    this.sound.play('pop');
     this.score += 2
     this.scoreText.setText('Score: ' + this.score)
   },
@@ -589,6 +583,7 @@ var gamePlayState = new Phaser.Class({
     }
   },
   addTeleportationPoint() {
+    this.sound.play('get')
     this.telepointSprite = this.physics.add
       .sprite(100, 400, 'telepoint')
       .setScale(0.3)
@@ -662,10 +657,12 @@ var gamePlayState = new Phaser.Class({
     }
   },
   androidLose: function () {
+    this.sound.play('thud');
     this.androidNumLives--
     this.score += 5
     this.scoreText.setText('Score: ' + this.score)
     if (this.androidNumLives < 0) {
+      this.sound.play('explosion');
       this.android.visible = false
       this.android.disableBody(true, true)
       this.red.rescued = true
@@ -695,15 +692,20 @@ var gamePlayState = new Phaser.Class({
     )
   },
   tenTeleport: function() {
+
     if (this.player.visible) {
       this.score += 10
       this.scoreText.setText('Score: ' + this.score)
-    }
+      this.victoryMusic.play();
+
+      }
+
     this.player.visible = false
     this.levelWon = true
   },
   displayLoss: function(){
     //this.stars.disableBody(true, true);
+    if(this.red.visible) this.sound.play('gameover');
     this.red.visible = false
     this.android.visible = false
     this.add.text(
@@ -730,6 +732,8 @@ var gamePlayState = new Phaser.Class({
     this.displayResetButton();
   },
   displayWin: function(){
+
+
     this.add.text(
       100,
       200,
@@ -758,6 +762,7 @@ var gamePlayState = new Phaser.Class({
     this.resetButton = this.add.sprite(config.width / 2, 400, 'reset').setScale(.3)
     this.resetButton.setInteractive()
     this.resetButton.on('pointerup', () => {
+      this.victoryMusic.stop();
       this.scene.start('MainMenu');
     })
   }
