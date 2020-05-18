@@ -8,41 +8,55 @@ var preloadState = new Phaser.Class({
   // Preload images for this state
 
 
+
       //Ten character spritesheets
       this.load.spritesheet('tenIdle', 'assets/sprites/ten-idle.png',{frameWidth: 290, frameHeight: 500});
-    //   this.load.spritesheet('tenRun', 'assets/sprites/ten-run.png', {frameWidth: 376, frameHeight: 520});
-    //   this.load.spritesheet('tenJump', 'assets/sprites/ten-jump.png', {frameWidth: 376, frameHeight: 520});
-    //   this.load.spritesheet('tenDead', 'assets/sprites/ten-dead-9.png', {frameWidth: 578, frameHeight: 599});
-    //   this.load.spritesheet('tenAttack', 'assets/sprites/ten-attack.png', {frameWidth: 524, frameHeight: 565});
-    //   this.load.spritesheet('tenGlide', 'assets/sprites/ten-glide.png', {frameWidth: 505, frameHeight: 574});
-    //   this.load.spritesheet('tenSlide', 'assets/sprites/ten-Slide.png', {frameWidth: 397, frameHeight: 401});
-    //   this.load.spritesheet('tenJumpThrow', 'assets/sprites/ten-jump-throw.png', {frameWidth: 425, frameHeight: 597});
+      this.load.spritesheet('tenRun', 'assets/sprites/ten-run.png', {frameWidth: 376, frameHeight: 520});
+      this.load.spritesheet('tenJump', 'assets/sprites/ten-jump.png', {frameWidth: 399, frameHeight: 543});
+      this.load.spritesheet('tenDead', 'assets/sprites/ten-dead-9.png', {frameWidth: 578, frameHeight: 599});
+      this.load.spritesheet('tenAttack', 'assets/sprites/ten-attack.png', {frameWidth: 524, frameHeight: 565});
+      this.load.spritesheet('tenGlide', 'assets/sprites/ten-glide.png', {frameWidth: 505, frameHeight: 574});
+      this.load.spritesheet('tenSlide', 'assets/sprites/ten-Slide.png', {frameWidth: 397, frameHeight: 401});
+      this.load.spritesheet('tenJumpThrow', 'assets/sprites/ten-jump-throw.png', {frameWidth: 425, frameHeight: 497});
 
-    //   this.load.image('redKunai', 'assets/sprites/kunai.png');
-
-
-    // // Red Character spritesheets
-    // this.load.spritesheet('redDead', 'assets/sprites/red-dead-30.png', {frameWidth: 601, frameHeight: 502});
-    this.load.spritesheet('redIdle', 'assets/sprites/red-idle-16.png', {frameWidth: 415, frameHeight: 454});
-    // this.load.spritesheet('redJump', 'assets/sprites/red-jump-30.png', {frameWidth: 416, frameHeight: 454});
-    // this.load.spritesheet('redRun', 'assets/sprites/red-run-20.png', {frameWidth: 416, frameHeight: 454});
+      this.load.image('redKunai', 'assets/sprites/kunai.png');
 
 
-    // //Android Character spritesheets
-    // this.load.spritesheet('androidIdle', 'assets/sprites/android-idle.png', {frameWidth: 290, frameHeight: 500});
+    // Red Character spritesheets
+    this.load.spritesheet('redDead', 'assets/sprites/red-dead-30.png', {frameWidth: 601, frameHeight: 502});
+    this.load.spritesheet('redIdle', 'assets/sprites/red-idle-16.png', {frameWidth: 416, frameHeight: 454});
+    this.load.spritesheet('redJump', 'assets/sprites/red-jump-30.png', {frameWidth: 415, frameHeight: 454});
+    this.load.spritesheet('redRun', 'assets/sprites/red-run-20.png', {frameWidth: 416, frameHeight: 454});
 
 
-    // //Background Items
+    //Android Character spritesheets
+    this.load.spritesheet('androidIdle', 'assets/sprites/android-idle.png', {frameWidth: 567, frameHeight: 556});
+
+
+    //Background Items
     this.load.image('bg', 'assets/sprites/BG.png')
-
+    this.load.image('groundLeft', 'assets/tiles/ground-left.png')
+    this.load.image('groundMiddle', 'assets/tiles/ground-middle.png')
+    this.load.image('groundRight', 'assets/tiles/ground-right.png')
+    this.load.image('floatL', 'assets/tiles/ground-float-l.png')
+    this.load.image('floatM', 'assets/tiles/ground-float-m.png')
+    this.load.image('floatR', 'assets/tiles/ground-float-r.png')
     this.load.image('title', 'assets/title/rescue-ops-logo.png')
     this.load.image('name', 'assets/title/logo-name.png')
     this.load.image('start', 'assets/title/start-button.png')
-    // //Misc Items
-    // this.load.image('heartContainer', 'assets/sprites/heart-container');
-    // this.load.image('heartLife', 'assets/sprites/heart-life');
-    // this.load.image('flowerBullets', 'assets/sprites/flower-bullets');
-    // this.load.image('flowerHealing', 'assets/sprites/flower-healing');
+
+    //Misc Items
+    this.load.image('heartContainer', 'assets/sprites/heart-container.png');
+    this.load.image('heartLife', 'assets/sprites/heart-life.png');
+    this.load.image('flowerBullets', 'assets/sprites/flower-bullets.png');
+    this.load.image('flowerHealing', 'assets/sprites/flower-healing.png');
+
+    this.load.image('ballEnemy', 'assets/sprites/ball-purple.png');
+    this.load.image('star', 'assets/sprites/star.png');
+    this.load.spritesheet('telepoint', 'assets/sprites/tele-compact.png', {frameWidth: 438, frameHeight: 480});
+
+
+
 
       //this.scene.start('MainMenu');
 
@@ -68,8 +82,8 @@ var preloadState = new Phaser.Class({
         this.startButton.setInteractive();
         this.startButton.on('pointerup', ()=>{
               //temp while I get Main menu set up
-              this.scene.start('GamePlay');
-              //this.scene.start('MainMenu');
+              // this.scene.start('GamePlay');
+              this.scene.start('MainMenu');
 
       });
 
