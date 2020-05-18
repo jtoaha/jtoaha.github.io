@@ -193,7 +193,7 @@ var mainMenuState = new Phaser.Class({
       fontFamily: 'Futura',
       fontWeight: 'bold',
     })
-    this.add.image(950, 320, 'redKunai').setScale(0.4)
+    this.add.sprite(950, 320, 'redKunai').setScale(0.4)
 
     //add left and right
     this.add.image(975, 375, 'rightleft')
