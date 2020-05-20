@@ -5,17 +5,18 @@ body{
 }
 
 #title{
-  width: 103%;
+  width: 50%;
   padding: .1em;
   margin-bottom: .25em;
-  margin-left: -1em;
+  margin-left: 25%;
+  margin-right: 25%;
   margin-top: -.25em;
   text-align: center;
   letter-spacing: 4px;
   font-size: 2em;
   font-family: 'Arial Black';
   font-weight: 900;
-  background-color: #ffbd69;
+  /* background-color: #ffbd69; */
   /* text-shadow: 2px 2px 5px gainsboro; */
 
 }
@@ -24,7 +25,8 @@ h3{
   padding: .25em;
   text-align: center;
   color: #202040;
-  background-color: #ff6363;
+  /* background-color: #ff6363; */
+  background-color:   #ffbd69;
   letter-spacing: 2px;;
 }
 
