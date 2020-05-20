@@ -1,9 +1,13 @@
+body{
+  background-color: rgb(133, 92, 128);
+}
 #my-canvas{
-    margin-left: auto;
-  margin-right: auto;
+    margin-left: 5%;
+     margin-right: 5%;
 }
 
 h1{
+  color: rgb(255, 178, 246);
   text-align: center;
-  font-family: arial;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

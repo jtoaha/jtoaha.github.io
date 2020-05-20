@@ -1,3 +1,6 @@
+/* eslint-disable max-statements*/
+/* eslint-disable complexity*/
+
 var canvas = undefined;
 var canvasContext = undefined;
 
@@ -10,31 +13,31 @@ var helloKittyCurrentFrame;
 
 var linkRunSpriteSheet;
 var linkRunCurrentFrame;
-var klScale = 2 // scale for Kitty and Link
-var klY = 0;
+var klScale; // scale for Kitty and Link
+var klY;
 
 var bb8SpriteSheet;
 var bb8CurrentFrame;
-var bb8X = 0;
+var bb8X;
 
 var sashaSpriteSheet;
 var sashaCurrentFrame;
 
 var gokuSpriteSheet;
 var gokuCurrentFrame;
-var gokuX = -140;
+var gokuX;
 
 var catitudeSpriteSheet;
 var catitudeCurrentFrame;
-var catitudeX = 100;
+var catitudeX;
 
 var ppgWalkSpriteSheet;
 var ppgWalkCurrentFrame;
-var ppgWalkX = 100;
+var ppgWalkX;
 
 var roxasSpriteSheet;
 var roxasCurrentFrame;
-var roxasX = 200;
+var roxasX;
 
 var sailorWindSpriteSheet;
 var sailorWindCurrentFrame;
@@ -48,8 +51,8 @@ var bpFlipCurrentFrame;
 var bpRunSpriteSheet;
 var bpRunCurrentFrame;
 
-var bpSwitch = false;
-var bpRunY = -20;
+var bpSwitch;
+var bpRunY;
 
 function start () {
   canvas = document.getElementById('my-canvas');
@@ -68,17 +71,22 @@ function start () {
   //set up Link running
   linkRunSpriteSheet = new Image();
   linkRunSpriteSheet.src = './assets/link-run.png';
-  linkRunCurrentFrame = 0;
+	linkRunCurrentFrame = 0;
+
+	klScale = 2 // scale for Kitty and Link
+	klY = 0;
 
   //set up bb8
   bb8SpriteSheet = new Image();
   bb8SpriteSheet.src = './assets/bb8-rolling.png';
   bb8CurrentFrame = 0;
+	bb8X = 0;
 
   //set up cat with attitude
   catitudeSpriteSheet = new Image();
   catitudeSpriteSheet.src = './assets/cat-attitude.png';
-  catitudeCurrentFrame = 0;
+	catitudeCurrentFrame = 0;
+	catitudeX = 100
 
   //set up Sasha
   sashaSpriteSheet = new Image();
@@ -88,17 +96,20 @@ function start () {
   //set up kid Goku
   gokuSpriteSheet = new Image();
   gokuSpriteSheet.src = './assets/goku-juggling.png';
-  gokuCurrentFrame = 0;
+	gokuCurrentFrame = 0;
+	gokuX = -140;
 
   //set up Powerpuff girls walking
   ppgWalkSpriteSheet = new Image();
   ppgWalkSpriteSheet.src = './assets/ppg-walking.png';
   ppgWalkCurrentFrame = 0;
+	ppgWalkX = 100;
 
   //Roxas walking
   roxasSpriteSheet = new Image();
   roxasSpriteSheet.src = './assets/roxas.png';
   roxasCurrentFrame = 0;
+	roxasX = 200;
 
   //Sailor Moon
   sailorWindSpriteSheet = new Image();
@@ -106,25 +117,32 @@ function start () {
   sailorWindCurrentFrame = 0;
 
   //Teen Titans
-  titansSpriteSheet = new Image();
-  titansSpriteSheet.src = './assets/teen-titans-waiting.png';
-  titansCurrentFrame = 0;
+  // titansSpriteSheet = new Image();
+  // titansSpriteSheet.src = './assets/teen-titans-waiting.png';
+  // titansCurrentFrame = 0;
 
   //Black Panther flip
     bpFlipSpriteSheet = new Image();
     bpFlipSpriteSheet.src = './assets/black-panther-flip.png';
     bpFlipCurrentFrame = 0;
 
-    //Black Panther run
+  //Black Panther run (switches over to different spritesheet)
   bpRunSpriteSheet = new Image();
   bpRunSpriteSheet.src = './assets/black-panther-run.png';
   bpRunCurrentFrame = 0;
-  bpSwitch = false;
+	bpSwitch = false;
+	bpRunY = -20;
+
   mainLoop();
 
 }
 
-document.addEventListener('DOMContentLoaded', start);
+//When all the images are loaded, then the animation will fire
+window.onload = (event) => {
+	console.log('page is fully loaded');
+	start();
+};
+// document.addEventListener('DOMContentLoaded', start);
 
 function update () {
   leviCurrentFrame = Math.abs(leviCurrentFrame + -1);
@@ -149,7 +167,10 @@ function update () {
 
   //adjust Goku frame
   if (gokuCurrentFrame < gokuJSON.frames.length - 1) gokuCurrentFrame++;
-  else gokuCurrentFrame = 0;
+	else gokuCurrentFrame = 0;
+
+	//have Goku stop at a third of the screen
+	if(gokuX < canvas.width/3)
   gokuX++;
 
   //adjust Goku frame
@@ -172,8 +193,8 @@ function update () {
   else sailorWindCurrentFrame = 0;
 
   //adjust Teen Titans frame
-  if (titansCurrentFrame < titansWaitingJSON.frames.length - 1) titansCurrentFrame++;
-  else titansCurrentFrame = 0;
+  // if (titansCurrentFrame < titansWaitingJSON.frames.length - 1) titansCurrentFrame++;
+  // else titansCurrentFrame = 0;
 
   //adjust Black Panther frames (coordinate both spritesheets)
   if (canvas.width + ppgWalkX <= 200) {
@@ -248,6 +269,9 @@ if (canvas.width + ppgWalkX <= 200){
     currentLinkRun.frame.w, currentLinkRun.frame.h,
     canvas.width / 2 - 125, 0 + klY,
     currentLinkRun.frame.w / klScale / 1.5, currentLinkRun.frame.h / klScale / 1.5);
+
+	//draw Speech bubbles between Hello Kitty and Link
+	drawSpeechLinkKitty(klY);
 
   //draw bb8
   let currentbb8 = bb8JSON.frames[bb8CurrentFrame];
@@ -335,4 +359,8 @@ function drawGrass(){
   // Set the fill style and draw a rectangle
   canvasContext.fillStyle = gradient;
   canvasContext.fillRect(0, 150, canvas.width, canvas.height);
+}
+
+function drawSpeechLinkKitty(){
+
 }
