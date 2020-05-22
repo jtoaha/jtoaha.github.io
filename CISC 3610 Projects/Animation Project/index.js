@@ -273,6 +273,7 @@ if (canvas.width + ppgWalkX <= 200){
 	//draw Speech bubbles between Hello Kitty and Link
 	drawSpeechLinkKitty(klY);
 
+
   //draw bb8
   let currentbb8 = bb8JSON.frames[bb8CurrentFrame];
   canvasContext.drawImage(bb8SpriteSheet,
@@ -361,6 +362,105 @@ function drawGrass(){
   canvasContext.fillRect(0, 150, canvas.width, canvas.height);
 }
 
-function drawSpeechLinkKitty(){
+function drawSpeechLinkKitty(currentX, currentY, maxWidth, maxHeight){
+
+  wrapText(canvasContext, "Testing this long phrase Testing this long phrase Testing this long phrase Testing this long phraseTesting this long phrase", canvas.width/3, klY, 60, 10)
+  // // canvasContext.ellipse(canvas.width/2, y, radiusX, radiusY, rotation, startAngle, endAngle [, anticlockwise]);
+  // let texts = ['Oh no!', 'Princess Zelda', 'is in trouble.'];
+  //  currentX= canvas.width/2
+  //  currentY = canvas.height/2
+  //  maxWidth = 60;
+  //  maxHeight = 20
+  // //Link Speech Bubbles
+  // canvasContext.save();
+  // canvasContext.fillStyle = '#ffffff';
+
+  // canvasContext.beginPath();
+  // canvasContext.ellipse(currentX, currentY, maxWidth, maxHeight*texts.length, 0, 0, Math.PI*2);
+  // canvasContext.fill();
+
+  //   //Add Text
+  //   canvasContext.font = '20px Trebuchet MS'
+  //   canvasContext.fillStyle = '#000000'
+  //   canvasContext.textAlign = 'center'
+  //   for (let i = 0 ; i < texts.length; i++) {
+  //     canvasContext.fillText(
+  //       texts[i],
+  //       currentX,
+  //       currentY - 20*,
+  //       maxWidth*1.75
+  //     )
+  //   }
+  //   canvasContext.fillText(
+  //     'Oh no!',
+  //     currentX,
+  //     currentY - 20,
+  //     maxWidth*1.75
+  //   )
+  //   canvasContext.fillText(
+  //     'Princess Zelda',
+  //     currentX,
+  //     currentY,
+  //     maxWidth*1.75
+  //   )
+  //   canvasContext.fillText(
+  //     'is in trouble.',
+  //     currentX,
+  //     currentY+20,
+  //     maxWidth*1.75
+  //   )
+
+
+
+
+
+  canvasContext.restore();
+}
+
+function drawSpeechHelper(){
 
 }
+/**
+Link: Oh no! Princess Zelda is in trouble.
+//Ganondorf is at it again
+// We need to hurry
+Hello Kitty: On it!
+//Don't you worry.
+I, Hello Kitty, will lend you my powers!
+
+Link: Thanks! :)
+// Hey wasn't Black Panther supposed to come with us
+
+Hello Kitty: //Yes, I actually opened up a portal for him
+// He should be arriving any minute
+
+Link: Great.
+
+Levi: You know you can try to clean your screen once in a while.
+
+
+
+ *
+ */
+
+ //Wraps text on the canvas. Source Code: https://www.html5canvastutorials.com/tutorials/html5-canvas-wrap-text-tutorial/
+  function wrapText(context, text, x, y, maxWidth, lineHeight) {
+    var words = text.split(' ');
+    var line = '';
+
+    for(var n = 0; n < words.length; n++) {
+      var testLine = line + words[n] + ' ';
+      var metrics = context.measureText(testLine);
+      var testWidth = metrics.width;
+      if (testWidth > maxWidth && n > 0) {
+        context.fillText(line, x, y);
+        line = words[n] + ' ';
+        y += lineHeight;
+      }
+      else {
+        line = testLine;
+      }
+    }
+    context.fillText(line, x, y);
+  }
+
