@@ -271,7 +271,7 @@ if (canvas.width + ppgWalkX <= 200){
     currentLinkRun.frame.w / klScale / 1.5, currentLinkRun.frame.h / klScale / 1.5);
 
 	//draw Speech bubbles between Hello Kitty and Link
-	drawSpeechLinkKitty(klY);
+	drawSpeechLinkKitty(canvas.width / 2 - 125);
 
 
   //draw bb8
@@ -363,9 +363,165 @@ function drawGrass(){
 }
 
 function drawSpeechLinkKitty(currentX, currentY, maxWidth, maxHeight){
+  canvasContext.save()
 
-  wrapText(canvasContext, "Testing this long phrase Testing this long phrase Testing this long phrase Testing this long phraseTesting this long phrase", canvas.width/3, klY, 60, 10)
-  // // canvasContext.ellipse(canvas.width/2, y, radiusX, radiusY, rotation, startAngle, endAngle [, anticlockwise]);
+  if(klY>28 && klY < 60) {
+  // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+    canvasContext.fillStyle = '#ffffff'
+    canvasContext.beginPath();
+    canvasContext.ellipse(currentX-20, klY+10, 75, 10*3, 0, 0, Math.PI*2);
+    canvasContext.fill();
+
+    canvasContext.fillStyle = 'green'
+    canvasContext.font = '14px Trebuchet MS'
+    wrapText(canvasContext, "Oh no! Princess Zelda is in trouble.", canvas.width/3+10, klY, 100, 15)
+
+  }
+
+  if(klY > 45 && klY < 70){
+  //hello Kitty
+  canvasContext.fillStyle = '#ffffff'
+  canvasContext.beginPath();
+  canvasContext.ellipse(currentX+ 265, klY+30, 50, 10*2.25, 0, 0, Math.PI*2);
+  canvasContext.fill();
+
+  canvasContext.fillStyle = '#ff00ff'
+  canvasContext.font = '14px Trebuchet MS'
+  wrapText(canvasContext, "That darn Ganondorf", currentX+ 230, klY+27, 100, 15)
+
+  }
+
+  if(klY> 75 && klY < 110) {
+    // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+      canvasContext.fillStyle = '#ffffff'
+      canvasContext.beginPath();
+      canvasContext.ellipse(currentX-10, klY+10, 50, 10*2.5, 0, 0, Math.PI*2);
+      canvasContext.fill();
+
+      canvasContext.fillStyle = 'green'
+      canvasContext.font = '14px Trebuchet MS'
+      wrapText(canvasContext, "We need to hurry.", canvas.width/3+30, klY+10, 100, 15)
+
+    }
+
+    if(klY > 100 && klY < 120){
+      //hello Kitty
+      canvasContext.fillStyle = '#ffffff'
+      canvasContext.beginPath();
+      canvasContext.ellipse(currentX+ 265, klY+30, 50, 10*2.25, 0, 0, Math.PI*2);
+      canvasContext.fill();
+
+      canvasContext.fillStyle = '#ff00ff'
+      canvasContext.font = '14px Trebuchet MS'
+      wrapText(canvasContext, "On it. Don't you worry!", currentX+ 230, klY+27, 100, 15)
+
+      }
+
+      if(klY > 120 && klY < 150){
+        //hello Kitty
+        canvasContext.fillStyle = '#ffffff'
+
+        // canvasContext.ellipse(currentX+ 265, klY+30, 50, 10*2.25, 0, 0, Math.PI*2);
+        canvasContext.beginPath();
+        canvasContext.ellipse(currentX+ 265, klY+10, 75, 10*3, 0, 0, Math.PI*2);
+        canvasContext.fill();
+
+
+        canvasContext.fillStyle = '#ff00ff'
+        canvasContext.font = '14px Trebuchet MS'
+        wrapText(canvasContext, "I, Hello Kitty, will lend you my powers!", currentX+ 230, klY, 100, 15)
+
+        }
+        if(klY> 150 && klY < 170) {
+          //link
+          // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            canvasContext.fillStyle = '#ffffff'
+            canvasContext.beginPath();
+            canvasContext.ellipse(currentX-10, klY+10, 50, 10*2.5, 0, 0, Math.PI*2);
+            canvasContext.fill();
+
+            canvasContext.fillStyle = 'green'
+            canvasContext.font = '14px Trebuchet MS'
+            wrapText(canvasContext, "Thanks! :)", canvas.width/3+30, klY+10, 100, 15)
+
+          }
+          if(klY> 270 && klY < 290) {
+            //link
+            // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+              canvasContext.fillStyle = '#ffffff'
+              canvasContext.beginPath();
+              canvasContext.ellipse(currentX-30, klY+10, 100, 10*4, 0, 0, Math.PI*2);
+              canvasContext.fill();
+
+              canvasContext.fillStyle = 'green'
+              canvasContext.font = '13px Trebuchet MS'
+              wrapText(canvasContext, "... Hey wasn't Black Panther supposed to come with us?", canvas.width/3-20, klY-5, 150, 20)
+
+            }
+
+            if(klY > 290 && klY < 310){
+              //hello Kitty
+              canvasContext.fillStyle = '#ffffff'
+
+              // canvasContext.ellipse(currentX+ 265, klY+30, 50, 10*2.25, 0, 0, Math.PI*2);
+              canvasContext.beginPath();
+              canvasContext.ellipse(currentX+ 265, klY+10, 75, 10*3, 0, 0, Math.PI*2);
+              canvasContext.fill();
+
+
+              canvasContext.fillStyle = '#ff00ff'
+              canvasContext.font = '14px Trebuchet MS'
+              wrapText(canvasContext, "Yes, I actually opened up a portal for him", currentX+ 230, klY, 100, 15)
+
+              }
+
+              if(klY > 310 && klY < 340){
+                //hello Kitty
+                canvasContext.fillStyle = '#ffffff'
+
+                // canvasContext.ellipse(currentX+ 265, klY+30, 50, 10*2.25, 0, 0, Math.PI*2);
+                canvasContext.beginPath();
+                canvasContext.ellipse(currentX+ 265, klY+10, 75, 10*3, 0, 0, Math.PI*2);
+                canvasContext.fill();
+
+
+                canvasContext.fillStyle = '#ff00ff'
+                canvasContext.font = '14px Trebuchet MS'
+                wrapText(canvasContext, "He should be arriving any minute", currentX+ 230, klY, 100, 15)
+
+                }
+
+                if(klY> 340 && klY < 360) {
+                  //link
+                  // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                    canvasContext.fillStyle = '#ffffff'
+                    canvasContext.beginPath();
+                    canvasContext.ellipse(currentX-10, klY+10, 50, 10*2.5, 0, 0, Math.PI*2);
+                    canvasContext.fill();
+
+                    canvasContext.fillStyle = 'green'
+                    canvasContext.font = '14px Trebuchet MS'
+                    wrapText(canvasContext, "Great", canvas.width/3+50, klY+10, 100, 15)
+
+                  }
+
+                  if(klY> 600 && klY < 720) {
+                    //LEVI speech bubble
+                    // function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                      canvasContext.fillStyle = '#ffffff'
+                      canvasContext.beginPath();
+                      canvasContext.ellipse(300, 310, 150, 10*4, 0, 0, Math.PI*2);
+                      canvasContext.fill();
+
+                      canvasContext.fillStyle = 'brown'
+                      canvasContext.font = '17px Trebuchet MS'
+                      wrapText(canvasContext, "Hey, would it kill you to clean your screen once in a while...", 175, 310, 300, 15)
+
+                    }
+
+  console.log(klY);
+
+  // canvasContext.ellipse(canvas.width/2, y, radiusX, radiusY, rotation, startAngle, endAngle [, anticlockwise]);
   // let texts = ['Oh no!', 'Princess Zelda', 'is in trouble.'];
   //  currentX= canvas.width/2
   //  currentY = canvas.height/2
@@ -375,9 +531,7 @@ function drawSpeechLinkKitty(currentX, currentY, maxWidth, maxHeight){
   // canvasContext.save();
   // canvasContext.fillStyle = '#ffffff';
 
-  // canvasContext.beginPath();
-  // canvasContext.ellipse(currentX, currentY, maxWidth, maxHeight*texts.length, 0, 0, Math.PI*2);
-  // canvasContext.fill();
+
 
   //   //Add Text
   //   canvasContext.font = '20px Trebuchet MS'
