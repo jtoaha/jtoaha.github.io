@@ -91,6 +91,7 @@ body {
   overflow: scroll; */
   background-color: white;
   color: black;
+  font-family: 'Futura';
 }
 
 #portfolio-content >p {
@@ -168,7 +169,7 @@ body {
 
 .project-tile {
   margin: 1em;
-  padding: 2em;
+  padding: 2.5em;
   min-width: 20%;
   max-width: 20%;
   max-height: 33%;
