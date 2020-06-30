@@ -1,0 +1,47 @@
+body{
+  padding: 1em;
+/*     background-image: url("https://i.ibb.co/KjwkMxp/corner-art.png");
+  background-position: 97% 3%;
+  background-repeat: no-repeat;
+  background-size: 25%;
+  background-color: #00000; */
+}
+
+#quote-machine{
+  padding: 2em;
+  margin: 10%;
+  margin-top: 20%;
+
+  color: #679b9b;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%;
+}
+
+#quote-area{
+  height: 36vh;
+}
+
+#text{
+  text-align: justify;
+}
+
+#author{
+text-align: right;
+  letter-spacing: 1px;
+  color: gray;
+}
+
+/* .btn-custom{
+  background-color: #00acee;
+} */
+
+#button-section{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.transition-custom{
+   transition-timing-function: ease-in;
+}

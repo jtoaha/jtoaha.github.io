@@ -87,6 +87,8 @@ body {
 
 
 #portfolio-content{
+  /* height: 100vh;
+  overflow: scroll; */
   background-color: white;
   color: black;
 }
