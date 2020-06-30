@@ -99,16 +99,9 @@ body {
   text-align: justify;
 }
 
-#cisc3610{
+
+#cisc3610, #cisc3620, #content, #fcc{
   /* padding-top: 6em;
-  height: 100vh; */
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#cisc3620, #content{
-
   /* height: 100vh; */
   width: 80%;
   margin-left: auto;
