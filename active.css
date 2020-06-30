@@ -86,7 +86,7 @@ body {
 }
 
 
-#portfolio-content{
+#portfolio-content, #resume-content{
   /* height: 100vh;
   overflow: scroll; */
   background-color: white;
@@ -100,7 +100,18 @@ body {
   text-align: justify;
 }
 
+#resume {
+  background-color: #7e2955;
+  color: white;
+  padding: 1em;
+  margin: 1em;
+}
 
+#resume-content p {
+  color: #213c64;
+  padding: 1em;
+  text-align: justify;
+}
 #cisc3610, #cisc3620, #content, #fcc{
   /* padding-top: 6em;
   /* height: 100vh; */
