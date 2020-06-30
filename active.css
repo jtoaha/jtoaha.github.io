@@ -172,7 +172,9 @@ body {
 }
 
 .project-tile {
+  margin: 1em;
   padding: 2em;
+  min-width: 20%;
   max-width: 20%;
   max-height: 33%;
   border-radius: 5%;
@@ -182,11 +184,28 @@ body {
   color: white;
 }
 
-.project-tile > img, p {
+.project-tile > a> img {
   max-width: 100%;
 
 }
+.project-tile > a{
+  text-decoration: none;
 
+}
+.project-tile > a:visited, .project-tile > a {
+  color: white;
+}
+
+.project-tile:hover{
+  background-color: #ba3e7e;
+}
+
+#project-list-3610 > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
 #littlered >img {
   background: url("https://i.ibb.co/TgD3ZKW/little-red-still-gif.gif") no repeat;
 }
