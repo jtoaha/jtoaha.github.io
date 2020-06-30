@@ -54,7 +54,6 @@ body {
 
 #welcome-section{
   height: 100vh;
-
 }
 
 #welcome-header {
@@ -77,6 +76,21 @@ body {
   text-align: center;
 }
 
+#portfolio {
+
+  background-color: #213c64;
+  color: white;
+  padding: 1em;
+  border-radius: 10px;
+  margin: 1em;
+
+}
+#portfolio >p {
+  background-color: white;
+  color: black;
+  padding: 1em;
+  text-align: justify;
+}
 #cisc3610{
   padding-top: 6em;
   height: 100vh;
