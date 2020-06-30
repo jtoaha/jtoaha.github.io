@@ -200,7 +200,7 @@ body {
   background-color: #ba3e7e;
 }
 
-#project-list-3610 > div {
+.project-list > div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

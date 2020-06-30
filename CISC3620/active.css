@@ -1,0 +1,20 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+#home-icon{
+  margin-left: 3em;
+  font-size: 1em;
+  padding: .75em;
+  position:fixed;
+}
+
+#cisc3620{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.codepen{
+  padding: 1em;
+}
