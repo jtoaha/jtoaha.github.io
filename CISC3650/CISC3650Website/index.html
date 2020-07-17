@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>chill beats</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="active.css">
+    <link rel="icon" href="./images/keep me chilled logo.png">
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+
+    <div id="front-page">
+      <nav id="nav-bar">
+        <ul id="nav-list">
+          <li class="nav-link"><a href="index.html">Home</a></li class="nav-link">
+          <li class="nav-link"><a href="chillmode.html">Chill Mode</a></li>
+          <li class="nav-link"><a href="aboutus.html">About Us</a></li>
+        </ul>
+      </nav>
+      <div id="front-cover">
+
+        <br>
+        <br>
+        <br>
+        <div id="title-and-img">
+        <p id="main-title">chill beats </p>
+        <img id="front-image" src="./images/keep me chilled logo.png">
+        </div>
+
+        <p id="front-page-subtitle">curate and design your own personalized mixes and workspace<br>
+        <a class="acenter" href=#curated-collection-wrapper>Get Started!</a>
+        </p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="color-canvases">
+          <canvas id="canvas0" height="40" width="40"></canvas>
+          <canvas id="canvas1" height="40" width="40"></canvas>
+          <canvas id="canvas2" height="40" width="40"></canvas>
+          <canvas id="canvas3" height="40" width="40"></canvas>
+          <canvas id="canvas4" height="40" width="40"></canvas>
+          <canvas id="canvas5" height="40" width="40"></canvas>
+          <canvas id="canvas6" height="40" width="40"></canvas>
+          <canvas id="canvas7" height="40" width="40"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <section id="curated-collection-wrapper">
+      <h3>Chill Beats' Curated Collection</h3>
+      <div id="curated-collection-preview">
+      </div>
+      <a class="acenter" href="chillmode.html">Chill Mode</a>
+    </section>
+
+
+    <div id="user-collection">
+      <h3>Create your own collection</h3>
+
+        <form id="collect-user-link">
+          <label for="user-link-title">Enter Preferred Title for your Link:</label>
+          <input id= "user-link-title" type="text">
+          <label for="user-link">Enter a YouTube link of your choice:</label>
+          <input id= "user-link" type="url">
+          <button onclick="createUserCollection();return false;"></button>Add</button>
+        </form>
+        <p id="confirm-link"></p>
+      <div id="user-collection-preview">
+      </div>
+    </div>
+
+    <div id="change-background-color">
+      <h3>Choose a Background Color</h3>
+      <div id="color-canvases2">
+        <canvas id="canvas8" height="40" width="40"></canvas>
+        <canvas id="canvas9" height="40" width="40"></canvas>
+        <canvas id="canvas10" height="40" width="40"></canvas>
+        <canvas id="canvas11" height="40" width="40"></canvas>
+        <canvas id="canvas12" height="40" width="40"></canvas>
+        <canvas id="canvas13" height="40" width="40"></canvas>
+        <canvas id="canvas14" height="40" width="40"></canvas>
+        <canvas id="canvas15" height="40" width="40"></canvas>
+        <canvas id="canvas16" height="40" width="40"></canvas>
+        <canvas id="canvas17" height="40" width="40"></canvas>
+        <canvas id="canvas18" height="40" width="40"></canvas>
+      </div>
+    </div>
+
+    <div id= "choose-background-image">
+      <h3>Choose a Background Image</h3>
+      <div id="background-image-preview-wrapper">
+        <br>
+          <div id="background-image-preview" ondrop="drop(event)" ondragover="allowDrop(event)">
+            drag and drop an image of your preference
+          </div>
+          <br>
+        </div>
+
+       <div id="image-choices">
+       </div>
+    </div>
+    <a class="acenter" href="chillmode.html#user-collection-chill">Chill Mode</a>
+
+    </div>
+
+    <div id= "best-artists">
+
+    </div>
+
+    <div id= "motivational-quotes">
+
+    </div>
+<div id="misc">
+    <div id="capitalize-section">
+      <h3>
+        For fun, enter sample text:
+      </h3>
+      <span>
+        <label id="capitalize-label" for="capitalize"></label>
+        <input id="capitalize" oninput="enableCapitalButton()" type="text" placeholder="Enter text">
+        <button id= "capital-button" onclick="capitalizeText()">Convert to Capital Case</button>
+      </span>
+      <p id="capitalize-output"></p>
+    </div>
+
+    <div id="create-account">
+      <h3>
+        Create an account to save preferences for next time.
+      </h3>
+      <form id="account-form">
+
+        <label id="user-name-label" for="user-name">Choose a Username:*</label><br/>
+        <input id="user-name" onchange='checkUserName()' type="text" placeholder="Enter your name" required>
+        <br/>
+        <br/>
+
+        <label id="name-label" for="name">Name:</label><br/>
+        <input id="name"  type="text" placeholder="Enter your name" required>
+        <br/>
+        <br/>
+
+        <label id="password-1-label" for="password">Enter a password:*</label>
+        <br/>
+        <input id="password-1"  type="password" required>
+        <br/>
+        <br/>
+
+        <label id="password-1-label" for="password">Please re-enter password:*</label>
+        <br/>
+        <input id="password-2" oninput="checkPasswords()" type="password" required>
+        <br/>
+        <br/>
+        <input id="submit-account" type="submit">
+        <br/>
+         <br/>
+      </form>
+
+    </div>
+
+  </div>
+  </body>
+</html>

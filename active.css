@@ -36,7 +36,7 @@ body {
   text-align: center;
 }
 .nav-link> li {
-  padding: .25em;
+  /* padding: .25em; */
   height: 100%;
 }
 

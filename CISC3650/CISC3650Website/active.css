@@ -1,0 +1,328 @@
+/* CSS for front page*/
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Avenir;
+}
+#front-page {
+  height: 100vh;
+  background-image: url(./images/background.gif);
+}
+
+#front-cover{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90%;
+
+}
+
+.nav-link{
+  height: 100%;
+  padding: .3em;
+}
+.nav-link:hover {
+  background: turquoise;
+}
+p{
+  text-align: center;
+}
+
+#nav-bar > ul> li > a {
+  font-family: monaco;
+    text-decoration: none;
+    color: black;
+ }
+
+
+#nav-list {
+  background-color: lightgray;
+  height: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-decoration-style: none;
+  letter-spacing: 1px;
+
+}
+
+.nav-link {
+  height: 100%;
+  list-style-type: none;
+}
+
+
+#title-and-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-title{
+  font-family: Monaco;
+  letter-spacing: 1px;
+  font-weight: 900;
+    font-size:2.5em;
+    font-weight: 900;
+    text-shadow: 2px 3px lavender;
+}
+
+#front-page-subtitle{
+  font-family: Arial;
+  letter-spacing: 2px;
+  color: (50,23,43);
+}
+
+#front-image {
+  align-self: center;
+  width: 4em;
+  padding-bottom: 1em;
+}
+
+
+
+/*CSS for collected information:*/
+
+#category-collection{
+  height: 100vh;
+}
+#g-map{
+ margin-left: 10%;
+ margin-right: 10%;
+ width: 100%;
+}
+
+
+#show-g-map{
+
+}
+#choose-background-image{
+
+}
+
+#background-image-preview-wrapper{
+}
+
+#background-image-preview {
+  border-color:black;
+  border: 4px;
+  background-color: gainsboro;
+  color: darkgray;
+  padding: 1.5em;
+  display: flex;
+  height: 50%;
+  justify-content: center;
+  letter-spacing: 4px;
+}
+
+
+
+#image-choices {
+  display: flex;
+  justify-content: space-between;
+}
+
+#image-choices > img, #background-image-preview> img {
+  max-width: 20%;
+}
+
+/*table css*/
+
+#table-section> table, tr {
+  margin: 1.5em;
+  border: 1px solid black;
+}
+
+caption {
+  font-size: 1.5em;
+}
+th {
+  background-color: #f98f46;
+}
+tr:nth-child(even) {
+  background-color: lightgray;
+}
+
+tr:hover{
+  background-color: #6bc1ed;
+}
+
+/*end table css*/
+
+
+/*CSS for front page curated collection display*/
+#curated-collection-preview, #user-collection-preview, #image-choices, #background-image-preview{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x:auto;
+}
+
+
+#collect-user-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#collect-user-link>input{
+  margin: 1em;
+  padding: .5em;
+}
+
+#collect-user-link>button{
+  margin: 1em;
+  padding: .5em;
+}
+
+/**/
+#capitalize-section{
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#capitalize-output{
+  letter-spacing: 3px;
+  font-size: 2em;
+  font-family: Arial, Helvetica, sans-serif;
+  color: turquoise;
+}
+
+/*ACCOUNT CREATION*/
+#account-form > input:invalid {
+  background: whitesmoke;
+}
+
+#account-form > input:valid {
+  background: lightgreen;
+}
+
+#account-form > input {
+  width: 100%;
+  height: 2em;
+}
+
+#account-form> input[type=submit] {
+  background: gainsboro;
+  letter-spacing: 2px;
+  height: 3em;
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+}
+
+#account-form> input[type=submit]:hover{
+  background: lightseagreen
+
+}
+/*CHILL MODE . HTML*/
+
+#user-collection-expanded, #curated-collection-expand{
+  margin-left: 25%;
+  margin-right: 20%;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
+
+#misc {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+#curated-collection-chill{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*SURVEY SECTION*/
+
+#description{
+  padding: 1em;
+  text-align: center;
+}
+
+#survey-section {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+}
+
+#survey-form {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#survey-form>input {
+  width: 100%;
+  height: 2em;
+}
+
+#survey-form>textarea {
+  width: 100%;
+  height: 4em;
+}
+
+
+#survey-form>input[type='range'] {
+  width: 85%;
+  height: 2em;
+  margin: 1em;
+}
+#survey-form>span {
+  height: 2em;
+}
+
+#survey-form>input[type='submit']{
+  background-color: gainsboro;
+  font-size: 12;
+  letter-spacing: 4px;
+  height: 3em;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#survey-form>input[type='submit']:hover{
+  background: lightseagreen
+}
+
+#about-us{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/*CSS for color picker*/
+#color-canvases {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+#color-canvases2{
+  display:flex;
+  justify-content: space-around;
+}
+
+.acenter{
+  text-decoration: none;
+}
+
+.acenter:hover{
+  color: fuchsia;
+}
+
+select{
+  width: 100%;
+}
+
