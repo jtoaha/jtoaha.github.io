@@ -11,7 +11,7 @@ body {
   position: fixed;
   top: 0px;
   width: 100%;
-  opacity: .8
+  opacity: .8;
 }
 
 #navbar>ul {
@@ -35,9 +35,11 @@ body {
   font-size: 1em;
   text-align: center;
 }
-.nav-link> li {
+.nav-link > li {
   /* padding: .25em; */
   height: 100%;
+  vertical-align: middle;
+  padding-top: .25em;
 }
 
 .nav-link:hover{
@@ -46,10 +48,7 @@ body {
 
 #home-icon{
   opacity: .8;
-  margin-left: 2em;
   font-size: 1em;
-  padding: .5em;
-  position:fixed;
 }
 /* end of nav bar css*/
 
@@ -72,6 +71,7 @@ body {
 
 #myname > h1 {
   font-size: 2em;
+  text-align: center;
 }
 
 #myname > p {
