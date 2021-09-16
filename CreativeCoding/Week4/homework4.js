@@ -4,29 +4,8 @@ Title: Albers Color Studies: three to two colors experiment
 Features: On key press or mouse click, colors change to a random color and drawing can be resized according to canvas
 Modify fork: https://openprocessing.org/sketch/560198#
 
-Note: I have prior experience with coding and p5, so apologies if the code uses sytax you might not realize but I tried to comment where possible.
-
 Author: Jamila Toaha
 Date 5/30/21
-
-
-What color relatedness makes 3 colors look like 2?
-That these 3 colors are analagous colors/ monochromatic, the 3 colors end up looking like 2.
-
-Your assignment:
-Study this visual example.
-Write your observations in a notepad while looking at the colors.
-What is the perceived "brightness" relationship between the two rectangular backgrounds?
-In the original version, the perceived brightness of the right-hand background (lighter green) is brighter than the left hand background (darker green)
-
-Are the small squares brighter or darker than their respective grounds?
-While the small squares are actually the same color(!), the perceived colors are different when matched against their respective background.
-The perceived color of the square on the left hand side is brighter than the original color and its background
-The perceived color of the square on the right hand side is darker in comparision to the background than the original color and its background
-
-Are they more or less "saturated" than their respective grounds?
-In terms of saturation, we know that both backgrounds are less saturated then the color of the square based on the hardcoded values in the code
-
 
 */
 
