@@ -16,6 +16,7 @@ body {
   top: 0px;
   width: 100%;
   opacity: 0.8;
+  z-index: 3;
 }
 
 #navbar > ul {
@@ -146,7 +147,7 @@ body {
 #hci,
 #game-design,
 #fun,
-#cisc3630 {
+#cisc3630, #ig {
   /* padding-top: 6em;
   /* height: 100vh; */
   width: 80%;
@@ -298,6 +299,14 @@ body {
 #geoexamples > img {
   max-width: 30%;
 }
+
+#ig {
+  z-index: 1;
+}
+#ig a {
+  text-decoration: none;
+}
+
 @media (hover: none) and (pointer: course) {
   /*mobile*/
   .project-tile {
