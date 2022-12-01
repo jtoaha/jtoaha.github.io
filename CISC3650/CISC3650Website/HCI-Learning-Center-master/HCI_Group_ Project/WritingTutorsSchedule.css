@@ -1,0 +1,161 @@
+body{
+  height: 100vh /*this is to prevent jarring/ visible loading discrepancies, when gradient adjusts after content that takes a while to load loads*/
+}
+
+#writing-tutors-section{
+  min-width: 50%;
+  max-height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: 1%;
+}
+
+#selected-date-div  { grid-area: 1 / 1 / 3 / 6; }
+#appointment-section { grid-area: 3 / 1 / 13 / 6;}
+#calendar-section { grid-area: 1 / 6 / 7 / 8; }
+#preview  { grid-area: 7 / 6 / 12 / 8; }
+#book-button-section { grid-area: 12 / 6 / 14 /8;}
+
+#calendar-section, #book-button-section{
+  margin-left: 3%;
+}
+
+#preview{
+  margin: 3%;
+}
+
+#book-button-section{
+  align-self: end;
+  /* max-height: 100%;
+  width: 110%; */
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  overflow-x:auto; */
+  /* padding-right:10%; */
+}
+
+
+
+#appointment-section, #preview{
+  overflow-y:auto;
+}
+#appointment-list li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+}
+li > div {
+  margin: 1em;
+  min-width: 20%;
+  max-width: 20%;
+}
+
+.appointment-slot{
+  background-color: rgba(117, 229, 242, 0.5);
+  transition: 0.2s;
+}
+
+.appointment-slot:hover{
+  background-color: rgb(111, 188, 255);
+    transition: 0.3s;
+}
+
+.selectedAppCSS{
+
+  background-color: rgb(103, 184, 255);
+
+
+
+
+}
+
+.selectedAppCSS:hover {
+  /* background-color: rgb(70, 169, 255); */
+  background-color: rgb(94, 175, 247);
+
+}
+
+
+
+.appointment-slot {
+  padding: 1em;
+  border-radius: 10px;
+}
+
+label+input[type="radio"]:checked{
+  background-color: red;
+}
+
+.flex-tutor-location{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 75%;
+
+}
+/* #book-button{
+  margin: 1em;
+} */
+
+
+/* #calendar-section{
+  margin-right: auto;
+  margin-left: auto;
+} */
+
+.previewbg{
+  margin-right: 1em;
+}
+
+.tutor-name, .time, .location{
+  font-weight: normal;
+}
+
+.tutor-name > strong, .time> strong, .location> strong{
+  /* color: darkblue; */
+}
+/**==== CSS for modal: Source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal ===**/
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 75%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+

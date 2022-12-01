@@ -1,0 +1,56 @@
+body{
+    background-color: #A9C9FF;
+    background-image: linear-gradient(135deg, #A9C9FF 0%, #FFBBEC 50%, #ffffff 100%);
+}
+
+/*adds highlight effect for navbar, not sure I like it*/
+.navbar-nav>li{
+    padding: .3em; /*makes up for logo padding*/
+    transition: 0.1s;
+}
+
+.navbar-nav > li:hover{
+    padding: .3em; /*makes up for logo padding*/
+    background-color: #A9C9FF;
+    color: white;
+}
+
+h1{
+    text-align: center;
+    color: darkorchid;
+    padding: 0;
+    font-family: 'Bitter', serif;
+
+}
+h2{
+    text-align: center;
+    color: palevioletred;
+    margin: 30;
+    padding: 0;
+    font-family: 'Bitter', serif;
+}
+h3{
+    color: darkolivegreen;
+    font-family: 'Bitter', serif;
+}
+
+.image-max{
+    width: 100%;
+}
+
+.scheduleTable{
+    width: 95%;
+}
+#schedule-thead>tr>th{
+    background-color: #f08080;
+    border-bottom-color: black;
+}
+
+.nav-logo{
+    padding: .3em;
+}
+
+
+.nav-logo:hover {
+    padding: .3em;
+}

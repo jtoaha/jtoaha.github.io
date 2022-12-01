@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Style3.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <title>Contact Us</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+
+    <script type="text/javascript">
+        function autoFill() {
+            document.getElementById("fN").value = localStorage.getItem("register_firstN");
+            document.getElementById("lN").value = localStorage.getItem("register_lastN");
+            document.getElementById("email").value = localStorage.getItem("register_email");
+            document.getElementById("major").value = localStorage.getItem("register_major");
+            document.getElementById("id").value = localStorage.getItem("register_id");
+            document.getElementById("phoneN").value = localStorage.getItem("register_phoneN");
+            document.getElementById("message").value = localStorage.getItem("register_message");
+            return false;
+        }
+    </script>
+    <style type="text/css">
+        .btn-block {
+            width: 25%;
+        }
+        .contact-info-text a{
+            font-weight: 700;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                    onmouseout="this.src='assets/bclc-logo-v.png';"  alt = "home button">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback2.html">Feedback</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <section class="contact-page-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marked"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>Brooklyn College Learning Center</h2>
+                                <span>1300 Boylan Hall</span>
+                                <span>Brooklyn, New York 11210</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>Office Time</h2>
+                                <span>Monday - Friday:<br> 10:00 AM - 8:00 PM</span>
+                                <span>Saturday - Sunday:<br> 12:00 AM - 4:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>Phone Number</h2>
+                                <a href="tel:7189515821">(718) 951-5821</a><br />
+                                <a href="fax:7189514130">(718) 951-4130</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>E-Mail Address</h2>
+                                <a href="email:lc@brooklyn.cuny.edu">lc@brooklyn.cuny.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="contact-page-form" method="post">
+                        <h2>Information About You</h2>
+                        <button class="btn btn-primary btn-block" onclick="autoFill()">Autofill</button>
+                        <form action="contact-mail.php" method="post">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="fN">First name</label>
+                                        <input type="text" placeholder="First Name" name="name" id="fN" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="lN">Last name</label>
+                                        <input type="text" placeholder="Last Name" name="name" id="lN" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="email">Email</label>
+                                        <input type="email" placeholder="yourname@domain.com" name="email" id="email"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="phoneid">Phone</label>
+                                        <input type="text" placeholder="Phone Number" name="phone" id="phoneid" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="emplid">EMPLID</label>
+                                        <input type="text" placeholder="EMPLID" name="ID" id="emplid" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <label for="major">Major</label>
+                                        <input type="text" placeholder="Major" name="subject" id="major" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 message-input">
+                                    <div class="single-input-field">
+                                        <label for="message">Comment</label>
+                                        <textarea placeholder="Write Your Message" name="message"
+                                            id="message" /></textarea>
+                                    </div>
+                                </div>
+                                <div class="single-input-fieldsbtn">
+                                    <input type="submit" value="Send Now" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- </div>  -->
+                <!--  temp -->
+                <!--  <div class="row"> -->
+                <!--  temp -->
+                <div class="col-md-4">
+                    <div class="contact-page-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.9733879772602!2d-73.95430168474515!3d40.630468850536566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0e68bf8bc1%3A0x487ac68137fac784!2sBrooklyn%20College!5e0!3m2!1sen!2sus!4v1588537059908!5m2!1sen!2sus"
+                            width="360" height="450" frameborder="0" style="border:0;border-radius: 4px;"
+                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div> <!-- div row -->
+        </div>
+    </section>
+</body>
+
+</html>

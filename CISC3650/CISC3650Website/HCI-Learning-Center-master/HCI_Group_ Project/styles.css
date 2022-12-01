@@ -1,0 +1,80 @@
+body{
+    background-color: #A9C9FF;
+    background-image: linear-gradient(135deg, #A9C9FF 0%, #FFBBEC 50%, #ffffff 100%);
+}
+
+h1{
+    text-align: center;
+    color: darkorchid;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+
+}
+.h2{
+    text-align: center;
+    color: palevioletred;
+    margin: 30;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.link {
+    text-align: center;
+    padding: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th,td{
+    padding: 15px;
+    text-align: center;
+}
+#schedule-thead>tr>th{
+    border-bottom-color: black;
+}
+
+#Hours{
+    max-width: 600px;
+    max-height: 600px;
+    padding: 1%;
+    margin: auto;
+    border: 3px dashed deeppink;
+}
+
+.img1{
+    max-width: 32.5%;
+    max-height: auto;
+    margin: auto;
+    display: inline;
+
+}
+.img2{
+    max-width: 32.5%;
+    max-height: auto;
+    margin: auto;
+    display: inline;
+}
+.img3{
+    max-width: 32.5%;
+    max-height: auto;
+    margin: auto;
+    display: inline;
+}
+
+.navbar-nav>li{
+    padding: .3em; /*makes up for logo padding*/
+    transition: 0.1s;
+}
+
+.navbar-nav>li:hover {
+    padding: .3em; /*makes up for logo padding*/
+    background-color: #A9C9FF;
+    color: white;
+}
+
+.nav-logo{
+    padding: .3em;
+
+}
+

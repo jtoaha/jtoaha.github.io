@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  	integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
+	<script src="tutoringcenter.js" defer></script>
+
+<style type="text/css">
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 5px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .login-form label{
+        /*margin-bottom: 20px;*/
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+        /*margin-top: 10px;*/
+        /*margin: 10px auto;
+*/
+    }
+    .formcontrol, .form-footer{
+
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        margin-top:30px; margin-bottom: 0px;
+    }
+    .form-footer a{
+        color: #0A3BB6;
+        font-weight: 500;
+    }
+
+</style>
+
+
+</head>
+<body>
+
+<!-- <h1>Login</h1> -->
+<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="#">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png" alt = "home button"
+                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                    onmouseout="this.src='assets/bclc-logo-v.png';" >
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+
+                    <!-- User shouldn't have access to webpage until logged in
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.html">Create Account</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+<!-- <div class="h1">
+    <h1>Login</h1>
+</div> -->
+
+<div class="container login-form">
+    <div id="formContent">
+        <form method="get" onsubmit="return check(this);" id="Login">
+        <h2>Log in</h2>
+
+        <div class="form-group">
+	       <label>Enter Username:
+		      <input type="text" name="login_username" placeholder="Username" id="login_username" value="" class="form-control" required>
+	       </label>
+
+        </div>
+        <div class="form-group">
+	       <label for="login_password">Enter Password:
+		      <input type="password" name="login_password" placeholder="Password" id="login_password" class="form-control" value="">
+            </label>  
+                <br>
+		      <input type="checkbox" name="toggleMe" onclick=" showPass('login_password')" id="showme"> <label for="showme">Show Password  </label><br>
+            
+        </div>
+
+        <div class="form-group">
+	       <input type="submit" name="Login" id="login_submit" value="Log in" class="btn btn-primary btn-block" disabled="disabled">
+        </div>
+           <p class="form-footer text-center"><a href="register.html">Create an Account</a></p>
+        </form>
+
+    </div>
+
+    <!-- <p class="form-footer text-center"><a href="register.html">Create an Account</a></p> -->
+</div>
+
+<!-- <button onclick="showLoginInfo()">Click Here</button> -->
+
+
+<!-- <script src="validation.js"></script> -->
+</body>
+</html>

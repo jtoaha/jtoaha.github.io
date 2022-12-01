@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tutoring Schedule</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Signup.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+        .h2 {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        .link {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            table-layout: fixed;
+            width: 95%;
+
+        }
+
+        td{
+            padding: 4px;
+        }
+        .table-hover tbody tr:hover td {
+            background: lightgray;
+        }
+        .table-hover tbody tr:hover th{
+            background:lightgray;
+        }
+
+        .scheduleTable {
+            padding-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                    onmouseout="this.src='assets/bclc-logo-v.png';" alt = "home button">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback2.html">Feedback</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="scheduleTable" >
+        <table  class="table-hover table .table-responsive">
+               <div class="h1">
+             <caption>
+                <h1>Tutoring Schedule Spring 2020</h1>
+                </div>
+             <div class="link">
+                <a class ="btn btn-primary" href="tutorform.html" role="button">Sign Up to be a Tutor Today!</a>
+            </div>
+        </caption>
+            <colgroup>
+                <col span="12">
+            </colgroup>
+            <thead id="schedule-thead">
+            <tr>
+                <th scope="col">Class</th>
+                <th scope="col">Sunday</th>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thursday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+            </tr>
+            </thead>
+            <tr>
+                <th scope="row">ACCT 2001</th>
+                <td></td>
+                <td>12 PM to 2 PM</td>
+                <td>1 PM to 3 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td>3 PM to 5 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">ACCT 3001</th>
+                <td></td>
+                <td>12 PM to 2 PM</td>
+                <td>1 PM to 3 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td>3 PM to 5 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">KINS 3285</th>
+                <td></td>
+                <td>1 PM to 3 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">BIOL 1001</th>
+                <td></td>
+                <td>11 AM to 1 PM</td>
+                <td>1 PM to 3 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">BIOL 1001</th>
+                <td></td>
+                <td>11 AM to 1 PM</td>
+                <td>1 PM to 3 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">BIOL 1002</th>
+                <td></td>
+                <td></td>
+                <td>10 AM to 12 PM</td>
+                <td>3 PM to 5 PM</td>
+                <td>12 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">BIOL 1010</th>
+                <td></td>
+                <td>2 PM to 4 PM <br> 6 PM to 8 PM</td>
+                <td>12 PM to 2 PM <br> 4 PM to 5 PM</td>
+                <td>11 AM to 12 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">BUSN 3200</th>
+                <td></td>
+                <td>11 AM to 12 PM</td>
+                <td>10 AM to 1 PM</td>
+                <td>10 AM to 11 AM</td>
+                <td>11 AM to 2 PM</td>
+                <td>1 PM to 3 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">CHEM 1007</th>
+                <td></td>
+                <td></td>
+                <td>1 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+                <td>1 PM to 2 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">CHEM 1050</th>
+                <td></td>
+                <td>11 AM to 1 PM</td>
+                <td>10 AM to 3 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">CHEM 1100</th>
+                <td></td>
+                <td></td>
+                <td>1 PM to 3 PM</td>
+                <td>2 PM to 4 PM</td>
+                <td>11 AM to 2 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">CHEM 2050</th>
+                <td></td>
+                <td>11 AM to 1 PM</td>
+                <td>10 AM to 3 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+            <th scope="row">CHEM 2100</th>
+            <td></td>
+            <td>6 PM to 8 PM</td>
+            <td>1 PM to 3 PM</td>
+            <td>11 AM to 12 PM <br> 4 PM to 6 PM</td>
+            <td>12 PM to 2 PM</td>
+            <td>2 PM to 3 PM</td>
+            <td></td>
+            </tr>
+            <tr>
+                <th scope="row">CHEM 3511</th>
+                <td></td>
+                <td></td>
+                <td>12 PM to 1 PM</td>
+                <td>2 PM to 3 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+
+
+            <tr>
+                <th scope="row">CISC 1050</th>
+                <td></td>
+                <td>5 PM to 6 PM</td>
+                <td>12 PM to 2 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <th scope="row">CISC 1115</th>
+                <td></td>
+                <td>10 AM to 12PM <br> 1 PM to 2 PM <br> 3 PM to 4 PM</td>
+                <td>12 PM to 2 PM <br> 4 PM to 5 PM</td>
+                <td>2 PM to 4 PM</td>
+                <td>12 PM to 1 PM <br> 3 PM to 5 PM</td>
+                <td> 10 AM to 12 PM </td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">CISC 3115</th>
+                <td></td>
+                <td>1 PM to 3 PM <br> 4 PM to 5 PM</td>
+                <td>12 PM to 2 PM <br> 5 PM to 6 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td> 12 PM to Í2 PM </td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">CLAS 1110</th>
+                <td></td>
+                <td></td>
+                <td>3 PM to 5 PM</td>
+                <td></td>
+                <td>1 PM to 3 PM</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <th scope="row">ECON 2100</th>
+                <td></td>
+                <td>5 PM to 6 PM </td>
+                <td>11 AM to 1 PM</td>
+                <td>11 AM to 12 PM <br> 5 PM to 6 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td>10 AM to 12 PM </td>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <th scope="row">ECON 2200</th>
+                <td></td>
+                <td>4 PM to 5 PM </td>
+                <td>11 AM to 1 PM</td>
+                <td> 1 PM to 2 PM</td>
+                <td>12 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">ECON 3410</th>
+                <td></td>
+                <td>3 PM to 5 PM </td>
+                <td>5 PM to 6 PM</td>
+                <td> 10 AM to 11 AM <br> 2 PM to 3 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td>11 AM to 12 PM</td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">FINC 3310</th>
+                <td></td>
+                <td>4 PM to 6 PM </td>
+                <td>1 PM to 3 PM</td>
+                <td>11 AM to 1 PM</td>
+                <td> 11 AM to 12 M <br> 2 PM to 3 PM</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">MATH 1006</th>
+                <td>12 PM to 4 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td></td>
+                <td>11 AM to 12 PM</td>
+                <td>10 AM to 2 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td>12 PM to 4 PM</td>
+            </tr>
+
+            
+            <tr>
+                <th scope="row">MATH 1011/1012</th>
+                <td>12 PM to 4 PM</td>
+                <td>11 AM to 6 PM</td>
+                <td>11 AM to 3 PM</td>
+                <td>12 PM to 1 PM <br> 2 PM to 4 PM</td>
+                <td>11 AM to 4 PM</td>
+                <td>12 PM to 3 PM</td>
+                <td>12 PM to 4 PM</td>
+            </tr>
+            <tr>
+                <th scope="row">MATH 1201</th>
+                <td>12 PM to 4 PM</td>
+                <td>12 PM to 1 PM <br> 4 PM to 5 PM <br> 6 PM to 8 PM</td>
+                <td>12 PM to 2PM <br> 3 PM to 4 PM</td>
+                <td>1 PM to 2 PM <br> 4 PM to 6 PM</td>
+                <td>11 AM to 3 PM</td>
+                <td>10 AM to 12 PM</td>
+                <td>12 PM to 4 PM</td>
+            </tr>
+
+            <tr>
+                <th scope="row">MATH 1206</th>
+                <td>12 PM to 4 PM</td>
+                <td>12 PM to 1 PM <br> 2 PM to 5 PM</td>
+                <td>11 AM to 2 PM <br> 3 PM to 4 PM</td>
+                <td>1 PM to 2 PM <br> 3 PM to 6 PM</td>
+                <td>10 AM to 3 PM <br> 1 PM to 3 PM</td>
+                <td>11 AM to 1 PM</td>
+                <td>12 PM to 4 PM</td>
+            </tr>
+            <tr>
+                <th scope="row">MATH 1401</th>
+                <td></td>
+                <td>11 AM to 12 PM <br> 7 PM to 8 PM</td>
+                <td>12 PM to 2 PM</td>
+                <td>3 PM to 5 PM</td>
+                <td>6 PM to 8 PM</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">MATH 1406</th>
+                <td></td>
+                <td>11 AM to 12 PM <br> 7 PM to 8 PM</td>
+                <td>12 PM to 2 PM</td>
+                <td>3 PM to 5 PM</td>
+                <td>6 PM to 8 PM</td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th scope="row">MATH 2201</th>
+                <td></td>
+                <td></td>
+                <td>11 AM to 12 PM </td>
+                <td>4 PM to 6 PM</td>
+                <td> 11 AM to 1 PM</td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+            <tr>
+                <th scope="row">MATH 2101</th>
+                <td><b></b></td>
+                <td></td>
+                <td></td>
+                <td>11 AM to 12 PM </td>
+                <td>4 PM to 6 PM</td>
+                <td> 11 AM to 1 PM</td>
+                <td></td>
+                <td></td>
+
+
+            </tr>
+
+            <tr>
+                <th scope="row">PHIL 2101</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>4 PM to 6 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td> 11 AM to 1 PM</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th scope="row">PHYS 1005</th>
+                <td></td>
+                <td>1 PM to 2 PM <br> 6 PM to 7 PM</td>
+                <td>12 PM to 1 PM <br> 4 PM to 5 PM</td>
+                <td>3 PM to 4 PM</td>
+                <td>11 AM to 12 PM <br> 5 PM to 6 PM</td>
+                <td>2 PM to 3 PM</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th scope="row">PHYS 1100</th>
+                <td></td>
+                <td></td>
+                <td>10 AM to 12 PM </td>
+                <td>3 PM to 5 PM</td>
+                <td> 12 PM to 2 PM</td>
+                <td></td>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <th scope="row">PHYS 2100</th>
+                <td></td>
+                <td>10 AM to 11 AM <br> 5 PM to 6 PM</td>
+                <td>1 PM to 2 PM <br> 4 PM to 5 PM</td>
+                <td>12 PM to 1 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td>1 PM to 2 PM</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">PSYC 1000</th>
+                <td></td>
+                <td>10 AM to 12 PM</td>
+                <td>4 PM to 6 PM</td>
+                <td> 3 PM to 5 PM</td>
+                <td>12 PM to 2 PM </td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th scope="row">PSYC 3400</th>
+                <td></td>
+                <td>3 PM to 5 PM</td>
+                <td>10 AM to 12 PM <br> 3 PM to 5 PM</td>
+                <td></td>
+                <td> 12 PM to 2 PM <br> 4 PM to 5 PM</td>
+                <td>11 AM to 1 PM </td>
+                <td></td>
+
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>

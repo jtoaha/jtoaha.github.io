@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Registration</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  		integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous">
+    </script>
+
+ <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style type="text/css">
+    .login-form {
+        width: 500px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 5px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .login-form label{
+        /*margin-bottom: 20px;*/
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+       /* margin: 10px auto;*/
+
+    }
+    .formcontrol, .form-footer{
+
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        margin-top:30px; margin-bottom: 0px;
+    }
+    p a{
+        color: #2249A8;
+    }
+    .form-footer a{
+        color:#0A3BB6;
+        font-weight: 500;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- <h1>Registration</h1> -->
+
+	<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="#">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                    onmouseout="this.src='assets/bclc-logo-v.png';" alt = "home button" >
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+
+                   <!-- User cannot access these until logged in
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li> -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="register.html">Create Account</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+<!-- onsubmit="return setinfo(this);" -->
+<div class="container login-form ">
+<form  method="get" onsubmit="return setinfo(this);" id ="registion">
+<h2>Create Account</h2>
+    <div class="form-group has-feedback" id="firstDiv">
+	   <label for="primero">First Name</label>
+	   <input type="text" name="firstname" class="form-control"placeholder="First Name" id="primero" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'firstDiv','helpBlockFirst')" onchange="removeVisual('firstDiv','helpBlockFirst'); showGlyphicon('trueGlyphicon1','falseGlyphicon1', 'firstDiv', this.id);" value="" data-toggle="tooltip" data-placement="right" title="Required.">
+
+       <span id="helpBlockFirst" class="help-block" style="display:none">Required. Alphabet characters only.</span>
+
+       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon1"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon1"></span>
+    </div>
+
+    <div class="form-group has-feedback" id="lastDiv">
+	   <label for="ultimo">Last Name</label>
+	   <input type="text" name="firstname" class="form-control" placeholder="Last Name" id="ultimo" pattern="[A-Za-z]{1,15}" oninvalid="this.setCustomValidity('Enter alphabet letters (a-z, A_Z)')"  minlength="1 "oninput="this.setCustomValidity('')" value="" onblur="visualValidation(this.id, 'lastDiv','helpBlockLast')" onchange="removeVisual('lastDiv','helpBlockLast');showGlyphicon('trueGlyphicon2','falseGlyphicon2', 'lastDiv', this.id);" data-toggle="tooltip" data-placement="right" title="Required.">
+
+        <span id="helpBlockLast" class="help-block" style="display:none">Required. Alphabet characters only.</span>
+
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon2"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon2"></span>
+
+     </div>
+
+    <div class="form-group has-feedback" id="usernameDiv">
+	   <label for="username">Create Username</label>
+	   <input type="text" name="username" class="form-control" id="username" placeholder="Username" pattern="[A-Za-z0-9_@!-]{3,15}" oninvalid="this.setCustomValidity('Characters must be either (a-z);(A-Z);(0-9); [ _ | - | ! | @ ]')" oninput="this.setCustomValidity('')" data-error="Hello" onblur="visualValidation(this.id, 'usernameDiv','helpBlockUsername')" onchange="removeVisual('usernameDiv','helpBlockUsername');showGlyphicon('trueGlyphicon3','falseGlyphicon3', 'usernameDiv', this.id);" data-toggle="tooltip" data-placement="right" title="Required.">
+       <span id="helpBlockUsername" class="help-block" style="display:none">Required. Characters permitted (must be at least 3 characters): (a-z) or (A-Z) or (0-9) or or _ or - or ! or @</span>
+
+       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon3"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon3"></span>
+    </div>
+
+    <div class="form-group">
+	   <label for="password">Create password</label>
+	   <input type="password" name="password" class="form-control" id="password" required minlength="4" placeholder="Password" data-toggle="tooltip" data-placement="right" title="Required.">
+	   <input type="checkbox" name="toggleMe" onclick=" showPass('password')" id="passtoggle1">  <label for="passtoggle1"style="font-weight: normal;">Show Password</label>
+	 <br><br>
+    </div>
+
+    <div class="form-group">
+	   <label for="password2">Confirm Password</label>
+	   <input type="password" name="password2" class="form-control" id="password2" required minlength="4" placeholder="Re-enter Password" data-toggle="tooltip" data-placement="right" title="Required.">
+	   <input type="checkbox" name="toggleMe" onclick=" showPass('password2')" id="passtoggle2">  <label for="passtoggle" style="font-weight: normal;">Show Password</label>
+       <br><br>
+    </div>
+
+	<p id="validate_status" class="alert-link" role="alert"></p>
+
+    <div class="form-group">
+	   <label for="birth">Date of Birth</label>
+
+       <input type="date" name="birth" class="form-control" id="birth" value="" data-toggle="tooltip" data-placement="right" title="Required."
+       min="1930-01-01" max="2012-12-31">
+
+    </div>
+
+    <div class="form-group">
+	   <label for="email">Email</label>
+	   <input type="email" name="e-mail" class="form-control" id="email" placeholder="Email" data-toggle="tooltip" data-placement="right" title="Required.">
+    </div>
+
+    <div class="form-group">
+
+       <label for="email2">Confirm email</label>
+       <input type="email" name="email2" class="form-control" id="email2" placeholder="Re-enter email" data-toggle="tooltip" data-placement="right" title="Required.">
+    </div>
+    <p id="validate_email" class="alert-link" role="alert"></p>
+
+	<!-- HERE -->
+	<div class="input-group mb-3 form-group ">
+  		<div class="input-group-prepend">
+    		<label class="input-group-text " for="inputGroupSelect01">Major</label>
+  		</div>
+  			<select class="custom-select form-control" id="inputGroupSelect01" data-toggle="tooltip" data-placement="right" title="Required.">
+    			<option selected value="not_valid" disabled>Choose...</option>
+    			<option value="ACC">Accounting</option>
+    			<option value="ANTH">Anthropology</option>
+    			<option value="Art">Art</option>
+    			<option value="BIO"> Biology</option>
+    			<option value="BUSADM"> Business Administration</option>
+    			<option value="BUSMANG">Business Managment </option>
+    			<option value="CHEM">Chemistry</option>
+    			<option value="COM">Communication</option>
+    			<option value="CS">Computer Science</option>
+    			<option value="CISC">Computer Information Systems</option>
+    			<option value="EARLYEDU">Early Childhood Education Teacher</option>
+    			<option value="ECO">Econonmics</option>
+    			<option value="ENG">English</option>
+    			<option value="FILM">Film</option>
+    			<option value="FINANCE">Finance</option>
+    			<option value="HIS">History</option> <option value="LIN">Linguistics</option> <option value="MAT">Mathetmatics</option> <option value="MUS">Music</option> <option value="PHIL">Philosophy</option> <option value="PHY">Physics</option> <option value="POLSCI">Political Science</option> <option value="PSY">Psychology</option> <option value="SOCI">Sociology</option> <option value="THE">Theater</option>
+  			</select>
+	</div>
+
+
+    <div class="form-group">
+	   <input type="submit" name="register" id="register" class="btn btn-primary btn-block"  disabled="disabled">
+    </div>
+
+    <p class="form-footer text-center"><a href="login.html">Click to Log in</a></p>
+
+<!-- onsubmit="successRegister()" -->
+<!-- onclick="successRegister()" -->
+</form>
+</div>
+<script src="tutoringcenter.js" ></script>
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<title>Register to become a tutor!</title>
+	<link rel="icon" href="assets/bclc-icon.png">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  	integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+     <link rel="stylesheet" type="text/css" href="styles2.css">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
+<script src="tutorform.js" defer> </script>
+
+<style type="text/css">
+	 .login-form {
+        width: 500px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 5px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+       }
+    .formcontrol, .form-footer{
+
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        margin-top:30px; margin-bottom: 0px;
+    }
+
+     input[type=tel] {
+    	width: 30% ;
+    	display: inline-flex ;
+
+    }
+     .flex-box{
+    	margin: 20px auto;
+    }
+    #ifYes, #ifYes2 {
+    	margin-top: 20px;
+    	margin-bottom: 20px;
+    }
+    .container input[type=radio]{
+    	margin: 5px auto;
+    }
+    .status_style{
+    	margin: 15px auto;
+    }
+    .course_style{
+    	margin-top:10px;
+    	margin-bottom: 30px;
+    }
+    label{
+    	margin-top:5px;
+    }
+    .checkbox label {
+    	margin-top: 0px;
+    }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+									<img class= "nav-logo" src="assets/bclc-logo-v.png"
+									onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+									onmouseout="this.src='assets/bclc-logo-v.png';" alt = "home button" >
+							</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback2.html">Feedback</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+<div class="container login-form" data-toggle="validator">
+	<!-- This anchor tag works, used for debugging -->
+	<!-- <a href="#" onclick="toggleCheck()">Click to autofill</a> -->
+<form method="get"  onsubmit="setShit(); return false;">
+
+	<h2>Become a tutor!</h2>
+
+	<div class="form-group has-feedback" id="f1"  >
+		<label for="signup_firstname">First Name</label>
+	   	<input type="text" name="firstname" class="form-control"placeholder="First Name" id="signup_firstname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')"   onblur="visualValidation(this.id, 'f1', 'helpBlock1')" onchange="removeVisual('f1', 'helpBlock1');showGlyphicon('SuccessGlyphicon1','ErrorGlyphicon1', 'f1', this.id); "value="" aria-describedby="helpBlock1" data-toggle="tooltip" data-placement="right" title="Required"required>
+
+	   	<span id="helpBlock1" class="help-block" style="display:none">Required. Alphabet characters only.</span>
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon1"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon1"></span>
+	</div>
+
+	<div class="form-group has-feedback" id="L2">
+		<label for="signup_lastname">Last Name</label>
+		<input type="text" name="firstname" class="form-control"placeholder="Last Name" id="signup_lastname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'L2','helpBlock2')" onchange="removeVisual('L2','helpBlock2');showGlyphicon('SuccessGlyphicon2','ErrorGlyphicon2', 'L2', this.id);" value="" aria-describedby="helpBlock2" data-toggle="tooltip" data-placement="right" title="Required" required>
+
+		<span id="helpBlock2" class="help-block" style="display:none">Required. Alphabet characters only.</span>
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon2"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon2"></span>
+	</div>
+
+	<div class="form-group has-feedback" id="emailStyle">
+		<label for="preferred_email">Preferred Email:</label>
+		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpBlockEmail" data-toggle="tooltip" data-placement="right" title="Required" required>
+
+		<span id="helpBlockEmail" class="help-block" style="display:none">Required. Enter valid email: example@mail.com.</span>
+
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon3"></span>
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon3"></span>
+	</div>
+
+	<div class="form-group has-feedback" id="phoneStyle">
+		<label for="phone" data-toggle="tooltip" data-placement="right" title="Required">Phone Number:</label> <br>
+		<!-- <div class="form-control"> -->
+			<input  type="tel" name="phone1" id="phone"pattern="[0-9]{3}" maxlength="3" onkeyup="autotab(this, document.getElementById('phone2'))" placeholder="222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" required>
+
+			<label for="phone2"></label>
+			<input type="tel" name="phone2" id="phone2"pattern="[0-9]{3}" maxlength="3" onkeyup="autotab(this,document.getElementById('phone3'))" placeholder="222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" required>
+
+			<label for="phone3"></label>
+			<input type="tel" name="phone3" id="phone3"pattern="[0-9]{4}" maxlength="4" placeholder="2222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" aria-describedby="helpBlockPhone" required>
+		<!-- </div> -->
+		<span id="helpBlockPhone" class="help-block" style="display:none">Required. Enter numbers only</span>
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden;" id="SuccessGlyphicon4"></span>
+		<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon4"></span>
+
+	</div>
+
+	<label class="container text-center status_style ">Select the one that applies:</label>
+		<div class="form-group text-left has-error" id="currentStatus" >
+
+			<label for="current_stu" >Current Student</label>
+			<input type="radio" name="status" id="current_stu" value="current_stu" > <br>
+
+			<label for="grad_stu">Graduate</label>
+			<input type="radio" name="status" id="grad_stu" value="grad_stu"> <br>
+
+			<label for="prof">Professor</label>
+			<input type="radio" name="status" id="prof" value="professor"> <br>
+
+			<label for="other">Other</label>
+			<input type="radio" name="status" id="other" value="other"><br>
+
+			<span id="helpBlockStatus" class="help-block" style="display:block">Select one please</span>
+
+		</div>
+
+
+	<div class="form-group course_style">
+		<label>Please list the courses you can teach (May apply for 3 courses max)</label>
+
+		<div class="text-center" id="C1">
+			<label for="course_1">Course 1</label>
+			<input type="text" name="course_1" id="course_1" class="form-control" onblur="visualValidation(this.id, 'C1','helpBlockCourse')" onchange="removeVisual('C1', 'helpBlockCourse')" aria-describedby="helpBlockCourse" required data-toggle="tooltip" data-placement="right" title="Required. Add at least one course"> <br>
+		<span id="helpBlockCourse" class="help-block" style="display:none">Required (Course to tutor)</span>
+		</div>
+
+		<div class="text-center">
+			<label for="yes"style="font-weight: normal;">Add second Course? Yes </label> <input type="radio"  onclick="addField(document.getElementById('ifYes').id)" name="yesno" id="yes" value="yes" >
+
+			<label for="no" style="font-weight: normal;">No </label><input type="radio" onclick="addField(document.getElementById('ifYes').id);" name="yesno" id="no" value="no"  >
+		</div>
+
+		<div id="ifYes" style="display: none;" class="text-center" id="C2">
+			Course 2<input type="text" name="course_2" id="course_2" class="form-control"> <br>
+
+			Add third Course? Yes <input type="radio"  onclick="addField2(document.getElementById('ifYes2').id);" name="yesno2" id="yes2" value="yes">
+			No <input type="radio" onclick="addField2(document.getElementById('ifYes2').id);" name="yesno2" id="no" value="no">
+		</div>
+
+		<div id="ifYes2" style="display: none" class="text-center" id="C3">
+			Course 3<input type="text" name="course_3" id="course_3" class="form-control"><br>
+		</div>
+
+	</div>
+
+	<div class="form-group input-group mb-3 ">
+		<div class="input-group-prepend" class="input-group-text ">
+			<label for="days_available" data-toggle="tooltip" data-placement="right" title="Required">What days are you able to tutor?</label>
+	<!--	<select class="form-control" multiple id="days_available">
+				<option selected value="no_val" disabled>Choose...</option>
+				<option value="Mon">Monday</option>
+				<option value="Tues">Tuesday</option>
+				<option value="Wed">Wednesday</option>
+				<option value="Thur">Thursday</option>
+				<option value="Fri">Friday</option>
+				<option value="Sat">Saturday</option>
+			</select>
+	-->	
+			<div class="checkbox"  > 
+				 <input type="checkbox" name="days_available" id="mondayID" value="Mon"> 
+				<label for="mondayID">Monday</label> 
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" name="days_available" id="tuesdayID" value="Tues"> 
+				<label for="tuesdayID">Tuesday</label>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" name="days_available" id="wednesdayID" value="Wed"> 
+				<label for="wednesdayID">Wednesday</label>
+			</div>
+			<div class="checkbox" >
+				<input type="checkbox" name="days_available" id="thursdayID" value="Thur"> 
+				<label for="thursdayID">Thursday</label>
+			</div>
+			<div class="checkbox" >
+				<input type="checkbox" name="days_available" id="fridayID" value="Fri"> 
+				<label for="fridayID">Friday</label>
+			<div class="checkbox" >
+				<input type="checkbox" name="days_available" id="saturdayID" value="Sat"> 
+				<label for="saturdayID">Saturday</label>
+			</div>
+		</div>
+		<div class="" id="dayMessage">
+		<span id="helpBlockDays" class="help-block" style="display: none">Select at least one day that you are able to tutor </span>
+		</div>
+	</div>
+
+
+	<div class="form-group input-group mb-3" id="timeId">
+		<label for="time_available" aria-describedby="helpBlockTime">What times are you able to tutor?</label>
+		<br><small id="time-Help" class="form-text text-muted">For multiple selections: Hold 'CTRL' or 'Command' on keyboard while clicking simultaneously.</small>
+		<select class="form-control" multiple=""  id="time_available" data-toggle="tooltip" data-placement="right" title="Select at least one. ">
+			<option name="time_available" value="no_val" disabled>Choose...</option>
+			<option name="time_available" value="Mornings">Mornings</option>
+			<option name="time_available" value="Afternoon">Afternoons</option>
+			<option name="time_available"value="Evening">Evenings</option>
+		</select>
+		<span id="helpBlockTime" class="help-block" style="display: none;">Select at least one time you'll be able to tutor.</span>
+	</div>
+
+	<div class=" form-group has-feedback" id="potential_style">
+		<div>
+			<label  class="control-label" for="start-work" id="startStuff" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
+			<select class="form-control" id="start-work" required data-toggle="tooltip" data-placement="right" title="Select one. Required ">
+				<option selected value="no_val" >Choose...</option>
+				<option value="immediate">Immediately</option>
+				<option value="1-week">1 week</option>
+				<option value="2-week">2 week</option>
+				<option value="1-month">1 month</option>
+				<option value="longer">Longer than 1 month</option>
+			</select>
+			<span id="helpBlockStartWork" class="help-block "style="display: none">Select one please</span>
+		</div>
+	</div>
+
+	<div class=" form-group" id="textboxDiv">
+
+		<label for="text_box" class="input-group-text ">If you have tutored before, tell us about it here:</label>
+		<textarea id="text_box" class="form-control" maxlength="500" wrap="soft" data-toggle="tooltip" data-placement="right" title="Optional, but we would like to hear your experiences! "></textarea>
+		<span id="helpBlockTextArea" class="help-block" style="display: none">We would love to know able your experiences</span>
+		<span id="helpBlockTextArea2" class="help-block" style="display: none">Thank you!</span>
+
+	</div>
+
+	<div class="form-group">
+		<label for="picture">Upload a picture:</label>
+		<input type="file" name="picture" id="picture" accept="image/*" class="form-control" data-toggle="tooltip" data-placement="right" title="Optional ">
+	</div>
+
+	<div class="form-group">
+		<input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block" disabled="disabled" id="tutorsubmit">
+	</div>
+
+</div>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign up to be a tutor</title>
+    <title>Tutoring Schedle</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Signup.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="multiselect/jquery.multiselect.css" rel="stylesheet" />
+  <script src="multiselect/jquery.multiselect.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+<style>
+
+    .dates {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+
+    .nameOfTutor {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .course {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .satisfied {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .learn {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .workedWell {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .improve {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .recommend {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .additionalComments {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .surveyHeader {
+        text-align: center;
+        padding-bottom: 2%;
+    }
+    body {
+        background: rgb(221, 102, 122);
+    color:black;
+    }
+    .submit {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+    .questions {
+        padding-left: 640px;
+        padding-bottom: 3%;
+    }
+
+    .nav-logo{
+    padding: .3em;
+}
+
+</style>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                    onmouseout="this.src='assets/bclc-logo-v.png';" >
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback.html">Feedback</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <script>
+        //window.addEventListener('load', (event) => {
+
+            function submitButton() {
+
+            var input1 = document.getElementById("tutorName").value;
+            var input2 = document.getElementById("courseNumber").value;
+            // var input3 = document.getElementById("tutorName").value;
+            // var input4 = document.getElementById("satisfaction").value;
+            // var input5 = document.getElementById("learned").value;
+            // var input6 = document.getElementById("workWell").value;
+            // var input7 = document.getElementById("improvement").value;
+            // var input8 = document.getElementById("recommend").value;
+
+
+            var btn = document.getElementById("submit");
+            if(input1 != "" && input2 != "" ){
+                btn.removeAttribute('disabled')
+            } else {
+                btn.disabled="disabled"
+                return
+            }
+        }
+
+ // }
+          </script>
+          <div class = "wholeForm">
+    <div class = "surveyHeader"><h2>Feedback Survey!</h2></div>
+    <div class = "forms">
+
+            <form id="form" method="POST" onsubmit="alert('Submitted!'); return false">
+
+
+        <div class = "course">
+            Course you got tutored in <br>
+            <input type = "text" name = "courseNumber" id = "courseNumber" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required > <br>
+        </div>
+        <div class = "nameOfTutor">
+            Name of Tutor <br>
+            <input type = "text" name = "tutorName" id = "tutorName"  onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required  > <br>
+        </div>
+        <div class = "satisfied" >
+            On a scale of 1-5 how satisfied were you with the tutoring session? <br>
+            <input type = "radio" name = "satisfaction"  value = "1"   onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 1 (Not satisfied) <br>
+            <input type = "radio" name = "satisfaction" value = "2" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 2 <br>
+            <input type = "radio" name = "satisfaction"  value = "3" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 3 <br>
+            <input type = "radio" name = "satisfaction"   value = "4" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 4 <br>
+            <input type = "radio" name = "satisfaction"  value = "5" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 5 (Very satisfied) <br>
+        </div>
+        <div class = learn>
+            On a scale of 1-5 how much did you learn? <br>
+            <input type = "radio" name = "learned"  value = "1" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton()  > 1 (Not much at all) <br>
+            <input type = "radio" name = "learned"   value = "2" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton()  > 2 <br>
+            <input type = "radio" name = "learned"  value = "3" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton()  > 3 <br>
+            <input type = "radio" name = "learned" value = "4" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton()  > 4 <br>
+            <input type = "radio" name = "learned"  value = "5" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > 5 (A lot) <br>
+        </div>
+        <div class = "workedWell">
+           What has worked well for you during the tutoring sessions? <br>
+            <input type = "text" name = "workWell" id = "workWell" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required > <br>
+        </div>
+        <div class = "improve">
+           Was there something that could be improved that would improve your experience?<br>
+            <input type = "text" name = "improvement" id = "improvement" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required > <br>
+        </div>
+        <div class = "recommend">
+            Would you recommend the tutoring center to your friends? <br>
+            <input type = "radio" name = "recommend" id = "recommend" value = "yes" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton()> Yes <br>
+            <input type = "radio" name = "recommend" id = "recommend" value = "no" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() > No <br>
+        </div>
+        <div class = "additionalComments">
+            Additional comments: <br>
+            <textarea id="" rows="5" cols="50" maxlength="500" name = "textBox" id = "textBox"></textarea><br>
+        </div>
+        <div class="submit">
+                <button id="submit" type="submit" value="submit" disabled="disabled">Submit</button>
+              </div>
+        </form>
+    </div>
+
+    </div>
+
+  <div class = "questions">
+        <p> Have questions? <a href = "ContactUsLC.html"> <b>Contact us today!</b></a></p>
+    </div>
+
+    </body>
+    </html>
+

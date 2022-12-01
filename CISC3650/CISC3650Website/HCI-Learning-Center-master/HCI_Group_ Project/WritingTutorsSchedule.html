@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Writing Tutors</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+
+    <!--Specifically for the Writing Tutors Schedule Page for the Mini Calendar and CDN link to access JQuery API-->
+    <link rel="stylesheet" href="WritingTutorsSchedule.css">
+    <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <!--Create a Span-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+                  <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                  onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                  onmouseout="this.src='assets/bclc-logo-v.png';" alt = "home button" >
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback2.html">Feedback</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+    <h1>Writing Tutors</h1>
+    </div>
+<div id="writing-tutors-section">
+
+    <div id="selected-date-div">
+    <h2 id="selected-date"></h2>
+    </div>
+
+    <div id="appointment-section">
+      <fieldset>
+        <legend>Available Appointments</legend>
+          <ol id="appointment-list">
+            <span>9AM</span><li class="appointment-li" id="9"></li>
+            <span>10AM</span><li class="appointment-li" id="10"></li>
+            <span>11AM</span>
+            <li class="appointment-li" id="11"></li>
+            <span>12PM</span>
+            <li class="appointment-li" id="12"></li>
+            <span>1PM</span>
+            <li class="appointment-li" id="1"></li>
+            <span>2PM</span>
+            <li class="appointment-li" id="2"></li>
+            <span>3PM</span>
+            <li class="appointment-li" id="3"></li>
+            <span>4PM</span>
+            <li class="appointment-li" id="4"></li>
+            <span>5PM</span>
+            <li class="appointment-li" id="5"></li>
+            <span>6PM</span>
+            <li class="appointment-li" id="6"></li>
+          </ol>
+        </fieldset>
+    </div>
+
+    <div id= "calendar-section">
+      <div id="mini-calendar"></div>
+      <input type="hidden" id="selected-date-input">
+      <!-- <button onclick="miniCalendarToday()"> Today </button> -->
+    </div>
+
+
+<!--
+  <div id="book-section">
+
+  </div> -->
+  <div id="preview">
+
+  </div>
+
+  <!-- <div id="book-button" class="link">
+    <a  class ="btn btn-primary"  role="button" onclick="bookAppointment();return false;">Book Appointment</a>
+  </div> -->
+
+  <div id="book-button-section">
+    <button  id="book-button" class ="btn btn-primary"  role="button" >Book Appointment</button>
+    <button  id="cancel-button" class ="btn btn-default"  role="button" >Cancel an Appointment</button>
+  </div>
+
+ </div>
+
+
+<div id="confirm-booking"> </div>
+
+
+<!-- The Modal https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Are you sure you would like to book the following appointment?</h3>
+    <p id="modal-appointment-info"></p>
+    <button onclick="bookAppointment()" type="button" class="btn btn-success"> Book Appointment </button>
+    <button onclick="cancelModal()" type="button" class="btn btn-default"> Cancel </button>
+  </div>
+
+</div>
+
+
+
+     <script src="bootstrap-datepicker/js/bootstrap-datepicker.js" async defer></script>
+     <script src="bootstrap-datepicker/js/bootstrap-datepicker.min.js" async defer></script>
+     <script src="assets/moment.js" defer></script>
+     <script src="WritingTutorsArray.js" defer></script>
+     <script src="WritingTutorsSchedule.js" defer></script>
+</body>
+</html>

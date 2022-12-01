@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tutoring Schedule</title>
+    <link rel="icon" href="assets/bclc-icon.png">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="Signup.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+
+    <style type="text/css">
+        .login-form {
+        width: 600px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 5px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .btn {
+        font-size: 15px;
+        font-weight: bold;
+       }
+    .formcontrol {
+
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        margin-top:30px; margin-bottom: 0px;
+    }
+    .questions{
+        margin-top: 40px;
+    }
+    .questions a {
+        color: #2249A8;
+    }
+    .put-reviews div{
+        padding-top: 10px;
+        padding-bottom: 50px;
+    }
+    /* .remove_field .btn{
+       margin-left: 0 auto;
+    }*/
+    .border-BOT{
+        border-bottom: 2px solid #CED7D6;
+    }
+    .border-BOT div{
+        padding-bottom: 20px;
+    }
+    /* #satisfied label input[name = satisfaction] {
+        font-weight: normal;
+    }*/
+    </style>
+    <script>
+        //Validates if the essential information is entered
+        function submitButton() {
+            var input1 = document.getElementById("tutor-name").value;
+            // var input1 = document.getElementById("tutorName").value;
+            var input2 = document.getElementById("courseNumber").value;
+            // var input3 = document.getElementById("tutorName").value;
+            // var input4 = document.getElementById("satisfaction").value;
+            // var input5 = document.getElementById("learned").value;
+            // var input6 = document.getElementById("workWell").value;
+            // var input7 = document.getElementById("improvement").value;
+            // var input8 = document.getElementById("recommend").value;
+             var input_satified = document.querySelector("input[name='satisfaction']").value;
+            var input_textArea = document.getElementById("textBox").value;
+            var btn = document.getElementById("submit");
+            console.log(input_satified);
+
+            if(input1 != "no_val" && input2 != "" && input_textArea != "" && input_satified != null){
+                btn.removeAttribute('disabled')
+            } else {
+                btn.disabled="disabled"
+                return
+            }
+        }
+        //Initializes user input using sessionStorage. Will use to display in the 'My Review Section'
+        function setInformation(){
+            //var tutor_name = document.getElementById("tutor-name").value;
+            var tutor_name = document.getElementById("tutor-name").options[document.getElementById("tutor-name").selectedIndex].text;
+            sessionStorage.setItem("tutorName", tutor_name);
+            var course = document.getElementById("courseNumber").value;
+            sessionStorage.setItem("courseName", course);
+            var textBoxMe = document.getElementById("textBox").value;
+            sessionStorage.setItem("usertextBox", textBoxMe);
+            var satisfiedRate = document.querySelector("input[name = 'satisfaction']:checked").value;
+            sessionStorage.setItem("rating", satisfiedRate);
+
+             console.log(sessionStorage.getItem("tutorName"));
+             console.log(sessionStorage.getItem("courseName"));
+             console.log(sessionStorage.getItem("usertextBox"));
+             console.log(sessionStorage.getItem("rating"));
+
+        }
+
+        //JQUERY, used to add the Dynamic "My Review" section
+        $(document).ready(function(){
+            var max_fields      = 10;
+            var wrapper         = $(".put-reviews");
+            var review_submit   = $("#review-submit");
+            var x = 1;
+
+            $(review_submit).submit(function(e){ //on add input button click
+                e.preventDefault();
+
+                if(x < max_fields){ //max input box allowed
+                    x++; //text box increment
+
+                    $(wrapper).append('<div class="border-BOT"> <div class="container-fluid ">Tutor: '+ sessionStorage.getItem('tutorName') +'<br>Course: '+sessionStorage.getItem('courseName') +'<br>Rating:'+sessionStorage.getItem('rating')+'</div>' +'<textarea name="textBoxReview" class="form-control" disabled ="true" >'+$("#textBox").val() +'</textarea>'+ '<a href="#"  class="remove_field btn btn-danger pull-right " role="button">Remove</a>' + '<span></span>'+'</div>');
+                }
+            });
+
+            $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                e.preventDefault(); $(this).parent('div').remove(); x--;
+            })
+        });
+
+        $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+        });
+    </script>
+</head>
+<style>
+
+
+
+</style>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-left" href="LearningCenterHome.html">
+                    <img class= "nav-logo" src="assets/bclc-logo-v.png"
+                                    onmouseover="this.src='assets/bclc-logo-small-spaced.png';"
+                                    onmouseout="this.src='assets/bclc-logo-v.png';" alt = "home button" >
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                    <li><a href="SurveyFeedback2.html">Feedback</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="tutorform.html">Become Tutor</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+<div class = "container login-form ">
+    <!-- onsubmit="alert('Submitted!'); return false" -->
+<form method="get" onsubmit=" setInformation(); return false;"  id="review-submit" >
+    <h2>Feedback Survey!</h2>
+    <div class = "forms">
+
+           <!--  <form id="form" method="POST" onsubmit="alert('Submitted!'); return false"> -->
+        <div class = "form-group" id="course">
+            <label for="courseNumber">Course you got tutored in </label>
+            <input type = "text" name = "courseNumber" class="form-control" id = "courseNumber" onchange="submitButton()"  data-toggle="tooltip" data-placement="right" title="Required."required > <br>
+        </div>
+
+        <div class = "form-group" id = "nameOfTutor">
+            <label for="tutor-name">Name Of Tutor</label>
+            <select class="form-control" id="tutor-name"  onchange="submitButton()" onfocus="submitButton()" data-toggle="tooltip" data-placement="right" title="Required."required>
+                <option selected value="no_val" disabled>Pick one</option>
+                <option value="Doe"> Jenna Doe</option>
+                <option value="Smith">John Smith</option>
+                <option value="Nara">Shikamaru Nara</option>
+                <option value="Umino">Iruka Umino</option>
+                <option value="Aizawa"> Shota Aizawa</option>
+
+            </select>
+        </div>
+
+
+        <div class = "form-group" id= "satisfied" >
+            <label class="control-label" for="satisfied">On a scale of 1-5 how satisfied were you with the tutoring session?</label> <br> 
+            <input type = "radio" name = "satisfaction"  id="satisfied1" value = "1"> 
+                <label for="satisfied1" style="font-weight: normal;" > 1 (Not satisfied) </label>  <br>
+            <input type = "radio" name = "satisfaction" value = "2" id="satisfied2"> 
+                <label for="satisfied2" style="font-weight: normal;"> 2</label> <br>
+            <input type = "radio" name = "satisfaction" value = "3" id="satisfied3"> 
+                <label for="satisfied3" style="font-weight: normal;"> 3</label> <br>
+            <input type = "radio" name = "satisfaction" value = "4" id="satisfied4"> 
+                <label for="satisfied4" style="font-weight: normal;"> 4</label><br>
+            <input type = "radio" name = "satisfaction" value = "5" id="satisfied5"> 
+                <label for="satisfied5" style="font-weight: normal;"> 5 (Very satisfied)</label>  <br>
+        </div>
+        
+        <div class = "form-group" id = "learn">
+            <label for="learn">On a scale of 1-5 how much did you learn?</label> <br>
+            <input type = "radio" name = "learned" id="learned_val_1" value = "1"> 
+                <label for="learned_val_1" style="font-weight: normal;"> 1 (Not much at all) </label> <br>
+            <input type = "radio" name = "learned" value = "2" id="learned_val_2"> 
+                <label for="learned_val_2" style="font-weight: normal;"> 2 </label> <br>
+            <input type = "radio" name = "learned" value = "3" id="learned_val_3"> 
+                <label for="learned_val_3" style="font-weight: normal;"> 3 </label> <br>
+            <input type = "radio" name = "learned" value = "4" id="learned_val_4"> 
+                <label for="learned_val_4" style="font-weight: normal;"> 4 </label> <br>
+            <input type = "radio" name = "learned" value = "5" id="learned_val_5"> 
+                <label for="learned_val_5" style="font-weight: normal;"> 5 (A lot) </label> <br>
+        </div>
+
+        <div class = "form-group" id = "worked">
+           <label for="workWell">What has worked well for you during the tutoring sessions?</label>
+            <input type = "text" name = "workWell" class="form-control" id = "workWell"data-toggle="tooltip" data-placement="right" title="Optional."  > <br>
+        </div>
+        <div class = "form-group"class = "improve">
+           <label for="improvement">Was there something that could be improved that would improve your experience?</label>
+            <input type = "text" name = "improvement" class="form-control" id = "improvement" data-toggle="tooltip" data-placement="right" title="Optional." > <br>
+        </div>
+        <div class = "form-group" id = "recommendation">
+            <fieldset> <label for="recommendation">Would you recommend the tutoring center to your friends?</label> <br>
+            <input type = "radio" name = "recommend"  id = "recommend" value = "yes"> Yes <br>
+            <input type = "radio" name = "recommend" id = "recommend" value = "no" > No <br>
+            </fieldset>
+        </div>
+        <div class = "form-group" id = "additionalComments">
+            <label for="textBox">Comment:</label>
+            <textarea id="textBox" rows="5" cols="50" maxlength="500" name = "textBox" class="form-control" id = "textBox" onchange="submitButton();" onkeyup="submitButton();" data-toggle="tooltip" data-placement="right" title="Required. It's helpful for us!"></textarea><br>
+        </div>
+        <div class="submit">
+                <button id="submit" type="submit" value="submit" class="btn btn-success btn-block" disabled="disabled" data-toggle="modal" data-target="#myModal">Submit</button>
+        </div>
+
+    </div> <!--  div id="form" -->
+    <div class = "questions text-center">
+        <p> Have questions? <a href = "ContactUsLC.html"> <b>Contact us today!</b></a></p>
+    </div>
+
+</form>
+
+</div>
+
+<!-- Dynamically allocates the info for reviews entered previously -->
+<div class="container login-form">
+    <form >
+        <h2>Reviews:</h2>
+        <div class="form-group past-reviews" ></div>
+        <div class="put-reviews"></div>
+    </form>
+
+</div>
+
+<!-- To display the Modal Box, upon successful completion of the Feedback Form -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <!-- Modal Content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-body">Thank you for your feedback!</h4>
+        </div>
+        <div class="modal-body">
+          <p>We greatly appreciate your input. Your feedback help us improve our services!</p>
+      </div>
+      <div class="modal-footer"> <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </body>
+    </html>
+
