@@ -35,6 +35,14 @@ class Tile {
     fill(color(this.color.r, this.color.g, this.color.b));
     square(this.x, this.y, this.height);
   }
+
+  handleColorOnClick(mouseX, mouseY, generateRandomColor) {
+    let isWithinWidth = mouseX >= this.x && mouseX <= this.x + this.width;
+    let isWithinHeight = mouseY >= this.y && mouseY <= this.y + this.height;
+    if (isWithinWidth && isWithinHeight) {
+      this.color = generateRandomColor();
+    }
+  }
 }
 
 /*------ HELPER FUNCTIONS  -------*/
@@ -107,6 +115,15 @@ function setup() {
 function draw() {
   background(backgroundColor);
   drawTiles();
+}
+
+function mouseClicked() {
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      let tile = grid[i][j];
+      tile.handleColorOnClick(mouseX, mouseY, generateRandomColor);
+    }
+  }
 }
 
 /*
